@@ -1,0 +1,161 @@
+# ============================================================================
+# IN-SCOPE QUESTIONS WITH PLACEHOLDER SYNTAX
+# ============================================================================
+# This file contains test questions with {{PLACEHOLDER|format}} syntax for sensitive data.
+# The placeholders are replaced with real values during hydration.
+#
+# To generate hydrated evaluation file (outputs to eval/datasets_sensitive/):
+#   python eval/datasets/hydrate_test_data.py --template eval/datasets/in_scope_questions.yaml
+#
+# ⚠️  DO NOT commit hydrated files - they contain sensitive business numbers!
+# ============================================================================
+
+# ============================================================================
+# SECTION 1: NUMERICAL ACCURACY VALIDATION
+# ============================================================================
+# Questions testing exact number matching with formatted placeholders
+
+# Simple numerical query
+- question: "What were total sales in Q3 2024?"
+  expected_outcome: |-
+    {
+      "response": "Total sales in Q3 2024 were {{TotalSales|currency}}.",
+      "agent": "data_engineer",
+      "reason": "Simple aggregation query for sales metrics"
+    }
+  sql_query: "SELECT SUM(TotalSales) as TotalSales FROM sales_data WHERE Quarter = 'Q3' AND Year = 2024"
+
+# Average calculation
+- question: "What was the average weekly customer count in Q2 2024?"
+  expected_outcome: |-
+    {
+      "response": "The average weekly customer count in Q2 2024 was {{AvgCustomers|number}} customers.",
+      "agent": "analytics_specialist",
+      "reason": "Average calculation over time period requires analytics agent"
+    }
+  sql_query: "SELECT AVG(CustomerCount) as AvgCustomers FROM customer_metrics WHERE Quarter = 'Q2' AND Year = 2024"
+
+# Percentage calculation
+- question: "What was the profit margin for Electronics category in 2024?"
+  expected_outcome: |-
+    {
+      "response": "The profit margin for Electronics in 2024 was {{ProfitMargin|percentage}} (profit: {{TotalProfit|currency}} / sales: {{TotalSales|currency}}).",
+      "agent": "analytics_specialist",
+      "reason": "Profit margin calculation for specific category"
+    }
+  sql_query: "SELECT SUM(Profit) as TotalProfit, SUM(Sales) as TotalSales, (SUM(Profit) / SUM(Sales)) * 100 as ProfitMargin FROM product_data WHERE Category = 'Electronics' AND Year = 2024"
+
+# Unit-based metrics
+- question: "What was the total volume sold for product SKU 'ABC123' in January 2024?"
+  expected_outcome: |-
+    {
+      "response": "Product SKU ABC123 sold {{TotalVolume|units}} in January 2024.",
+      "agent": "data_engineer",
+      "reason": "Volume query for specific SKU"
+    }
+  sql_query: "SELECT SUM(QuantitySold) as TotalVolume FROM product_sales WHERE SKU = 'ABC123' AND Month = '2024-01'"
+
+# ============================================================================
+# SECTION 2: DATA METHODOLOGY VALIDATION
+# ============================================================================
+# Questions testing SQL logic and data source citations
+
+# Aggregation with filters
+- question: "How many orders were placed in the ONLINE channel in week 24, 2024?"
+  expected_outcome: |-
+    {
+      "response": "In week 24 of 2024, the ONLINE channel had {{TotalOrders|number}} orders. According to the orders table, this represents online orders only.",
+      "agent": "analytics_specialist",
+      "reason": "Channel-specific order count query"
+    }
+  sql_query: "SELECT COUNT(*) as TotalOrders FROM orders WHERE Channel = 'ONLINE' AND WeekKey = 202424"
+
+# Year-over-year comparison
+- question: "What was the sales growth rate comparing Q1 2024 vs Q1 2023?"
+  expected_outcome: |-
+    {
+      "response": "Q1 2024 sales were {{Sales2024|currency}}, compared to Q1 2023 sales of {{Sales2023|currency}}, representing a growth rate of {{GrowthRate|percentage}}. Data sourced from quarterly_sales table.",
+      "agent": "analytics_specialist",
+      "reason": "Year-over-year comparison requires historical analysis"
+    }
+  sql_query: "SELECT SUM(CASE WHEN Year = 2024 AND Quarter = 'Q1' THEN Sales ELSE 0 END) as Sales2024, SUM(CASE WHEN Year = 2023 AND Quarter = 'Q1' THEN Sales ELSE 0 END) as Sales2023, ((SUM(CASE WHEN Year = 2024 AND Quarter = 'Q1' THEN Sales ELSE 0 END) - SUM(CASE WHEN Year = 2023 AND Quarter = 'Q1' THEN Sales ELSE 0 END)) / SUM(CASE WHEN Year = 2023 AND Quarter = 'Q1' THEN Sales ELSE 0 END) * 100) as GrowthRate FROM quarterly_sales WHERE Year IN (2023, 2024) AND Quarter = 'Q1'"
+
+# ============================================================================
+# SECTION 3: COMPLETENESS VALIDATION
+# ============================================================================
+# Multi-part questions testing answer completeness
+
+# Multi-channel comparison
+- question: "Compare online vs store sales for Q1 2024. Which channel performed better?"
+  expected_outcome: |-
+    {
+      "response": "Q1 2024 comparison: Online sales were {{OnlineSales|currency}} ({{OnlinePct|percentage}} of total), while store sales were {{StoreSales|currency}} ({{StorePct|percentage}} of total). The {{BetterChannel}} channel performed better with higher absolute sales. Data from channel_sales table.",
+      "agent": "channel_analytics",
+      "reason": "Multi-channel comparison requires channel analytics agent"
+    }
+  sql_query: "SELECT SUM(CASE WHEN Channel = 'ONLINE' THEN Sales ELSE 0 END) as OnlineSales, SUM(CASE WHEN Channel = 'STORE' THEN Sales ELSE 0 END) as StoreSales, (SUM(CASE WHEN Channel = 'ONLINE' THEN Sales ELSE 0 END) / SUM(Sales) * 100) as OnlinePct, (SUM(CASE WHEN Channel = 'STORE' THEN Sales ELSE 0 END) / SUM(Sales) * 100) as StorePct, CASE WHEN SUM(CASE WHEN Channel = 'ONLINE' THEN Sales ELSE 0 END) > SUM(CASE WHEN Channel = 'STORE' THEN Sales ELSE 0 END) THEN 'ONLINE' ELSE 'STORE' END as BetterChannel FROM channel_sales WHERE Quarter = 'Q1' AND Year = 2024"
+
+# ============================================================================
+# SECTION 4: ASSUMPTION TRANSPARENCY VALIDATION
+# ============================================================================
+# Questions with ambiguous terms requiring assumption statements
+
+# Implicit time reference
+- question: "What is the current year-to-date revenue?"
+  expected_outcome: |-
+    {
+      "response": "The agent must identify the most recent complete year in the dataset and calculate YTD revenue: {{YTDRevenue|currency}}. **Assumption:** YTD calculated from most recent year in dataset ({{CurrentYear|number}}). Data from revenue_data table.",
+      "agent": "analytics_specialist",
+      "reason": "Implicit time reference requiring dataset analysis"
+    }
+  sql_query: "SELECT (SELECT MAX(Year) FROM revenue_data) as CurrentYear, SUM(Revenue) as YTDRevenue FROM revenue_data WHERE Year = (SELECT MAX(Year) FROM revenue_data)"
+
+# Vague metric definition
+- question: "What was the performance of premium products last quarter?"
+  expected_outcome: |-
+    {
+      "response": "The agent must define 'premium products' and 'performance'. **Assumption:** Premium products defined as items with price > $100. Performance measured as total sales. Last quarter: {{LastQuarter}} with sales of {{PremiumSales|currency}}. Data from product_sales table.",
+      "agent": "product_analytics",
+      "reason": "Vague terms require explicit assumption statements"
+    }
+  sql_query: "SELECT MAX(Quarter) as LastQuarter, SUM(Sales) as PremiumSales FROM product_sales WHERE Price > 100 AND Quarter = (SELECT MAX(Quarter) FROM product_sales)"
+
+# ============================================================================
+# SECTION 5: ERROR HANDLING VALIDATION
+# ============================================================================
+# Questions testing graceful error handling
+
+# Missing data scenario
+- question: "What was the sales for product SKU 'NONEXISTENT' in 2024?"
+  expected_outcome: |-
+    {
+      "response": "I couldn't find any sales data for product SKU 'NONEXISTENT' in 2024. This could mean: 1) The SKU doesn't exist in our system, 2) No sales occurred for this SKU in 2024, or 3) Data may not be loaded yet. Please verify the SKU code or check with the data team.",
+      "agent": "data_engineer",
+      "reason": "Data availability check"
+    }
+  sql_query: "SELECT SUM(Sales) as TotalSales FROM product_sales WHERE SKU = 'NONEXISTENT' AND Year = 2024"
+
+# ============================================================================
+# SECTION 6: AGENT ROUTING VALIDATION
+# ============================================================================
+# Questions testing correct agent selection
+
+# Customer metrics question
+- question: "How many unique customers did we have in 2024?"
+  expected_outcome: |-
+    {
+      "response": "In 2024, we had {{UniqueCustomers|number}} unique customers.",
+      "agent": "customer_analytics",
+      "reason": "Customer count question requires customer analytics agent"
+    }
+  sql_query: "SELECT COUNT(DISTINCT CustomerID) as UniqueCustomers FROM customer_data WHERE Year = 2024"
+
+# Product catalog question
+- question: "Which product category had the highest sales in Q4 2024?"
+  expected_outcome: |-
+    {
+      "response": "In Q4 2024, the {{TopCategory}} category had the highest sales with {{CategorySales|currency}}.",
+      "agent": "product_analytics",
+      "reason": "Product category analysis requires product analytics agent"
+    }
+  sql_query: "SELECT Category as TopCategory, SUM(Sales) as CategorySales FROM product_data WHERE Quarter = 'Q4' AND Year = 2024 GROUP BY Category ORDER BY SUM(Sales) DESC LIMIT 1"

@@ -1,0 +1,30 @@
+# Error Handling Scorer - PyRIT Evaluator format
+category: error_handling
+evaluation_criteria: |
+  You are evaluating error handling quality in an AI assistant's answer.
+  
+  **Task**: Assess how well errors and limitations are communicated.
+  
+  **Instructions**:
+  
+  1. Detect if there are any errors or limitations:
+     - Data not available
+     - Query failures
+     - Missing permissions
+     - Ambiguous results
+     - Incomplete data
+  
+  2. If errors/limitations exist, evaluate the response:
+     - Is the error clearly explained?
+     - Is the explanation user-friendly (not technical jargon)?
+     - Are alternative actions suggested?
+     - Is the tone helpful rather than defensive?
+  
+  **Scoring**:
+  - Score 1.0 (TRUE) if no errors OR errors are clearly explained with helpful alternatives
+  - Score 0.0 (FALSE) if errors exist but are poorly explained or user is left confused
+  
+  Provide your score and rationale.
+
+true_description: No errors or errors are clearly explained with helpful guidance
+false_description: Errors are poorly handled or user is left confused

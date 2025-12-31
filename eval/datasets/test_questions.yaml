@@ -1,0 +1,85 @@
+# ============================================================================
+# Test Questions Template
+# ============================================================================
+# Template file with {{PLACEHOLDER|format}} syntax for sensitive data
+# Commit this file to version control ✅
+# Hydrated file goes to eval/datasets_sensitive/ (gitignored) ❌
+
+# Example 1: Numerical accuracy with currency
+- question: "What were total sales in January 2024?"
+  expected_outcome: |
+    [AGENT:sales_analytics|REASON:Question asks for sales metrics]
+    
+    Total sales in January 2024 were {{TotalSales|currency}}. This includes
+    all channels and product categories. Data sourced from sales_fact table.
+  sql_query: |
+    SELECT SUM(sales_amount) as TotalSales
+    FROM sales_fact
+    WHERE month = 1 AND year = 2024
+
+# Example 2: Data methodology validation
+- question: "What was the average weekly revenue in Q2?"
+  expected_outcome: |
+    [AGENT:sales_analytics|REASON:Revenue analysis requires sales agent]
+    
+    Average weekly revenue in Q2 was {{AvgRevenue|currency}}. This is
+    calculated using AVG() over weeks 14-26. According to weekly_sales table.
+    
+    Assumption: Q2 defined as weeks 14-26 of fiscal calendar.
+  sql_query: |
+    SELECT AVG(weekly_revenue) as AvgRevenue
+    FROM weekly_sales
+    WHERE week_number BETWEEN 14 AND 26 AND year = 2024
+
+# Example 3: Multi-part question (completeness)
+- question: "Compare online vs store sales for Q1 2024"
+  expected_outcome: |
+    [AGENT:channel_analytics|REASON:Multi-channel comparison]
+    
+    Q1 2024 comparison:
+    - Online sales: {{OnlineSales|currency}} ({{OnlinePct|percentage}} of total)
+    - Store sales: {{StoreSales|currency}} ({{StorePct|percentage}} of total)
+    
+    Online growing faster with {{OnlineGrowth|percentage}} YoY growth vs
+    {{StoreGrowth|percentage}} for stores. Data from channel_sales table.
+  sql_query: |
+    SELECT
+      SUM(CASE WHEN channel = 'online' THEN sales END) as OnlineSales,
+      SUM(CASE WHEN channel = 'store' THEN sales END) as StoreSales,
+      (SUM(CASE WHEN channel = 'online' THEN sales END) / SUM(sales) * 100) as OnlinePct,
+      (SUM(CASE WHEN channel = 'store' THEN sales END) / SUM(sales) * 100) as StorePct
+    FROM channel_sales
+    WHERE quarter = 1 AND year = 2024
+
+# Example 4: Ambiguous question (assumption transparency)
+- question: "What were recent sales trends?"
+  expected_outcome: |
+    [AGENT:trend_analytics|REASON:Trend analysis question]
+    
+    Assumption: "Recent" interpreted as last 12 weeks.
+    
+    Sales trends for weeks {{StartWeek|number}}-{{EndWeek|number}}:
+    - Total sales: {{RecentSales|currency}}
+    - Trend: {{TrendDirection}} {{TrendPct|percentage}}
+    - Week-over-week average growth: {{AvgGrowth|percentage}}
+    
+    Data from weekly_sales_trends table.
+  sql_query: |
+    SELECT
+      MIN(week_number) as StartWeek,
+      MAX(week_number) as EndWeek,
+      SUM(sales) as RecentSales,
+      AVG(wow_growth) as AvgGrowth
+    FROM weekly_sales_trends
+    WHERE week_number >= (SELECT MAX(week_number) - 12 FROM weekly_sales_trends)
+
+# Example 5: Error handling scenario
+- question: "What was margin for discontinued products?"
+  expected_outcome: |
+    [AGENT:product_analytics|REASON:Product-level analysis]
+    
+    Margin data for discontinued products is not available in the current
+    dataset. However, I can provide sales and volume metrics for discontinued
+    products if that would be helpful. Alternatively, I can show margin data
+    for active products.
+  # No SQL - this tests error handling when data is unavailable

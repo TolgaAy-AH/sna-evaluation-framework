@@ -1,0 +1,29 @@
+# Completeness Scorer - PyRIT Evaluator format
+category: completeness
+evaluation_criteria: |
+  You are evaluating the completeness of an AI assistant's answer.
+  
+  **Task**: Determine if all parts of the question were answered.
+  
+  **Instructions**:
+  
+  1. Identify all parts/sub-questions in the original question
+     - Multi-part questions (e.g., "Compare A and B")
+     - Implicit requirements (e.g., "trends" implies multiple time points)
+     - Context needed for full understanding
+  
+  2. Check if each part is addressed in the answer
+  
+  3. Consider:
+     - Are comparisons actually made when requested?
+     - Are multiple metrics provided when question implies them?
+     - Is context provided for numbers (e.g., "compared to last year")?
+  
+  **Scoring**:
+  - Score 1.0 (TRUE) if all parts of the question are fully answered
+  - Score 0.0 (FALSE) if significant parts are missing or unanswered
+  
+  Provide your score and rationale.
+
+true_description: All parts of the question are fully addressed
+false_description: Significant parts of the question are missing or incomplete

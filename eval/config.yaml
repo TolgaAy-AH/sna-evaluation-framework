@@ -1,0 +1,27 @@
+# PyRIT Evaluation Configuration
+# This file defines the HTTP request template and response parsing for evaluation
+
+# Raw HTTP request template. {base_url} and {token} will be substituted in Python.
+# To emit literal {PROMPT}, each brace is doubled here.
+http_request_raw: |
+  POST {base_url} HTTP/1.1
+  Host: localhost:6000
+  Content-Type: application/json
+
+  {{
+    "message": "{{PROMPT}}",
+    "agent_type": "weekly_review"
+  }}
+
+# List of fields that MultiFieldResponseParser will extract from the streaming reply.
+# Each entry must have a name, a type ("stream" or "regex"), and a pattern.
+field_defs:
+  - name: "Response"
+    type: "json"
+    json_key: "response"
+  - name: "AgentUsed"
+    type: "json"
+    json_key: "agent_used"
+  - name: "RoutingReason"
+    type: "json"
+    json_key: "routing_reason"

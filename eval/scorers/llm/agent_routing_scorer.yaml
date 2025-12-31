@@ -1,0 +1,55 @@
+# ============================================================================
+# Agent Routing Scorer - PyRIT Evaluation Framework
+# ============================================================================
+# 5% weight, required
+# Validates correct agent was selected with sound reasoning
+
+name: agent_routing
+description: |
+  Validates that the correct agent was selected for the question and that
+  the routing decision includes clear, logical reasoning.
+
+weight: 0.05
+threshold: 1.0
+required: true
+
+scorer_type: self_ask
+category: routing
+
+prompt_template: |
+  You are evaluating the agent routing decision for a multi-agent system.
+  
+  **Task**: Validate agent selection and routing reasoning quality.
+  
+  **Question**: {question}
+  
+  **Expected Outcome**: {expected_outcome}
+  (Look for [AGENT:agent_name|REASON:...] pattern indicating expected agent)
+  
+  **Agent's Response**: {answer}
+  (Look for AgentUsed and RoutingReason fields)
+  
+  **Instructions**:
+  
+  1. Extract expected agent from [AGENT:xxx|...] pattern in expected_outcome
+  2. Extract actual agent used from the answer (AgentUsed field)
+  3. Extract routing reasoning from the answer (RoutingReason field)
+  4. Evaluate:
+     - Does actual agent match expected agent?
+     - Is routing reasoning clear and logical?
+     - Does reasoning explain WHY this agent was chosen?
+  
+  **Scoring**:
+  - Score 1.0: Correct agent + clear, logical reasoning
+  - Score 0.5: Correct agent but weak reasoning, OR wrong agent but reasonable
+  - Score 0.0: Wrong agent + poor reasoning
+  
+  **Output Format**:
+  Expected Agent: [agent_name from expected_outcome]
+  Actual Agent: [agent_name from answer]
+  Agent Match: [Yes/No]
+  Reasoning Quality: [Excellent/Good/Poor]
+  Score: [1.0, 0.5, or 0.0]
+  Rationale: [Brief explanation of routing evaluation]
+  
+  Provide your evaluation:

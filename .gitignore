@@ -1,0 +1,70 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+.venv
+.venv-eval
+venv/
+ENV/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment variables & credentials
+.env
+.env.local
+.env.production
+*.key
+*.pem
+secrets/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# PyRIT evaluation - Confidential data
+eval/datasets_sensitive/          # Hydrated test data with real values
+!eval/datasets_sensitive/.gitkeep  # Keep directory structure
+pyrit_reports/                     # Evaluation reports may contain sensitive responses
+*.log                              # All log files (may contain API responses)
+/tmp/pyrit_*.log
+eval_*.log
+evaluation_*.log
+
+# Azure/OpenAI
+openai_credentials.json
+azure_config.json
+
+# Databases (if any evaluation results stored locally)
+*.db
+*.sqlite
+*.sqlite3
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,12 @@
+# ============================================================================
+# Single Question Test - Quick Validation
+# ============================================================================
+# Use this for rapid testing during development
+# Should complete in ~30-60 seconds with all 6 scorers
+
+- question: "What is 2 + 2?"
+  expected_outcome: |
+    [AGENT:calculator|REASON:Simple arithmetic calculation]
+    
+    The answer is 4. This is a basic addition operation.
+  # No SQL needed for this simple test

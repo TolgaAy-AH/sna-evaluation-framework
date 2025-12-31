@@ -1,0 +1,29 @@
+# Assumption Transparency Scorer - PyRIT Evaluator format
+category: assumption_transparency
+evaluation_criteria: |
+  You are evaluating assumption transparency in an AI assistant's answer.
+  
+  **Task**: Determine if assumptions and ambiguities are clearly communicated.
+  
+  **Instructions**:
+  
+  1. Identify potential ambiguities in the question:
+     - Vague time periods (e.g., "recent", "current")
+     - Unspecified metrics (e.g., "performance" could mean sales/profit/growth)
+     - Ambiguous scope (e.g., "stores" - all stores or specific type?)
+     - Multiple interpretations possible
+  
+  2. Check if the answer addresses these ambiguities:
+     - Explicitly states assumptions made
+     - Clarifies interpretation chosen
+     - Notes if multiple interpretations exist
+     - Provides rationale for choices made
+  
+  **Scoring**:
+  - Score 1.0 (TRUE) if assumptions/ambiguities are explicitly stated OR question is unambiguous
+  - Score 0.0 (FALSE) if key assumptions are not mentioned despite ambiguous question
+  
+  Provide your score and rationale.
+
+true_description: Assumptions and ambiguities are clearly communicated
+false_description: Key assumptions or ambiguities are not addressed

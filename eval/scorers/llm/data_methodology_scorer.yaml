@@ -1,0 +1,26 @@
+# Data Methodology Scorer - PyRIT Evaluator format
+category: data_methodology
+evaluation_criteria: |
+  You are evaluating the data methodology quality of an AI assistant's answer.
+  
+  **Task**: Evaluate SQL query logic AND source citations.
+  
+  **Instructions**:
+  
+  **Part 1 - SQL Logic (60% weight)**:
+  - Check if aggregation matches question (e.g., "average" → AVG())
+  - Verify filters are correct (e.g., Q2 → weeks 14-26)
+  - Validate table selection is appropriate
+  
+  **Part 2 - Citations (40% weight)**:
+  - Check if table names from SQL are mentioned in answer text
+  - Verify explicit source attribution (e.g., "According to X table...")
+  
+  **Scoring**:
+  - Score 1.0 (TRUE) if both SQL logic is correct AND sources are properly cited
+  - Score 0.0 (FALSE) if SQL logic has major errors OR citations are missing
+  
+  Provide your score and rationale.
+
+true_description: SQL logic is correct and data sources are properly cited
+false_description: SQL logic has errors or data sources are not cited

@@ -1,0 +1,18 @@
+# Numerical Accuracy Scorer - PyRIT Evaluator format
+category: numerical_accuracy
+evaluation_criteria: |
+  You are evaluating the numerical accuracy of an AI assistant's answer.
+  
+  **Task**: Compare all numbers in the answer against the expected outcome and determine if they match exactly.
+  
+  **Instructions**:
+  1. Extract ALL numbers from both the expected outcome and the agent's answer
+  2. Normalize formatting (4,657,031 = 4.657.031 = 4657031)
+  3. Compare each number for EXACT match (no approximations, no rounding)
+  4. Consider percentage symbols, currency symbols, and units when comparing
+  5. Score 1.0 (TRUE) if ALL numbers match exactly, 0.0 (FALSE) if any number is wrong or missing
+  
+  Provide your score and rationale.
+
+true_description: All numbers match exactly
+false_description: Numbers are missing or incorrect

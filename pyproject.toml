@@ -1,0 +1,66 @@
+[project]
+name = "sna-evaluation-framework"
+version = "0.1.0"
+description = "Strategy & Analytics Evaluation Framework - Standalone AI agent evaluation service"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Royal Ahold Delhaize - Strategy & Analytics Team"}
+]
+
+dependencies = [
+    "fastapi>=0.104.0",
+    "uvicorn[standard]>=0.24.0",
+    "pydantic>=2.5.0",
+    "pydantic-settings>=2.1.0",
+    "python-multipart>=0.0.6",
+    "httpx>=0.25.0",
+    "azure-storage-blob>=12.19.0",
+    "python-dotenv>=1.0.0",
+    "pyyaml>=6.0.1",
+    "jinja2>=3.1.2",
+    # PyRIT evaluation framework (requires Python 3.10+)
+    # Note: Use albert-heijn-technology fork for evaluation features
+    "pyrit @ git+https://github.com/Azure/PyRIT.git@a82c871d",
+    # For production use, replace with internal fork:
+    # "pyrit @ git+https://github.com/albert-heijn-technology/PyRIT.git@a82c871d",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.3",
+    "pytest-asyncio>=0.21.1",
+    "pytest-cov>=4.1.0",
+    "black>=23.11.0",
+    "ruff>=0.1.6",
+    "mypy>=1.7.0",
+]
+
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.black]
+line-length = 100
+target-version = ['py310']
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
