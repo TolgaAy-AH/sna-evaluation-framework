@@ -6,7 +6,7 @@ This is a standalone evaluation framework extracted from `ah-sa-commerce_agents_
 
 **Key Context:**
 - Evaluates agents from the commerce_agents app (runs separately on port 6000)
-- Uses PyRIT custom fork: `albert-heijn-technology/PyRIT@7eb9201a2f5666aaf59df032d0bd4549e7ea268a`
+- Uses PyRIT custom fork: `albert-heijn-technology/PyRIT@cc729fcb959d146642bddd422453f46db94d632e`
 - Python 3.10, venv: `.venv-eval`
 
 ## Critical Configuration

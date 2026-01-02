@@ -21,10 +21,8 @@ dependencies = [
     "pyyaml>=6.0.1",
     "jinja2>=3.1.2",
     # PyRIT evaluation framework (requires Python 3.10+)
-    # Note: Use albert-heijn-technology fork for evaluation features
-    "pyrit @ git+https://github.com/Azure/PyRIT.git@a82c871d",
-    # For production use, replace with internal fork:
-    # "pyrit @ git+https://github.com/albert-heijn-technology/PyRIT.git@a82c871d",
+    # Using albert-heijn-technology fork for evaluation features
+    "pyrit @ git+https://github.com/albert-heijn-technology/PyRIT.git@cc729fcb959d146642bddd422453f46db94d632e",
 ]
 
 [project.optional-dependencies]
