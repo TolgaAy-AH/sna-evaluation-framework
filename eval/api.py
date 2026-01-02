@@ -81,7 +81,27 @@ async def submit_evaluation(request: EvaluationRequest) -> EvaluationResponse:
     Submit a batch evaluation job.
     
     Returns 202 Accepted with job_id for polling.
+    If request_id is provided and matches an existing job, returns that job instead.
     """
+    # Check for existing job with same request_id (deduplication)
+    if request.request_id:
+        existing_job_id = job_queue.find_by_request_id(request.request_id)
+        if existing_job_id:
+            job = job_queue.get_job(existing_job_id)
+            if job:
+                logger.info(f"Duplicate request_id '{request.request_id}' detected - returning existing job {existing_job_id}")
+                return EvaluationResponse(
+                    job_id=job["job_id"],
+                    status=job["status"],
+                    submitted_at=job["submitted_at"],
+                    started_at=job.get("started_at"),
+                    completed_at=job.get("completed_at"),
+                    target_url=job["request"].target_url,
+                    total_questions=len(job["request"].questions),
+                    progress=ProgressInfo(**job["progress"]) if job.get("progress") else None,
+                    message=f"Duplicate request_id detected. Returning existing job."
+                )
+    
     # Generate job ID
     timestamp = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
     job_id = f"eval_{timestamp}_{uuid.uuid4().hex[:6]}"
@@ -101,7 +121,8 @@ async def submit_evaluation(request: EvaluationRequest) -> EvaluationResponse:
         completed_at=None,
         target_url=request.target_url,
         total_questions=len(request.questions),
-        progress=None
+        progress=None,
+        message=None
     )
 
 

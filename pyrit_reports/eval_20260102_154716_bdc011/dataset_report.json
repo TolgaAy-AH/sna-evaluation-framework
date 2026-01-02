@@ -1,0 +1,386 @@
+{
+  "report_threshold": 0.8,
+  "execution_time_seconds": 35.95949578285217,
+  "dataset_path": "/Users/tolgaay/PycharmProjects/sna-evaluation-framework/eval/tmpmtgw4sm7.yaml",
+  "output_directory": "/Users/tolgaay/PycharmProjects/sna-evaluation-framework/pyrit_reports/eval_20260102_154716_bdc011",
+  "report_html": "/Users/tolgaay/PycharmProjects/sna-evaluation-framework/pyrit_reports/eval_20260102_154716_bdc011/dataset_report.html",
+  "scorer_weights": {
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/numerical_accuracy_scorer.yaml\", \"sub_identifier\": null}": 0.3,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/data_methodology_scorer.yaml\", \"sub_identifier\": null}": 0.3,
+    "{\"config_path\": \"eval/scorers/programmatic/agent_routing_scorer.py\", \"name\": \"AgentRoutingScorer\"}": 0.2,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/completeness_scorer.yaml\", \"sub_identifier\": null}": 0.1,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/assumption_transparency_scorer.yaml\", \"sub_identifier\": null}": 0.05,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/error_handling_scorer.yaml\", \"sub_identifier\": null}": 0.05
+  },
+  "scorer_required": {
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/numerical_accuracy_scorer.yaml\", \"sub_identifier\": null}": true,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/data_methodology_scorer.yaml\", \"sub_identifier\": null}": true,
+    "{\"config_path\": \"eval/scorers/programmatic/agent_routing_scorer.py\", \"name\": \"AgentRoutingScorer\"}": true,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/completeness_scorer.yaml\", \"sub_identifier\": null}": false,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/assumption_transparency_scorer.yaml\", \"sub_identifier\": null}": false,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/error_handling_scorer.yaml\", \"sub_identifier\": null}": false
+  },
+  "raw_result_count": 1,
+  "evaluators": [
+    {
+      "identifier": {
+        "__type__": "Evaluator",
+        "__module__": "pyrit.score.evaluator",
+        "sub_identifier": null,
+        "config_path": "eval/scorers/llm/numerical_accuracy_scorer.yaml"
+      },
+      "display_path": "eval/scorers/llm/numerical_accuracy_scorer.yaml",
+      "weight": 0.3,
+      "required": true
+    },
+    {
+      "identifier": {
+        "__type__": "Evaluator",
+        "__module__": "pyrit.score.evaluator",
+        "sub_identifier": null,
+        "config_path": "eval/scorers/llm/data_methodology_scorer.yaml"
+      },
+      "display_path": "eval/scorers/llm/data_methodology_scorer.yaml",
+      "weight": 0.3,
+      "required": true
+    },
+    {
+      "identifier": {
+        "name": "AgentRoutingScorer",
+        "config_path": "eval/scorers/programmatic/agent_routing_scorer.py"
+      },
+      "display_path": "eval/scorers/programmatic/agent_routing_scorer.py",
+      "weight": 0.2,
+      "required": true
+    },
+    {
+      "identifier": {
+        "__type__": "Evaluator",
+        "__module__": "pyrit.score.evaluator",
+        "sub_identifier": null,
+        "config_path": "eval/scorers/llm/completeness_scorer.yaml"
+      },
+      "display_path": "eval/scorers/llm/completeness_scorer.yaml",
+      "weight": 0.1,
+      "required": false
+    },
+    {
+      "identifier": {
+        "__type__": "Evaluator",
+        "__module__": "pyrit.score.evaluator",
+        "sub_identifier": null,
+        "config_path": "eval/scorers/llm/assumption_transparency_scorer.yaml"
+      },
+      "display_path": "eval/scorers/llm/assumption_transparency_scorer.yaml",
+      "weight": 0.05,
+      "required": false
+    },
+    {
+      "identifier": {
+        "__type__": "Evaluator",
+        "__module__": "pyrit.score.evaluator",
+        "sub_identifier": null,
+        "config_path": "eval/scorers/llm/error_handling_scorer.yaml"
+      },
+      "display_path": "eval/scorers/llm/error_handling_scorer.yaml",
+      "weight": 0.05,
+      "required": false
+    }
+  ],
+  "chat_reports": [
+    {
+      "objective": "What was the total online sales in week 24, 2025?",
+      "achieved_objective": false,
+      "attack_identifier": {
+        "__type__": "PromptSendingAttack",
+        "__module__": "pyrit.executor.attack.single_turn.prompt_sending",
+        "id": "ddca9a69-07d2-4c5e-b4a8-b6fe90caa7e3"
+      },
+      "executed_turns": 1,
+      "outcome": "failure",
+      "outcome_reason": "Objective not achieved according to scorer",
+      "metadata": {},
+      "conversation_id": "41dc52fe-afee-41e9-9416-077c64e1d59d",
+      "transcript": [
+        {
+          "turn_index": 1,
+          "pieces": [
+            {
+              "role": "user",
+              "original_value": "What was the total online sales in week 24, 2025?",
+              "converted_value": "What was the total online sales in week 24, 2025?",
+              "scores": []
+            },
+            {
+              "role": "assistant",
+              "original_value": "Cannot connect to host localhost:6000 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 6000, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 6000)]\nClientConnectorError(ConnectionKey(host='localhost', port=6000, is_ssl=False, ssl=True, proxy=None, proxy_auth=None, proxy_headers_hash=None), ConnectionRefusedError(61, \"Multiple exceptions: [Errno 61] Connect call failed ('::1', 6000, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 6000)\"))\nTraceback (most recent call last):\n  File \"/Users/tolgaay/PycharmProjects/sna-evaluation-framework/.venv-eval/lib/python3.10/site-packages/aiohttp/connector.py\", line 1268, in _wrap_create_connection\n    sock = await aiohappyeyeballs.start_connection(\n  File \"/Users/tolgaay/PycharmProjects/sna-evaluation-framework/.venv-eval/lib/python3.10/site-packages/aiohappyeyeballs/impl.py\", line 141, in start_connection\n    raise OSError(first_errno, msg)\nConnectionRefusedError: [Errno 61] Multiple exceptions: [Errno 61] Connect call failed ('::1', 6000, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 6000)\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/Users/tolgaay/PycharmProjects/sna-evaluation-framework/.venv-eval/lib/python3.10/site-packages/pyrit/prompt_normalizer/prompt_normalizer.py\", line 99, in send_prompt_async\n    responses = await target.send_prompt_async(message=request)\n  File \"/Users/tolgaay/PycharmProjects/sn",
+              "converted_value": "Cannot connect to host localhost:6000 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 6000, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 6000)]\nClientConnectorError(ConnectionKey(host='localhost', port=6000, is_ssl=False, ssl=True, proxy=None, proxy_auth=None, proxy_headers_hash=None), ConnectionRefusedError(61, \"Multiple exceptions: [Errno 61] Connect call failed ('::1', 6000, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 6000)\"))\nTraceback (most recent call last):\n  File \"/Users/tolgaay/PycharmProjects/sna-evaluation-framework/.venv-eval/lib/python3.10/site-packages/aiohttp/connector.py\", line 1268, in _wrap_create_connection\n    sock = await aiohappyeyeballs.start_connection(\n  File \"/Users/tolgaay/PycharmProjects/sna-evaluation-framework/.venv-eval/lib/python3.10/site-packages/aiohappyeyeballs/impl.py\", line 141, in start_connection\n    raise OSError(first_errno, msg)\nConnectionRefusedError: [Errno 61] Multiple exceptions: [Errno 61] Connect call failed ('::1', 6000, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 6000)\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/Users/tolgaay/PycharmProjects/sna-evaluation-framework/.venv-eval/lib/python3.10/site-packages/pyrit/prompt_normalizer/prompt_normalizer.py\", line 99, in send_prompt_async\n    responses = await target.send_prompt_async(message=request)\n  File \"/Users/tolgaay/PycharmProjects/sn",
+              "scores": [
+                {
+                  "score": 0.0,
+                  "raw_score": "0.0",
+                  "score_type": "float_scale",
+                  "rationale": "Step-by-step evaluation:\n1) Extraction: The prompt provides only an error traceback (likely the agent's answer) containing numbers such as 6000, 61, 1268, 141, and 99. However, there is no \"expected outcome\" provided to extract numbers from.\n2) Normalization: Without expected outcome numbers, normalization across both sides cannot be performed meaningfully.\n3) Comparison: A comparison requires both sets of numbers (expected vs. answer). Since the expected outcome is missing, we cannot compare any numbers.\n4) Rule application: Per instruction #5, the score must be 1.0 only if ALL numbers match exactly; if any number is wrong or missing, the score is 0.0. Because the expected outcome is missing, the necessary numbers for comparison are missing.\nConclusion: Insufficient data to verify exact matches; therefore the score is 0.0.",
+                  "scorer_role": "objective",
+                  "expected_output": "{\n  \"response\": \"The total online sales in week 24, 2025 was \\u20ac37,824,167.\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Question asks for specific channel sales in a specific time period\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/numerical_accuracy_scorer.yaml"
+                  },
+                  "score_category": [
+                    "numerical_accuracy"
+                  ],
+                  "threshold": 0.8,
+                  "passed": false,
+                  "weight": 0.3,
+                  "required": true
+                },
+                {
+                  "score": 0.0,
+                  "raw_score": "0.0",
+                  "score_type": "float_scale",
+                  "rationale": "Step 1: Identify parts of the original question. The user provided an error/traceback indicating an aiohttp ClientConnectorError when trying to connect to localhost:6000 with SSL, showing connection refusals for both IPv6 (::1) and IPv4 (127.0.0.1). The implicit request is troubleshooting: (a) determine likely causes (server not running, wrong port, IPv6 vs IPv4, SSL/TLS mismatch), (b) provide corrective steps (ensure server is listening on 6000, verify protocol http vs https, adjust aiohttp ssl parameter or URL, provide SSL context if needed, check firewall/bind address), and (c) potentially contextual notes about the libraries shown (aiohttp, aiohappyeyeballs, pyrit) and how they influence the error.\nStep 2: Check if each part is addressed in the assistant's answer. There is no assistant answer provided to evaluate; thus no causes, no troubleshooting steps, and no context were offered.\nStep 3: Given the absence of any response, significant parts of the question remain unanswered.\nConclusion: The answer is incomplete; score is 0.0 (FALSE).",
+                  "scorer_role": "auxiliary",
+                  "expected_output": "{\n  \"response\": \"The total online sales in week 24, 2025 was \\u20ac37,824,167.\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Question asks for specific channel sales in a specific time period\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/completeness_scorer.yaml"
+                  },
+                  "score_category": [
+                    "completeness"
+                  ],
+                  "threshold": 0.8,
+                  "passed": false,
+                  "weight": 0.1,
+                  "required": false
+                },
+                {
+                  "score": 0.0,
+                  "raw_score": "0.0",
+                  "score_type": "float_scale",
+                  "rationale": "Part 1 - SQL Logic: There is no SQL query provided to evaluate. Without any query, we cannot verify aggregation functions, filters (e.g., quarters/weeks), or table selection. This constitutes a major gap in SQL logic. Part 2 - Citations: There are no sources or table names mentioned in the text to attribute results. Explicit source attribution is absent. Since both the SQL logic is missing and citations are not provided, the response fails the evaluation criteria, resulting in a score of 0.0.",
+                  "scorer_role": "auxiliary",
+                  "expected_output": "{\n  \"response\": \"The total online sales in week 24, 2025 was \\u20ac37,824,167.\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Question asks for specific channel sales in a specific time period\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/data_methodology_scorer.yaml"
+                  },
+                  "score_category": [
+                    "data_methodology"
+                  ],
+                  "threshold": 0.8,
+                  "passed": false,
+                  "weight": 0.3,
+                  "required": true
+                },
+                {
+                  "score": 0.0,
+                  "raw_score": "0.0",
+                  "score_type": "float_scale",
+                  "rationale": "First, identify whether there are errors or limitations: the content shows a connection failure to localhost:6000 with a ClientConnectorError and ConnectionRefusedError, indicating the service is unreachable and possibly misconfigured SSL settings. This is clearly an error scenario. Next, evaluate how the assistant handled it: there is no clear assistant explanation or guidance\u2014only a raw, technical traceback is present, which is not user-friendly and provides no actionable steps. The message lacks a plain-language summary, potential causes (e.g., server not running, wrong port, firewall, SSL mismatch), or suggested alternatives (checking server status, verifying configuration, trying a different host/port, disabling SSL if not needed). The tone cannot be assessed as helpful because there is effectively no explanatory response. Therefore, errors exist but are not explained in a user-friendly manner, and no alternative actions are suggested, which warrants a score of 0.0.",
+                  "scorer_role": "auxiliary",
+                  "expected_output": "{\n  \"response\": \"The total online sales in week 24, 2025 was \\u20ac37,824,167.\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Question asks for specific channel sales in a specific time period\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/error_handling_scorer.yaml"
+                  },
+                  "score_category": [
+                    "error_handling"
+                  ],
+                  "threshold": 0.8,
+                  "passed": false,
+                  "weight": 0.05,
+                  "required": false
+                },
+                {
+                  "score": 0.0,
+                  "raw_score": "0.0",
+                  "score_type": "float_scale",
+                  "rationale": "First, consider the user's input: it's a stack trace indicating a connection failure to localhost:6000 with mixed SSL parameters. The message itself does not pose a clear question and is ambiguous in several ways: it lacks context about the intended target service, whether it should be HTTP or HTTPS, whether the server is running, the environment and network setup, and the expected behavior of the client library. These are key ambiguities (scope of the issue, configuration details, and intent). Next, evaluate the assistant's answer for whether it acknowledges these ambiguities, states assumptions, or clarifies its interpretation. There is no assistant answer content provided that addresses any of these uncertainties, no explicit assumptions stated, and no clarification of multiple possible interpretations (e.g., TLS misconfiguration vs. server not running). Because the question is ambiguous and the answer does not communicate assumptions or resolve ambiguities, the appropriate score is FALSE (0.0).",
+                  "scorer_role": "auxiliary",
+                  "expected_output": "{\n  \"response\": \"The total online sales in week 24, 2025 was \\u20ac37,824,167.\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Question asks for specific channel sales in a specific time period\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/assumption_transparency_scorer.yaml"
+                  },
+                  "score_category": [
+                    "assumption_transparency"
+                  ],
+                  "threshold": 0.8,
+                  "passed": false,
+                  "weight": 0.05,
+                  "required": false
+                },
+                {
+                  "score": 0.0,
+                  "raw_score": "0.0",
+                  "score_type": "float_scale",
+                  "rationale": "Agent information missing from response",
+                  "scorer_role": null,
+                  "expected_output": null,
+                  "scorer_identifier": {
+                    "name": "AgentRoutingScorer",
+                    "config_path": "eval/scorers/programmatic/agent_routing_scorer.py"
+                  },
+                  "score_category": [
+                    "agent_routing"
+                  ],
+                  "threshold": 0.8,
+                  "passed": false,
+                  "weight": 0.2,
+                  "required": true
+                }
+              ],
+              "weighted_average": 0.0
+            }
+          ]
+        }
+      ],
+      "aggregated_metrics": {
+        "total_turns": 1,
+        "final_score": 0.0,
+        "scores_by_turn": [
+          {
+            "turn_index": 1,
+            "score_details": [
+              {
+                "score": 0.0,
+                "raw_score": "0.0",
+                "score_type": "float_scale",
+                "rationale": "Step-by-step evaluation:\n1) Extraction: The prompt provides only an error traceback (likely the agent's answer) containing numbers such as 6000, 61, 1268, 141, and 99. However, there is no \"expected outcome\" provided to extract numbers from.\n2) Normalization: Without expected outcome numbers, normalization across both sides cannot be performed meaningfully.\n3) Comparison: A comparison requires both sets of numbers (expected vs. answer). Since the expected outcome is missing, we cannot compare any numbers.\n4) Rule application: Per instruction #5, the score must be 1.0 only if ALL numbers match exactly; if any number is wrong or missing, the score is 0.0. Because the expected outcome is missing, the necessary numbers for comparison are missing.\nConclusion: Insufficient data to verify exact matches; therefore the score is 0.0.",
+                "scorer_role": "objective",
+                "expected_output": "{\n  \"response\": \"The total online sales in week 24, 2025 was \\u20ac37,824,167.\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Question asks for specific channel sales in a specific time period\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/numerical_accuracy_scorer.yaml"
+                },
+                "score_category": [
+                  "numerical_accuracy"
+                ],
+                "threshold": 0.8,
+                "passed": false,
+                "weight": 0.3,
+                "required": true
+              },
+              {
+                "score": 0.0,
+                "raw_score": "0.0",
+                "score_type": "float_scale",
+                "rationale": "Step 1: Identify parts of the original question. The user provided an error/traceback indicating an aiohttp ClientConnectorError when trying to connect to localhost:6000 with SSL, showing connection refusals for both IPv6 (::1) and IPv4 (127.0.0.1). The implicit request is troubleshooting: (a) determine likely causes (server not running, wrong port, IPv6 vs IPv4, SSL/TLS mismatch), (b) provide corrective steps (ensure server is listening on 6000, verify protocol http vs https, adjust aiohttp ssl parameter or URL, provide SSL context if needed, check firewall/bind address), and (c) potentially contextual notes about the libraries shown (aiohttp, aiohappyeyeballs, pyrit) and how they influence the error.\nStep 2: Check if each part is addressed in the assistant's answer. There is no assistant answer provided to evaluate; thus no causes, no troubleshooting steps, and no context were offered.\nStep 3: Given the absence of any response, significant parts of the question remain unanswered.\nConclusion: The answer is incomplete; score is 0.0 (FALSE).",
+                "scorer_role": "auxiliary",
+                "expected_output": "{\n  \"response\": \"The total online sales in week 24, 2025 was \\u20ac37,824,167.\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Question asks for specific channel sales in a specific time period\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/completeness_scorer.yaml"
+                },
+                "score_category": [
+                  "completeness"
+                ],
+                "threshold": 0.8,
+                "passed": false,
+                "weight": 0.1,
+                "required": false
+              },
+              {
+                "score": 0.0,
+                "raw_score": "0.0",
+                "score_type": "float_scale",
+                "rationale": "Part 1 - SQL Logic: There is no SQL query provided to evaluate. Without any query, we cannot verify aggregation functions, filters (e.g., quarters/weeks), or table selection. This constitutes a major gap in SQL logic. Part 2 - Citations: There are no sources or table names mentioned in the text to attribute results. Explicit source attribution is absent. Since both the SQL logic is missing and citations are not provided, the response fails the evaluation criteria, resulting in a score of 0.0.",
+                "scorer_role": "auxiliary",
+                "expected_output": "{\n  \"response\": \"The total online sales in week 24, 2025 was \\u20ac37,824,167.\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Question asks for specific channel sales in a specific time period\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/data_methodology_scorer.yaml"
+                },
+                "score_category": [
+                  "data_methodology"
+                ],
+                "threshold": 0.8,
+                "passed": false,
+                "weight": 0.3,
+                "required": true
+              },
+              {
+                "score": 0.0,
+                "raw_score": "0.0",
+                "score_type": "float_scale",
+                "rationale": "First, identify whether there are errors or limitations: the content shows a connection failure to localhost:6000 with a ClientConnectorError and ConnectionRefusedError, indicating the service is unreachable and possibly misconfigured SSL settings. This is clearly an error scenario. Next, evaluate how the assistant handled it: there is no clear assistant explanation or guidance\u2014only a raw, technical traceback is present, which is not user-friendly and provides no actionable steps. The message lacks a plain-language summary, potential causes (e.g., server not running, wrong port, firewall, SSL mismatch), or suggested alternatives (checking server status, verifying configuration, trying a different host/port, disabling SSL if not needed). The tone cannot be assessed as helpful because there is effectively no explanatory response. Therefore, errors exist but are not explained in a user-friendly manner, and no alternative actions are suggested, which warrants a score of 0.0.",
+                "scorer_role": "auxiliary",
+                "expected_output": "{\n  \"response\": \"The total online sales in week 24, 2025 was \\u20ac37,824,167.\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Question asks for specific channel sales in a specific time period\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/error_handling_scorer.yaml"
+                },
+                "score_category": [
+                  "error_handling"
+                ],
+                "threshold": 0.8,
+                "passed": false,
+                "weight": 0.05,
+                "required": false
+              },
+              {
+                "score": 0.0,
+                "raw_score": "0.0",
+                "score_type": "float_scale",
+                "rationale": "First, consider the user's input: it's a stack trace indicating a connection failure to localhost:6000 with mixed SSL parameters. The message itself does not pose a clear question and is ambiguous in several ways: it lacks context about the intended target service, whether it should be HTTP or HTTPS, whether the server is running, the environment and network setup, and the expected behavior of the client library. These are key ambiguities (scope of the issue, configuration details, and intent). Next, evaluate the assistant's answer for whether it acknowledges these ambiguities, states assumptions, or clarifies its interpretation. There is no assistant answer content provided that addresses any of these uncertainties, no explicit assumptions stated, and no clarification of multiple possible interpretations (e.g., TLS misconfiguration vs. server not running). Because the question is ambiguous and the answer does not communicate assumptions or resolve ambiguities, the appropriate score is FALSE (0.0).",
+                "scorer_role": "auxiliary",
+                "expected_output": "{\n  \"response\": \"The total online sales in week 24, 2025 was \\u20ac37,824,167.\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Question asks for specific channel sales in a specific time period\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/assumption_transparency_scorer.yaml"
+                },
+                "score_category": [
+                  "assumption_transparency"
+                ],
+                "threshold": 0.8,
+                "passed": false,
+                "weight": 0.05,
+                "required": false
+              },
+              {
+                "score": 0.0,
+                "raw_score": "0.0",
+                "score_type": "float_scale",
+                "rationale": "Agent information missing from response",
+                "scorer_role": null,
+                "expected_output": null,
+                "scorer_identifier": {
+                  "name": "AgentRoutingScorer",
+                  "config_path": "eval/scorers/programmatic/agent_routing_scorer.py"
+                },
+                "score_category": [
+                  "agent_routing"
+                ],
+                "threshold": 0.8,
+                "passed": false,
+                "weight": 0.2,
+                "required": true
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

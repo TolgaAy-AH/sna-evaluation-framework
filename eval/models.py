@@ -31,6 +31,7 @@ class EvaluationRequest(BaseModel):
     """Request model for batch evaluation."""
     target_url: str = Field(..., description="Target endpoint URL to evaluate")
     questions: List[Question] = Field(..., min_items=1, description="List of questions to evaluate")
+    request_id: Optional[str] = Field(None, description="Optional unique request ID to prevent duplicate evaluations")
 
     class Config:
         json_schema_extra = {
@@ -69,6 +70,7 @@ class EvaluationResponse(BaseModel):
     target_url: str = Field(..., description="Target endpoint URL")
     total_questions: int = Field(..., description="Total number of questions in batch")
     progress: Optional[ProgressInfo] = Field(None, description="Progress information (only for running jobs)")
+    message: Optional[str] = Field(None, description="Additional message (e.g., duplicate detection)")
 
 
 class ScorerResult(BaseModel):

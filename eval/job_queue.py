@@ -11,11 +11,21 @@ class JobQueue:
     
     def __init__(self):
         self._jobs: Dict[str, Dict] = {}
+        self._request_ids: Dict[str, str] = {}  # Maps request_id -> job_id
         self._lock = threading.Lock()
+    
+    def find_by_request_id(self, request_id: str) -> Optional[str]:
+        """Find existing job_id by request_id."""
+        with self._lock:
+            return self._request_ids.get(request_id)
     
     def create_job(self, job_id: str, request: EvaluationRequest) -> None:
         """Create a new job."""
         with self._lock:
+            # Track request_id if provided
+            if request.request_id:
+                self._request_ids[request.request_id] = job_id
+            
             self._jobs[job_id] = {
                 "job_id": job_id,
                 "status": JobStatus.QUEUED,
@@ -31,7 +41,8 @@ class JobQueue:
                     "scorers_completed": 0,
                     "scorers_total": len(request.questions) * 6,  # 6 scorers per question
                     "percent": 0
-                }
+                },
+                "request_id": request.request_id
             }
     
     def get_job(self, job_id: str) -> Optional[Dict]:

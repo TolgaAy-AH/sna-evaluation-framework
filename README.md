@@ -41,6 +41,7 @@ import requests
 # Submit batch evaluation
 response = requests.post("http://localhost:8000/evaluate", json={
     "target_url": "http://localhost:6000/chat",
+    "request_id": "my-unique-request-123",  # Optional: prevents duplicate evaluations
     "questions": [
         {
             "question": "What were total sales in Q3 2024?",
