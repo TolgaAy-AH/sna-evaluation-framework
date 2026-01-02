@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>Test Report</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 20px; }
+    .container { background: #fff; padding: 30px; border-radius: 10px; max-width: 1100px; margin: auto; }
+    h1 { text-align: center; color: #2c3e50; }
+    .summary { font-size: 1rem; text-align: center; color: #444; margin-bottom: 30px; }
+    details.expandfield { border: 1px solid #e3eaf2; border-radius: 5px; background: #fafdff; margin-bottom: 4px; padding: 0 8px; }
+    details.expandfield[open] summary { color: #17406c; }
+    details.expandfield summary { font-size: 1rem; cursor: pointer; color: #0172bd; outline: none; padding: 7px 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    th { background: #0277bd; color: #fff; text-align: center; font-weight: bold; font-size: 1.06rem; padding: 12px 8px; letter-spacing: .02em; }
+    td { text-align: left; padding: 10px; border-bottom: 1px solid #eee; vertical-align: top; font-size: 1rem; }
+    .score-pass { color: green; font-weight: bold; }
+    .score-fail { color: red; font-weight: bold; }
+    .badge { display: inline-block; padding: 4px 10px; border-radius: 5px; font-weight: bold; }
+    .badge.pass { background: #c8e6c9; color: #1b5e20; }
+    .badge.fail { background: #ffcdd2; color: #b71c1c; }
+    .explanation { font-size: 0.95rem; margin-top: 6px; color: #555; }
+    pre { white-space: pre-wrap; word-wrap: break-word; font-family: Menlo, Monaco, Consolas, monospace; background: #f8f8fc; margin: 0; font-size: 0.98rem; }
+    details.testcase { margin-bottom: 12px; border: none; }
+    summary.testcasesum {
+      background: #f5faff; color: #1467a3; border: 1.5px solid #b3d1ed; border-radius: 7px;
+      font-weight: 600; font-size: 1.07rem; padding: 12px 22px; margin: 0; cursor: pointer;
+      box-shadow: 0 2px 10px 0 rgba(90,130,160,0.05);
+    }
+    details.testcase[open] summary.testcasesum {
+      background: #e2f1ff; color: #113255; border: 1.5px solid #6ab1f6;
+    }
+    summary.testcasesum:hover { background: #e9f2fc; color: #0d395d; }
+    .perf-box { border: 1px solid #e3eaf2; padding: 8px; border-radius: 6px; background: #fafdff; }
+    .perf-empty { color: #999; }
+    .perf-box details summary { cursor: pointer; color: #0172bd; }
+    .perf-box details { margin-top: 6px; }
+    .perf-box { background: #f8fbff; border: 1px solid #dfe8f5; border-radius: 8px; padding: 10px 12px; font-size: 0.96rem; color: #1f3b57; line-height: 1.45; }
+    .perf-label { font-weight: 600; margin-right: 6px; color: #0f5ba5; }
+    .perf-events { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+    .perf-chip { background: #e9f2fb; border-radius: 12px; padding: 4px 8px; font-size: 0.9rem; color: #0d3a63; border: 1px solid #d2e4f5; }
+    .perf-empty { color: #9aa6b8; }
+  </style>
+</head>
+<body>
+<div class='container'>
+  <h1>Test Report</h1>
+  <p class='overview'>Evaluation of dataset examples. Final conversation score is the minimum weighted step score across the transcript.</p>
+  <div class='summary'>
+    Total Test Cases: 1 |
+    Passed: 0 |
+    Failed: 1 |
+    Execution Time: 20s
+  </div>
+<details class='testcase'><summary class='testcasesum'>Test Case 1: <strong>Objective:</strong> Test question with UC disabled | <strong>Achieved:</strong> <span class='badge fail'>Fail</span> | <strong>Turns:</strong> 1 | <strong>Score:</strong> 0.35 | <strong>Reason:</strong> Required Scorer</summary><table><thead><tr><th>User</th><th>Assistant</th><th>Performance</th><th>Scores</th></tr></thead><tbody><tr><td>Test question with UC disabled</td><td><details class='expandfield' open><summary><strong>Response</strong></summary><pre>This system can currently only answer descriptive questions (what, how much). Diagnostic, predictive, and prescriptive analyses are not (yet) supported.</pre></details><details class='expandfield'><summary><strong>AgentUsed</strong></summary><pre>merchandising_descriptives</pre></details><details class='expandfield'><summary><strong>RoutingReason</strong></summary><pre>Question is unclear; defaulting to merchandising_descriptives per rule 4</pre></details></td><td><div class='perf-box'><div>Total: 4442 ms</div></div></td><td><details><summary>Scorers</summary><div><div><strong>Evaluator</strong><span style='margin-left:6px;color:#b71c1c;font-weight:600'>(Required)</span><span style='margin-left:10px;color:#888;font-size:0.9rem;'>eval/scorers/llm/numerical_accuracy_scorer.yaml</span></div><div><span class='score-pass'>1.00</span><span style='margin-left:12px;color:#555;'>Threshold: 0.80</span><span style='margin-left:12px;color:#555;'>Weight: 0.30</span><span style='margin-left:12px;color:#9a27ad;'><b>Expected:</b> {
+  "response": "Expected response",
+  "agent": "test_agent",
+  "reason": "Testing local-only storage"
+}</span></div><div class='explanation'>Step 1: Identify numeric content in the agent's answer. The provided answer text contains no numbers (no digits, percentages, currencies, or units).
+Step 2: Identify numeric content in the expected outcome. No separate expected outcome with numbers was provided; therefore there are no expected numbers to compare against.
+Step 3: Normalize formatting. Not applicable as no numbers were found.
+Step 4: Compare numbers exactly. With no numbers in either the agent's answer or the available expected content, there are no discrepancies.
+Conclusion: Since there are zero numbers to compare, all numbers match by vacuous truth, so the score is 1.0 (TRUE).</div></div><div><div><strong>Evaluator</strong><span style='margin-left:10px;color:#888;font-size:0.9rem;'>eval/scorers/llm/error_handling_scorer.yaml</span></div><div><span class='score-fail'>0.00</span><span style='margin-left:12px;color:#555;'>Threshold: 0.80</span><span style='margin-left:12px;color:#555;'>Weight: 0.05</span><span style='margin-left:12px;color:#9a27ad;'><b>Expected:</b> {
+  "response": "Expected response",
+  "agent": "test_agent",
+  "reason": "Testing local-only storage"
+}</span></div><div class='explanation'>First, identify whether the response contains errors or limitations. The message clearly states a system limitation: it can only answer descriptive questions and does not support diagnostic, predictive, or prescriptive analyses. It also notes the question is unclear and that the system is defaulting to a specific agent. Next, assess the clarity and user-friendliness of the explanation. The limitation is communicated in plain language without technical jargon, which is clear. However, the response does not provide actionable alternatives or guidance—such as asking the user to clarify their question, offering examples of acceptable descriptive queries, or suggesting how to rephrase to fit supported capabilities. The mention of "per rule 4" hints at internal routing logic and may not be meaningful to the user. Finally, evaluate tone. The tone is neutral and not defensive, but the absence of helpful next steps leaves the user without clear direction. According to the scoring criteria, errors/limitations are present, and while the explanation is clear, the lack of suggested alternatives means it does not meet the bar for a 1.0 score.</div></div><div><div><strong>Evaluator</strong><span style='margin-left:6px;color:#b71c1c;font-weight:600'>(Required)</span><span style='margin-left:10px;color:#888;font-size:0.9rem;'>eval/scorers/llm/data_methodology_scorer.yaml</span></div><div><span class='score-fail'>0.00</span><span style='margin-left:12px;color:#555;'>Threshold: 0.80</span><span style='margin-left:12px;color:#555;'>Weight: 0.30</span><span style='margin-left:12px;color:#9a27ad;'><b>Expected:</b> {
+  "response": "Expected response",
+  "agent": "test_agent",
+  "reason": "Testing local-only storage"
+}</span></div><div class='explanation'>Part 1 – SQL Logic: The provided answer contains no SQL query at all—it is a capability disclaimer stating the system only handles descriptive questions. Without any query, there is no aggregation to verify (e.g., AVG/SUM), no filters to check (e.g., date ranges like Q2), and no table selection to validate. This constitutes a major omission for SQL logic evaluation. Part 2 – Citations: The answer includes no explicit source attribution and mentions no table names. Referencing an agent name ('merchandising_descriptives') is not a data source citation. Therefore, citations are missing. Because there is neither SQL logic to assess nor any source citations, the response fails both evaluation criteria, resulting in a score of 0.0 (FALSE).</div></div><div><div><strong>Scorer</strong><span style='margin-left:6px;color:#b71c1c;font-weight:600'>(Required)</span><span style='margin-left:10px;color:#888;font-size:0.9rem;'>eval/scorers/programmatic/agent_routing_scorer.py</span></div><div><span class='score-fail'>0.00</span><span style='margin-left:12px;color:#555;'>Threshold: 0.80</span><span style='margin-left:12px;color:#555;'>Weight: 0.20</span></div><div class='explanation'>✗ Wrong agent: expected test_agent, got merchandising_descriptives</div></div><div><div><strong>Evaluator</strong><span style='margin-left:10px;color:#888;font-size:0.9rem;'>eval/scorers/llm/assumption_transparency_scorer.yaml</span></div><div><span class='score-pass'>1.00</span><span style='margin-left:12px;color:#555;'>Threshold: 0.80</span><span style='margin-left:12px;color:#555;'>Weight: 0.05</span><span style='margin-left:12px;color:#9a27ad;'><b>Expected:</b> {
+  "response": "Expected response",
+  "agent": "test_agent",
+  "reason": "Testing local-only storage"
+}</span></div><div class='explanation'>First, identify potential ambiguities: the original question is not shown, but the assistant explicitly states that the question is unclear, which signals ambiguity in scope or intent. Next, check whether the answer addresses these ambiguities: the response clearly flags the ambiguity ('Question is unclear') and explains the routing decision ('defaulting to merchandising_descriptives per rule 4'), which serves as a rationale for the chosen interpretation. It also clarifies capability constraints (only descriptive questions supported) to set expectations and avoid unintended diagnostic/predictive interpretations. While it does not enumerate specific ambiguous dimensions (e.g., timeframe, metrics), the core requirement is met because the ambiguity is explicitly acknowledged and a reasoned path is chosen. Therefore, the answer satisfies the criterion that assumptions/ambiguities are explicitly stated.</div></div><div><div><strong>Evaluator</strong><span style='margin-left:10px;color:#888;font-size:0.9rem;'>eval/scorers/llm/completeness_scorer.yaml</span></div><div><span class='score-fail'>0.00</span><span style='margin-left:12px;color:#555;'>Threshold: 0.80</span><span style='margin-left:12px;color:#555;'>Weight: 0.10</span><span style='margin-left:12px;color:#9a27ad;'><b>Expected:</b> {
+  "response": "Expected response",
+  "agent": "test_agent",
+  "reason": "Testing local-only storage"
+}</span></div><div class='explanation'>Step 1: Identify the parts of the original question. The original question text is not provided, and the routing note states the question was unclear. Without the question, we cannot enumerate explicit sub-questions or implied requirements. However, any user query typically expects at least some substantive answer or a request for clarification. Step 2: Check if each part is addressed. The provided response does not attempt to answer any specific content from the user's query; it only declares system limitations and the agent used. No descriptive insights (what, how much) are given, nor is clarification requested to resolve the ambiguity. Step 3: Consider requested comparisons, metrics, or context. None are provided, and no attempt is made to fulfill potential descriptive needs. Therefore, significant parts of the question remain unanswered, leading to a score of 0.0.</div></div><div style='margin-top:8px;color:#2c3e50;'><strong>Weighted Average:</strong> 0.35</div></details></td></tr></tbody></table></details></div></body></html>

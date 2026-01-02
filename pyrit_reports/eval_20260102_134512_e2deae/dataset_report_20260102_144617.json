@@ -1,0 +1,332 @@
+{
+  "title": "Test Report",
+  "description": "Evaluation of dataset examples. Final conversation score is the minimum weighted step score across the transcript.",
+  "threshold": 0.8,
+  "execution_time_seconds": 58.10312080383301,
+  "generated_at": "2026-01-02T14:46:17.032440",
+  "total_cases": 1,
+  "passed_cases": 0,
+  "failed_cases": 1,
+  "scorer_weights": {
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/numerical_accuracy_scorer.yaml\", \"sub_identifier\": null}": 0.3,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/data_methodology_scorer.yaml\", \"sub_identifier\": null}": 0.3,
+    "{\"config_path\": \"eval/scorers/programmatic/agent_routing_scorer.py\", \"name\": \"AgentRoutingScorer\"}": 0.2,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/completeness_scorer.yaml\", \"sub_identifier\": null}": 0.1,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/assumption_transparency_scorer.yaml\", \"sub_identifier\": null}": 0.05,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/error_handling_scorer.yaml\", \"sub_identifier\": null}": 0.05
+  },
+  "scorer_required": {
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/numerical_accuracy_scorer.yaml\", \"sub_identifier\": null}": true,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/data_methodology_scorer.yaml\", \"sub_identifier\": null}": true,
+    "{\"config_path\": \"eval/scorers/programmatic/agent_routing_scorer.py\", \"name\": \"AgentRoutingScorer\"}": true,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/completeness_scorer.yaml\", \"sub_identifier\": null}": false,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/assumption_transparency_scorer.yaml\", \"sub_identifier\": null}": false,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/error_handling_scorer.yaml\", \"sub_identifier\": null}": false
+  },
+  "default_thresholds": {
+    "float_scale": 0.8,
+    "true_false": 1.0
+  },
+  "cases": [
+    {
+      "objective": "What were total sales in November 2024?",
+      "transcript": [
+        {
+          "turn_index": 1,
+          "pieces": [
+            {
+              "role": "user",
+              "original_value": "What were total sales in November 2024?",
+              "converted_value": "What were total sales in November 2024?",
+              "scores": []
+            },
+            {
+              "role": "assistant",
+              "original_value": "{'Response': 'Question\\nWhat were total sales in November 2024?\\n\\nAnswer:\\n€1,445,842,368.49 total sales for November 2024 (Period 202411), according to the analytics_assistant.product_week_channel_kpis table.\\n\\nDetails:\\n- Aggregation: Total level across all products and channels (WWM/FR/ONLINE)\\n- Time dimension used: PeriodKey = 202411 (AH Period 11)\\n- Metric: SUM(Sales) in euros\\n\\nAssumptions Made:\\n- Interpreted “November 2024” as AH Period 202411. AH periods consist of 4–5 weeks and are used as the monthly time dimension in this dataset.\\n- Aggregated at the total level (no product/category/channel filters).\\n- No division-by-zero handling was needed for this aggregation.\\n\\nSQL Query Used:\\n```sql\\nSELECT SUM(Sales) AS total_sales\\nFROM hive_metastore.analytics_assistant.product_week_channel_kpis\\nWHERE PeriodKey = 202411\\n```\\n\\nData Source: hive_metastore.analytics_assistant.product_week_channel_kpis table (Merchandising Sourcing)', 'AgentUsed': 'merchandising_descriptives', 'RoutingReason': 'Question asks about overall total sales for a specific period'}",
+              "converted_value": "{'Response': 'Question\\nWhat were total sales in November 2024?\\n\\nAnswer:\\n€1,445,842,368.49 total sales for November 2024 (Period 202411), according to the analytics_assistant.product_week_channel_kpis table.\\n\\nDetails:\\n- Aggregation: Total level across all products and channels (WWM/FR/ONLINE)\\n- Time dimension used: PeriodKey = 202411 (AH Period 11)\\n- Metric: SUM(Sales) in euros\\n\\nAssumptions Made:\\n- Interpreted “November 2024” as AH Period 202411. AH periods consist of 4–5 weeks and are used as the monthly time dimension in this dataset.\\n- Aggregated at the total level (no product/category/channel filters).\\n- No division-by-zero handling was needed for this aggregation.\\n\\nSQL Query Used:\\n```sql\\nSELECT SUM(Sales) AS total_sales\\nFROM hive_metastore.analytics_assistant.product_week_channel_kpis\\nWHERE PeriodKey = 202411\\n```\\n\\nData Source: hive_metastore.analytics_assistant.product_week_channel_kpis table (Merchandising Sourcing)', 'AgentUsed': 'merchandising_descriptives', 'RoutingReason': 'Question asks about overall total sales for a specific period'}",
+              "scores": [
+                {
+                  "score": 1.0,
+                  "raw_score": "1.0",
+                  "score_type": "float_scale",
+                  "rationale": "Part 1 – SQL Logic: The question asks for total sales in November 2024. The query uses SUM(Sales), which matches the required aggregation for a total. The filter WHERE PeriodKey = 202411 aligns with the stated assumption that “November 2024” corresponds to AH Period 202411 in this dataset. No grouping is needed since the result is a single total across all products and channels, and the table appears to contain the necessary PeriodKey and Sales fields, making the table selection appropriate for this metric. Part 2 – Citations: The answer explicitly cites the source both in the narrative (“according to the analytics_assistant.product_week_channel_kpis table”) and in a Data Source line naming the full table path (hive_metastore.analytics_assistant.product_week_channel_kpis). The table name used in the SQL is mentioned in the text, providing clear attribution. Both the SQL logic and source citations meet the criteria, so the score is 1.0.",
+                  "scorer_role": "auxiliary",
+                  "expected_output": "{\n  \"response\": \"Total sales in November 2024 were \\u20ac450,000,000\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Simple aggregation query for monthly sales\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/data_methodology_scorer.yaml"
+                  },
+                  "score_category": [
+                    "data_methodology"
+                  ],
+                  "threshold": 0.8,
+                  "passed": true,
+                  "weight": 0.3,
+                  "required": true
+                },
+                {
+                  "score": 1.0,
+                  "raw_score": "1.0",
+                  "score_type": "float_scale",
+                  "rationale": "Step 1: Check for errors or limitations. The response provides a concrete numeric answer, cites the exact table and metric, and includes the SQL used. There is no indication of data unavailability, query failures, or permission issues. Step 2: Assess ambiguity. The only potential ambiguity is the interpretation of “November 2024” as AH Period 202411. The assistant explicitly states this as an assumption and explains that AH periods are the monthly time dimension in the dataset. Step 3: Evaluate clarity and tone. The explanation is clear, user-friendly, and includes relevant context (aggregation level, metric, currency, time dimension). The tone is informative and non-defensive. While no alternative actions are suggested, none are necessary because no error occurred; the single assumption is transparently disclosed. Conclusion: Since there are no errors and the minor ambiguity is well handled, the response meets the criteria for a score of 1.0.",
+                  "scorer_role": "auxiliary",
+                  "expected_output": "{\n  \"response\": \"Total sales in November 2024 were \\u20ac450,000,000\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Simple aggregation query for monthly sales\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/error_handling_scorer.yaml"
+                  },
+                  "score_category": [
+                    "error_handling"
+                  ],
+                  "threshold": 0.8,
+                  "passed": true,
+                  "weight": 0.05,
+                  "required": false
+                },
+                {
+                  "score": 0.0,
+                  "raw_score": "0.0",
+                  "score_type": "float_scale",
+                  "rationale": "Step 1: Identify the numbers in the agent’s answer. Extracted numbers and associated context are: €1,445,842,368.49 (currency: EUR), 2024 (year), 202411 (PeriodKey), 11 (AH Period), and 4–5 (weeks). Step 2: Normalize formatting. For instance, €1,445,842,368.49 becomes 1445842368.49 with EUR context; 4–5 becomes two numbers: 4 and 5. Step 3: Extract numbers from the expected outcome. The expected outcome is not provided in the prompt, so there are no numbers to compare against. Step 4: Compare numbers for exact match, considering units/currency. Because there is no expected outcome to compare to, we cannot verify any of the agent’s numbers. According to the instructions, if any number is wrong or missing, the score is 0.0. In this case, the comparison target (expected numbers) is missing, so we must assign 0.0 (FALSE).",
+                  "scorer_role": "objective",
+                  "expected_output": "{\n  \"response\": \"Total sales in November 2024 were \\u20ac450,000,000\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Simple aggregation query for monthly sales\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/numerical_accuracy_scorer.yaml"
+                  },
+                  "score_category": [
+                    "numerical_accuracy"
+                  ],
+                  "threshold": 0.8,
+                  "passed": false,
+                  "weight": 0.3,
+                  "required": true
+                },
+                {
+                  "score": 1.0,
+                  "raw_score": "1.0",
+                  "score_type": "float_scale",
+                  "rationale": "The question \"What were total sales in November 2024?\" is ambiguous regarding time definition (calendar month vs. fiscal/period-based month), scope (all products/channels vs. a subset), currency/metric definition (gross/net, returns, taxes), and data source. The answer explicitly addresses these ambiguities: it states the interpretation of \"November 2024\" as AH Period 202411 and explains that AH periods span 4–5 weeks; it clarifies scope as a total aggregation across all products and channels; it specifies the metric as SUM(Sales) in euros; and it cites the exact table used. It also labels these as assumptions and provides the SQL used, making the interpretation transparent. Therefore, key assumptions are clearly communicated, justifying a TRUE score.",
+                  "scorer_role": "auxiliary",
+                  "expected_output": "{\n  \"response\": \"Total sales in November 2024 were \\u20ac450,000,000\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Simple aggregation query for monthly sales\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/assumption_transparency_scorer.yaml"
+                  },
+                  "score_category": [
+                    "assumption_transparency"
+                  ],
+                  "threshold": 0.8,
+                  "passed": true,
+                  "weight": 0.05,
+                  "required": false
+                },
+                {
+                  "score": 1.0,
+                  "raw_score": "1.0",
+                  "score_type": "float_scale",
+                  "rationale": "Step 1: Identify parts of the question. The prompt asks a single, straightforward item: the total sales in November 2024. There are no explicit requests for breakdowns, trend analysis, comparisons, or multiple metrics.\nStep 2: Check if the answer addresses the part. The answer provides a specific total sales figure (€1,445,842,368.49) for November 2024, and clarifies the time dimension used (AH Period 202411) as corresponding to November 2024.\nStep 3: Consider completeness aspects. The answer also specifies aggregation scope (total across products and channels), the metric (SUM(Sales) in euros), the data source, and even includes the SQL query used, which adds transparency. The assumption that November 2024 maps to AH Period 202411 is explicitly stated, mitigating ambiguity about calendar vs. fiscal period. No additional comparisons or context were requested, so none are missing.\nConclusion: The single requested part is fully answered; therefore, the response is complete.",
+                  "scorer_role": "auxiliary",
+                  "expected_output": "{\n  \"response\": \"Total sales in November 2024 were \\u20ac450,000,000\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Simple aggregation query for monthly sales\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/completeness_scorer.yaml"
+                  },
+                  "score_category": [
+                    "completeness"
+                  ],
+                  "threshold": 0.8,
+                  "passed": true,
+                  "weight": 0.1,
+                  "required": false
+                },
+                {
+                  "score": 1.0,
+                  "raw_score": "1.0",
+                  "score_type": "float_scale",
+                  "rationale": "✓ Correct agent selected: merchandising_descriptives",
+                  "scorer_role": null,
+                  "expected_output": null,
+                  "scorer_identifier": {
+                    "name": "AgentRoutingScorer",
+                    "config_path": "eval/scorers/programmatic/agent_routing_scorer.py"
+                  },
+                  "score_category": [
+                    "agent_routing"
+                  ],
+                  "threshold": 0.8,
+                  "passed": true,
+                  "weight": 0.2,
+                  "required": true
+                }
+              ],
+              "prompt_metadata": {
+                "latency_ms": 44536,
+                "latency_first_token_ms": 44536
+              },
+              "latency_ms": 44536,
+              "latency_first_token_ms": 44536,
+              "weighted_average": 0.7
+            }
+          ]
+        }
+      ],
+      "aggregated_metrics": {
+        "total_turns": 1,
+        "final_score": 1.0,
+        "scores_by_turn": [
+          {
+            "turn_index": 1,
+            "score_details": [
+              {
+                "score": 1.0,
+                "raw_score": "1.0",
+                "score_type": "float_scale",
+                "rationale": "Part 1 – SQL Logic: The question asks for total sales in November 2024. The query uses SUM(Sales), which matches the required aggregation for a total. The filter WHERE PeriodKey = 202411 aligns with the stated assumption that “November 2024” corresponds to AH Period 202411 in this dataset. No grouping is needed since the result is a single total across all products and channels, and the table appears to contain the necessary PeriodKey and Sales fields, making the table selection appropriate for this metric. Part 2 – Citations: The answer explicitly cites the source both in the narrative (“according to the analytics_assistant.product_week_channel_kpis table”) and in a Data Source line naming the full table path (hive_metastore.analytics_assistant.product_week_channel_kpis). The table name used in the SQL is mentioned in the text, providing clear attribution. Both the SQL logic and source citations meet the criteria, so the score is 1.0.",
+                "scorer_role": "auxiliary",
+                "expected_output": "{\n  \"response\": \"Total sales in November 2024 were \\u20ac450,000,000\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Simple aggregation query for monthly sales\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/data_methodology_scorer.yaml"
+                },
+                "score_category": [
+                  "data_methodology"
+                ],
+                "threshold": 0.8,
+                "passed": true,
+                "weight": 0.3,
+                "required": true
+              },
+              {
+                "score": 1.0,
+                "raw_score": "1.0",
+                "score_type": "float_scale",
+                "rationale": "Step 1: Check for errors or limitations. The response provides a concrete numeric answer, cites the exact table and metric, and includes the SQL used. There is no indication of data unavailability, query failures, or permission issues. Step 2: Assess ambiguity. The only potential ambiguity is the interpretation of “November 2024” as AH Period 202411. The assistant explicitly states this as an assumption and explains that AH periods are the monthly time dimension in the dataset. Step 3: Evaluate clarity and tone. The explanation is clear, user-friendly, and includes relevant context (aggregation level, metric, currency, time dimension). The tone is informative and non-defensive. While no alternative actions are suggested, none are necessary because no error occurred; the single assumption is transparently disclosed. Conclusion: Since there are no errors and the minor ambiguity is well handled, the response meets the criteria for a score of 1.0.",
+                "scorer_role": "auxiliary",
+                "expected_output": "{\n  \"response\": \"Total sales in November 2024 were \\u20ac450,000,000\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Simple aggregation query for monthly sales\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/error_handling_scorer.yaml"
+                },
+                "score_category": [
+                  "error_handling"
+                ],
+                "threshold": 0.8,
+                "passed": true,
+                "weight": 0.05,
+                "required": false
+              },
+              {
+                "score": 0.0,
+                "raw_score": "0.0",
+                "score_type": "float_scale",
+                "rationale": "Step 1: Identify the numbers in the agent’s answer. Extracted numbers and associated context are: €1,445,842,368.49 (currency: EUR), 2024 (year), 202411 (PeriodKey), 11 (AH Period), and 4–5 (weeks). Step 2: Normalize formatting. For instance, €1,445,842,368.49 becomes 1445842368.49 with EUR context; 4–5 becomes two numbers: 4 and 5. Step 3: Extract numbers from the expected outcome. The expected outcome is not provided in the prompt, so there are no numbers to compare against. Step 4: Compare numbers for exact match, considering units/currency. Because there is no expected outcome to compare to, we cannot verify any of the agent’s numbers. According to the instructions, if any number is wrong or missing, the score is 0.0. In this case, the comparison target (expected numbers) is missing, so we must assign 0.0 (FALSE).",
+                "scorer_role": "objective",
+                "expected_output": "{\n  \"response\": \"Total sales in November 2024 were \\u20ac450,000,000\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Simple aggregation query for monthly sales\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/numerical_accuracy_scorer.yaml"
+                },
+                "score_category": [
+                  "numerical_accuracy"
+                ],
+                "threshold": 0.8,
+                "passed": false,
+                "weight": 0.3,
+                "required": true
+              },
+              {
+                "score": 1.0,
+                "raw_score": "1.0",
+                "score_type": "float_scale",
+                "rationale": "The question \"What were total sales in November 2024?\" is ambiguous regarding time definition (calendar month vs. fiscal/period-based month), scope (all products/channels vs. a subset), currency/metric definition (gross/net, returns, taxes), and data source. The answer explicitly addresses these ambiguities: it states the interpretation of \"November 2024\" as AH Period 202411 and explains that AH periods span 4–5 weeks; it clarifies scope as a total aggregation across all products and channels; it specifies the metric as SUM(Sales) in euros; and it cites the exact table used. It also labels these as assumptions and provides the SQL used, making the interpretation transparent. Therefore, key assumptions are clearly communicated, justifying a TRUE score.",
+                "scorer_role": "auxiliary",
+                "expected_output": "{\n  \"response\": \"Total sales in November 2024 were \\u20ac450,000,000\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Simple aggregation query for monthly sales\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/assumption_transparency_scorer.yaml"
+                },
+                "score_category": [
+                  "assumption_transparency"
+                ],
+                "threshold": 0.8,
+                "passed": true,
+                "weight": 0.05,
+                "required": false
+              },
+              {
+                "score": 1.0,
+                "raw_score": "1.0",
+                "score_type": "float_scale",
+                "rationale": "Step 1: Identify parts of the question. The prompt asks a single, straightforward item: the total sales in November 2024. There are no explicit requests for breakdowns, trend analysis, comparisons, or multiple metrics.\nStep 2: Check if the answer addresses the part. The answer provides a specific total sales figure (€1,445,842,368.49) for November 2024, and clarifies the time dimension used (AH Period 202411) as corresponding to November 2024.\nStep 3: Consider completeness aspects. The answer also specifies aggregation scope (total across products and channels), the metric (SUM(Sales) in euros), the data source, and even includes the SQL query used, which adds transparency. The assumption that November 2024 maps to AH Period 202411 is explicitly stated, mitigating ambiguity about calendar vs. fiscal period. No additional comparisons or context were requested, so none are missing.\nConclusion: The single requested part is fully answered; therefore, the response is complete.",
+                "scorer_role": "auxiliary",
+                "expected_output": "{\n  \"response\": \"Total sales in November 2024 were \\u20ac450,000,000\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Simple aggregation query for monthly sales\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/completeness_scorer.yaml"
+                },
+                "score_category": [
+                  "completeness"
+                ],
+                "threshold": 0.8,
+                "passed": true,
+                "weight": 0.1,
+                "required": false
+              },
+              {
+                "score": 1.0,
+                "raw_score": "1.0",
+                "score_type": "float_scale",
+                "rationale": "✓ Correct agent selected: merchandising_descriptives",
+                "scorer_role": null,
+                "expected_output": null,
+                "scorer_identifier": {
+                  "name": "AgentRoutingScorer",
+                  "config_path": "eval/scorers/programmatic/agent_routing_scorer.py"
+                },
+                "score_category": [
+                  "agent_routing"
+                ],
+                "threshold": 0.8,
+                "passed": true,
+                "weight": 0.2,
+                "required": true
+              }
+            ]
+          }
+        ]
+      },
+      "turns": 1,
+      "final_score": 0.7,
+      "passed": false,
+      "failure_reason": "required",
+      "required_failed": true,
+      "weighted_failed": true,
+      "original_index": 1,
+      "metadata": {},
+      "test_case_id": null
+    }
+  ],
+  "report_html": "/Users/tolgaay/PycharmProjects/sna-evaluation-framework/pyrit_reports/eval_20260102_134512_e2deae/dataset_report_20260102_144617.html",
+  "report_json": "/Users/tolgaay/PycharmProjects/sna-evaluation-framework/pyrit_reports/eval_20260102_134512_e2deae/dataset_report_20260102_144617.json"
+}

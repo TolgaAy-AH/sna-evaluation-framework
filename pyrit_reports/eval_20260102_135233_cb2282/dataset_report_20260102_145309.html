@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>Test Report</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 20px; }
+    .container { background: #fff; padding: 30px; border-radius: 10px; max-width: 1100px; margin: auto; }
+    h1 { text-align: center; color: #2c3e50; }
+    .summary { font-size: 1rem; text-align: center; color: #444; margin-bottom: 30px; }
+    details.expandfield { border: 1px solid #e3eaf2; border-radius: 5px; background: #fafdff; margin-bottom: 4px; padding: 0 8px; }
+    details.expandfield[open] summary { color: #17406c; }
+    details.expandfield summary { font-size: 1rem; cursor: pointer; color: #0172bd; outline: none; padding: 7px 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    th { background: #0277bd; color: #fff; text-align: center; font-weight: bold; font-size: 1.06rem; padding: 12px 8px; letter-spacing: .02em; }
+    td { text-align: left; padding: 10px; border-bottom: 1px solid #eee; vertical-align: top; font-size: 1rem; }
+    .score-pass { color: green; font-weight: bold; }
+    .score-fail { color: red; font-weight: bold; }
+    .badge { display: inline-block; padding: 4px 10px; border-radius: 5px; font-weight: bold; }
+    .badge.pass { background: #c8e6c9; color: #1b5e20; }
+    .badge.fail { background: #ffcdd2; color: #b71c1c; }
+    .explanation { font-size: 0.95rem; margin-top: 6px; color: #555; }
+    pre { white-space: pre-wrap; word-wrap: break-word; font-family: Menlo, Monaco, Consolas, monospace; background: #f8f8fc; margin: 0; font-size: 0.98rem; }
+    details.testcase { margin-bottom: 12px; border: none; }
+    summary.testcasesum {
+      background: #f5faff; color: #1467a3; border: 1.5px solid #b3d1ed; border-radius: 7px;
+      font-weight: 600; font-size: 1.07rem; padding: 12px 22px; margin: 0; cursor: pointer;
+      box-shadow: 0 2px 10px 0 rgba(90,130,160,0.05);
+    }
+    details.testcase[open] summary.testcasesum {
+      background: #e2f1ff; color: #113255; border: 1.5px solid #6ab1f6;
+    }
+    summary.testcasesum:hover { background: #e9f2fc; color: #0d395d; }
+    .perf-box { border: 1px solid #e3eaf2; padding: 8px; border-radius: 6px; background: #fafdff; }
+    .perf-empty { color: #999; }
+    .perf-box details summary { cursor: pointer; color: #0172bd; }
+    .perf-box details { margin-top: 6px; }
+    .perf-box { background: #f8fbff; border: 1px solid #dfe8f5; border-radius: 8px; padding: 10px 12px; font-size: 0.96rem; color: #1f3b57; line-height: 1.45; }
+    .perf-label { font-weight: 600; margin-right: 6px; color: #0f5ba5; }
+    .perf-events { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+    .perf-chip { background: #e9f2fb; border-radius: 12px; padding: 4px 8px; font-size: 0.9rem; color: #0d3a63; border: 1px solid #d2e4f5; }
+    .perf-empty { color: #9aa6b8; }
+  </style>
+</head>
+<body>
+<div class='container'>
+  <h1>Test Report</h1>
+  <p class='overview'>Evaluation of dataset examples. Final conversation score is the minimum weighted step score across the transcript.</p>
+  <div class='summary'>
+    Total Test Cases: 1 |
+    Passed: 0 |
+    Failed: 1 |
+    Execution Time: 29s
+  </div>
+<details class='testcase'><summary class='testcasesum'>Test Case 1: <strong>Objective:</strong> Test UC disabled | <strong>Achieved:</strong> <span class='badge fail'>Fail</span> | <strong>Turns:</strong> 1 | <strong>Score:</strong> 0.35 | <strong>Reason:</strong> Required Scorer</summary><table><thead><tr><th>User</th><th>Assistant</th><th>Performance</th><th>Scores</th></tr></thead><tbody><tr><td>Test UC disabled</td><td><details class='expandfield' open><summary><strong>Response</strong></summary><pre>Got it. If Unity Catalog is disabled, I can still work against hive_metastore (e.g., hive_metastore.pimvd.markt_table). Let me know the descriptive data you need—for example:
+- Get all data for a specific week (e.g., “Get all data for week 202451”)
+- Show top 5 brands by sales
+- What’s the total market share for last week?
+- Compare brands across multiple weeks
+
+If you’d like me to verify or update the dataset catalog despite UC being disabled, I can run a verification and sync it accordingly.</pre></details><details class='expandfield'><summary><strong>AgentUsed</strong></summary><pre>data_engineer</pre></details><details class='expandfield'><summary><strong>RoutingReason</strong></summary><pre>Technical/meta message indicating a test or use case (UC) is disabled; this pertains to configuration/data engineering support</pre></details></td><td><div class='perf-box'><div>Total: 8249 ms</div></div></td><td><details><summary>Scorers</summary><div><div><strong>Evaluator</strong><span style='margin-left:6px;color:#b71c1c;font-weight:600'>(Required)</span><span style='margin-left:10px;color:#888;font-size:0.9rem;'>eval/scorers/llm/numerical_accuracy_scorer.yaml</span></div><div><span class='score-pass'>1.00</span><span style='margin-left:12px;color:#555;'>Threshold: 0.80</span><span style='margin-left:12px;color:#555;'>Weight: 0.30</span><span style='margin-left:12px;color:#9a27ad;'><b>Expected:</b> {
+  "response": "Test",
+  "agent": "test",
+  "reason": "Test"
+}</span></div><div class='explanation'>Step 1: Extract numbers from the expected outcome and the agent's answer. Both contain two numeric values: 202451 (as a week identifier example) and 5 (as the top-N count for brands).
+Step 2: Normalize formatting. The numbers are already in simple integer form: 202451 and 5.
+Step 3: Compare each number for exact match. The sets match exactly: [202451, 5] vs. [202451, 5].
+Step 4: Consider symbols and units. There are no currencies or percentage values present; the unit words like "week" and "brands" do not alter numeric comparison.
+Conclusion: All numbers match exactly with no discrepancies or omissions. Therefore, the score is 1.0 (TRUE).</div></div><div><div><strong>Evaluator</strong><span style='margin-left:10px;color:#888;font-size:0.9rem;'>eval/scorers/llm/assumption_transparency_scorer.yaml</span></div><div><span class='score-fail'>0.00</span><span style='margin-left:12px;color:#555;'>Threshold: 0.80</span><span style='margin-left:12px;color:#555;'>Weight: 0.05</span><span style='margin-left:12px;color:#9a27ad;'><b>Expected:</b> {
+  "response": "Test",
+  "agent": "test",
+  "reason": "Test"
+}</span></div><div class='explanation'>To determine assumption transparency, we first identify ambiguities in the exchange. The response suggests potential analyses like "Show top 5 brands by sales," "What’s the total market share for last week?," and "Compare brands across multiple weeks." Each of these contains ambiguous elements: sales could mean revenue or units; market share could be defined by revenue, units, or another measure; "last week" is vague without a calendar reference (ISO week vs. fiscal week), timezone, or data refresh cadence; week code "202451" implies a specific week-numbering scheme but is not explained; scope (geography, channel, product categories) and brand taxonomy are not specified; and access/permissions to hive_metastore objects may vary. Next, we check if the response explicitly states assumptions, clarifies interpretations, notes multiple possible interpretations, or provides rationale. The reply only acknowledges the environmental condition (Unity Catalog disabled) and offers to work against hive_metastore, plus proposes example queries. It does not call out the ambiguities in metrics, time periods, scope, or definitions, nor does it state any assumptions or chosen interpretations. While it invites the user to specify the data they need, it does not enumerate the key ambiguities or ask targeted clarifying questions (e.g., definition of sales/market share, week standard, geographic scope). Therefore, the answer does not make its assumptions explicit in the face of an ambiguous set of potential requests, yielding a score of 0.0.</div></div><div><div><strong>Evaluator</strong><span style='margin-left:10px;color:#888;font-size:0.9rem;'>eval/scorers/llm/error_handling_scorer.yaml</span></div><div><span class='score-pass'>1.00</span><span style='margin-left:12px;color:#555;'>Threshold: 0.80</span><span style='margin-left:12px;color:#555;'>Weight: 0.05</span><span style='margin-left:12px;color:#9a27ad;'><b>Expected:</b> {
+  "response": "Test",
+  "agent": "test",
+  "reason": "Test"
+}</span></div><div class='explanation'>First, identify whether there is an error or limitation: the message states that Unity Catalog (UC) is disabled, which is a configuration limitation. Next, assess how the assistant handled it. The assistant explicitly acknowledges the limitation (“If Unity Catalog is disabled”) and immediately presents a clear, practical alternative: working against hive_metastore with a concrete example path. It offers user-friendly next steps by suggesting specific types of queries the user might request (e.g., data for a week, top brands, market share, comparisons), which helps the user proceed despite UC being disabled. Additionally, the assistant proposes an action to “verify or update the dataset catalog” and to “run a verification and sync,” indicating proactive support. The explanation is clear, avoids technical jargon, maintains a helpful tone, and provides actionable alternatives. There is no confusion left for the user, satisfying the criteria for a full score.</div></div><div><div><strong>Evaluator</strong><span style='margin-left:6px;color:#b71c1c;font-weight:600'>(Required)</span><span style='margin-left:10px;color:#888;font-size:0.9rem;'>eval/scorers/llm/data_methodology_scorer.yaml</span></div><div><span class='score-fail'>0.00</span><span style='margin-left:12px;color:#555;'>Threshold: 0.80</span><span style='margin-left:12px;color:#555;'>Weight: 0.30</span><span style='margin-left:12px;color:#9a27ad;'><b>Expected:</b> {
+  "response": "Test",
+  "agent": "test",
+  "reason": "Test"
+}</span></div><div class='explanation'>Part 1 – SQL Logic: There is no SQL query provided to evaluate. Without a query, we cannot verify aggregation functions (e.g., AVG, SUM), filters (e.g., week ranges, specific week), or table selection appropriateness. Thus, SQL logic is missing, which qualifies as a major error under the rubric. Part 2 – Citations: While the response mentions a possible table location (hive_metastore.pimvd.markt_table), it does not present any computed results or analysis that explicitly attributes findings to a specific source table (e.g., “According to hive_metastore.pimvd.markt_table…”). The instruction requires explicit source attribution tied to the answer’s content. Since no results or queries are given, citations are effectively missing. Therefore, the score is 0.0.</div></div><div><div><strong>Evaluator</strong><span style='margin-left:10px;color:#888;font-size:0.9rem;'>eval/scorers/llm/completeness_scorer.yaml</span></div><div><span class='score-fail'>0.00</span><span style='margin-left:12px;color:#555;'>Threshold: 0.80</span><span style='margin-left:12px;color:#555;'>Weight: 0.10</span><span style='margin-left:12px;color:#9a27ad;'><b>Expected:</b> {
+  "response": "Test",
+  "agent": "test",
+  "reason": "Test"
+}</span></div><div class='explanation'>First, identify the likely parts of the original question. Based on the provided context, the user appears to be asking whether work can proceed with Unity Catalog disabled and possibly expecting specific data outputs or actions such as retrieving data for a particular week, showing top brands by sales, calculating total market share for last week, comparing brands across multiple weeks, and verifying/updating the dataset catalog. Next, check whether each part was addressed: (1) The assistant confirmed it can still work against hive_metastore when Unity Catalog is disabled, which addresses the operational feasibility. (2) For the analytical requests (get data for a specific week, top 5 brands, total market share, compare brands across weeks), the assistant did not provide any actual results or queries; it only suggested examples and asked the user to specify needs. These parts remain unanswered. (3) Regarding verification/update of the dataset catalog, the assistant offered to run a verification and sync but did not perform or detail the verification or provide confirmation of completion. Since significant parts—namely the requested analyses and concrete verification—are missing, the answer is not fully complete.</div></div><div><div><strong>Scorer</strong><span style='margin-left:6px;color:#b71c1c;font-weight:600'>(Required)</span><span style='margin-left:10px;color:#888;font-size:0.9rem;'>eval/scorers/programmatic/agent_routing_scorer.py</span></div><div><span class='score-fail'>0.00</span><span style='margin-left:12px;color:#555;'>Threshold: 0.80</span><span style='margin-left:12px;color:#555;'>Weight: 0.20</span></div><div class='explanation'>✗ Wrong agent: expected test, got data_engineer</div></div><div style='margin-top:8px;color:#2c3e50;'><strong>Weighted Average:</strong> 0.35</div></details></td></tr></tbody></table></details></div></body></html>

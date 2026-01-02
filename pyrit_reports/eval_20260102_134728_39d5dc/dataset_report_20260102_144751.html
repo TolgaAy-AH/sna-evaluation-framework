@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>Test Report</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 20px; }
+    .container { background: #fff; padding: 30px; border-radius: 10px; max-width: 1100px; margin: auto; }
+    h1 { text-align: center; color: #2c3e50; }
+    .summary { font-size: 1rem; text-align: center; color: #444; margin-bottom: 30px; }
+    details.expandfield { border: 1px solid #e3eaf2; border-radius: 5px; background: #fafdff; margin-bottom: 4px; padding: 0 8px; }
+    details.expandfield[open] summary { color: #17406c; }
+    details.expandfield summary { font-size: 1rem; cursor: pointer; color: #0172bd; outline: none; padding: 7px 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    th { background: #0277bd; color: #fff; text-align: center; font-weight: bold; font-size: 1.06rem; padding: 12px 8px; letter-spacing: .02em; }
+    td { text-align: left; padding: 10px; border-bottom: 1px solid #eee; vertical-align: top; font-size: 1rem; }
+    .score-pass { color: green; font-weight: bold; }
+    .score-fail { color: red; font-weight: bold; }
+    .badge { display: inline-block; padding: 4px 10px; border-radius: 5px; font-weight: bold; }
+    .badge.pass { background: #c8e6c9; color: #1b5e20; }
+    .badge.fail { background: #ffcdd2; color: #b71c1c; }
+    .explanation { font-size: 0.95rem; margin-top: 6px; color: #555; }
+    pre { white-space: pre-wrap; word-wrap: break-word; font-family: Menlo, Monaco, Consolas, monospace; background: #f8f8fc; margin: 0; font-size: 0.98rem; }
+    details.testcase { margin-bottom: 12px; border: none; }
+    summary.testcasesum {
+      background: #f5faff; color: #1467a3; border: 1.5px solid #b3d1ed; border-radius: 7px;
+      font-weight: 600; font-size: 1.07rem; padding: 12px 22px; margin: 0; cursor: pointer;
+      box-shadow: 0 2px 10px 0 rgba(90,130,160,0.05);
+    }
+    details.testcase[open] summary.testcasesum {
+      background: #e2f1ff; color: #113255; border: 1.5px solid #6ab1f6;
+    }
+    summary.testcasesum:hover { background: #e9f2fc; color: #0d395d; }
+    .perf-box { border: 1px solid #e3eaf2; padding: 8px; border-radius: 6px; background: #fafdff; }
+    .perf-empty { color: #999; }
+    .perf-box details summary { cursor: pointer; color: #0172bd; }
+    .perf-box details { margin-top: 6px; }
+    .perf-box { background: #f8fbff; border: 1px solid #dfe8f5; border-radius: 8px; padding: 10px 12px; font-size: 0.96rem; color: #1f3b57; line-height: 1.45; }
+    .perf-label { font-weight: 600; margin-right: 6px; color: #0f5ba5; }
+    .perf-events { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+    .perf-chip { background: #e9f2fb; border-radius: 12px; padding: 4px 8px; font-size: 0.9rem; color: #0d3a63; border: 1px solid #d2e4f5; }
+    .perf-empty { color: #9aa6b8; }
+  </style>
+</head>
+<body>
+<div class='container'>
+  <h1>Test Report</h1>
+  <p class='overview'>Evaluation of dataset examples. Final conversation score is the minimum weighted step score across the transcript.</p>
+  <div class='summary'>
+    Total Test Cases: 1 |
+    Passed: 0 |
+    Failed: 1 |
+    Execution Time: 16s
+  </div>
+<details class='testcase'><summary class='testcasesum'>Test Case 1: <strong>Objective:</strong> Which store had the highest customer satisfaction score? | <strong>Achieved:</strong> <span class='badge fail'>Fail</span> | <strong>Turns:</strong> 1 | <strong>Score:</strong> 0.35 | <strong>Reason:</strong> Required Scorer</summary><table><thead><tr><th>User</th><th>Assistant</th><th>Performance</th><th>Scores</th></tr></thead><tbody><tr><td>Which store had the highest customer satisfaction score?</td><td><details class='expandfield' open><summary><strong>Response</strong></summary><pre>Thank you for your question about customer satisfaction by store!
+
+This functionality is currently not yet available. We are working hard to answer questions about customers, segments, and demographics in the future.
+
+Note: This system can only answer descriptive questions (what, how much). Diagnostic, predictive, and prescriptive analyses are not (yet) supported.
+
+At the moment, I can help you with descriptive questions about:
+- Sales and revenue figures
+- Product and category performance
+- Promotional effectiveness (promo pressure, promo sales)
+- Channel comparisons (online vs stores)
+- Brand and assortment analysis
+
+Do you have a descriptive question about one of these topics?</pre></details><details class='expandfield'><summary><strong>AgentUsed</strong></summary><pre>customer_insights</pre></details><details class='expandfield'><summary><strong>RoutingReason</strong></summary><pre>Asks for the store with highest customer satisfaction, which is a customer behavior metric rather than financial performance</pre></details></td><td><div class='perf-box'><div>Total: 6819 ms</div></div></td><td><details><summary>Scorers</summary><div><div><strong>Evaluator</strong><span style='margin-left:6px;color:#b71c1c;font-weight:600'>(Required)</span><span style='margin-left:10px;color:#888;font-size:0.9rem;'>eval/scorers/llm/numerical_accuracy_scorer.yaml</span></div><div><span class='score-pass'>1.00</span><span style='margin-left:12px;color:#555;'>Threshold: 0.80</span><span style='margin-left:12px;color:#555;'>Weight: 0.30</span><span style='margin-left:12px;color:#9a27ad;'><b>Expected:</b> {
+  "response": "Store Amsterdam-Centraal had the highest satisfaction score of 4.8/5.0",
+  "agent": "merchandising_descriptives",
+  "reason": "Query for maximum value across store dimension"
+}</span></div><div class='explanation'>Step 1: Identify and extract all numbers from the expected outcome and the agent's answer. The expected outcome is not provided, so the set of expected numbers is empty. The agent's answer text contains no numeric values (no digits, percentages, currencies, or units).
+Step 2: Normalize formatting. There are no numbers to normalize in either set.
+Step 3: Compare each number for an exact match, considering symbols and units. Since both the expected set and the agent's set are empty, there are no discrepancies or missing values.
+Conclusion: All numbers match exactly (trivially), so the correct score is 1.0 (TRUE).</div></div><div><div><strong>Evaluator</strong><span style='margin-left:10px;color:#888;font-size:0.9rem;'>eval/scorers/llm/completeness_scorer.yaml</span></div><div><span class='score-fail'>0.00</span><span style='margin-left:12px;color:#555;'>Threshold: 0.80</span><span style='margin-left:12px;color:#555;'>Weight: 0.10</span><span style='margin-left:12px;color:#9a27ad;'><b>Expected:</b> {
+  "response": "Store Amsterdam-Centraal had the highest satisfaction score of 4.8/5.0",
+  "agent": "merchandising_descriptives",
+  "reason": "Query for maximum value across store dimension"
+}</span></div><div class='explanation'>First, identify the likely parts of the original question. Based on the assistant's opening line and routing reason, the user asked about customer satisfaction by store, which can imply either: (a) a breakdown of customer satisfaction metrics for each store, or (b) a specific comparison such as which store has the highest customer satisfaction. These constitute requests for descriptive metrics and potentially a ranking or identification of the top-performing store. Next, check whether the response addresses these parts. The response states that the functionality is not available and does not provide any customer satisfaction metrics, store-level breakdowns, rankings, or identification of the store with the highest satisfaction. It also does not offer proxy measures, alternative relevant data, or partial answers. Therefore, the key components of the user's request are left unanswered. As a result, significant parts of the question are missing, and the answer is incomplete.</div></div><div><div><strong>Evaluator</strong><span style='margin-left:6px;color:#b71c1c;font-weight:600'>(Required)</span><span style='margin-left:10px;color:#888;font-size:0.9rem;'>eval/scorers/llm/data_methodology_scorer.yaml</span></div><div><span class='score-fail'>0.00</span><span style='margin-left:12px;color:#555;'>Threshold: 0.80</span><span style='margin-left:12px;color:#555;'>Weight: 0.30</span><span style='margin-left:12px;color:#9a27ad;'><b>Expected:</b> {
+  "response": "Store Amsterdam-Centraal had the highest satisfaction score of 4.8/5.0",
+  "agent": "merchandising_descriptives",
+  "reason": "Query for maximum value across store dimension"
+}</span></div><div class='explanation'>Part 1 – SQL Logic: The assistant did not provide any SQL query, so there is no aggregation to verify (e.g., AVG for satisfaction), no filters to check (such as date ranges or store-level constraints), and no table selection to validate. As a result, the SQL logic cannot be assessed and effectively fails the requirement.
+
+Part 2 – Citations: The response does not mention any table names or data sources. There is no explicit attribution such as "According to the X table" or references to specific datasets used. Therefore, source citation requirements are not met.
+
+Because there is neither SQL logic to evaluate nor proper source citation, the score is 0.0 (FALSE).</div></div><div><div><strong>Scorer</strong><span style='margin-left:6px;color:#b71c1c;font-weight:600'>(Required)</span><span style='margin-left:10px;color:#888;font-size:0.9rem;'>eval/scorers/programmatic/agent_routing_scorer.py</span></div><div><span class='score-fail'>0.00</span><span style='margin-left:12px;color:#555;'>Threshold: 0.80</span><span style='margin-left:12px;color:#555;'>Weight: 0.20</span></div><div class='explanation'>✗ Wrong agent: expected merchandising_descriptives, got customer_insights</div></div><div><div><strong>Evaluator</strong><span style='margin-left:10px;color:#888;font-size:0.9rem;'>eval/scorers/llm/error_handling_scorer.yaml</span></div><div><span class='score-pass'>1.00</span><span style='margin-left:12px;color:#555;'>Threshold: 0.80</span><span style='margin-left:12px;color:#555;'>Weight: 0.05</span><span style='margin-left:12px;color:#9a27ad;'><b>Expected:</b> {
+  "response": "Store Amsterdam-Centraal had the highest satisfaction score of 4.8/5.0",
+  "agent": "merchandising_descriptives",
+  "reason": "Query for maximum value across store dimension"
+}</span></div><div class='explanation'>First, identify whether the assistant faced any errors or limitations. The response explicitly states that customer satisfaction functionality is not yet available and clarifies a broader limitation: the system currently supports only descriptive questions and does not support diagnostic, predictive, or prescriptive analyses. Next, assess how these limitations are communicated. The explanation is clear, concise, and user-friendly—no technical jargon is used—and it directly addresses why the original request cannot be fulfilled. Then, check if alternatives are offered. The assistant provides concrete areas where it can help (sales and revenue, product performance, promotions, channels, brand/assortment) and invites the user to ask a descriptive question in those domains, which is a helpful path forward. Finally, consider tone. The tone is polite and constructive, expressing that they are working to add the requested capability in the future. Given the presence of a limitation and the clear, helpful communication with suggested alternatives, this meets the criteria for a top score.</div></div><div><div><strong>Evaluator</strong><span style='margin-left:10px;color:#888;font-size:0.9rem;'>eval/scorers/llm/assumption_transparency_scorer.yaml</span></div><div><span class='score-fail'>0.00</span><span style='margin-left:12px;color:#555;'>Threshold: 0.80</span><span style='margin-left:12px;color:#555;'>Weight: 0.05</span><span style='margin-left:12px;color:#9a27ad;'><b>Expected:</b> {
+  "response": "Store Amsterdam-Centraal had the highest satisfaction score of 4.8/5.0",
+  "agent": "merchandising_descriptives",
+  "reason": "Query for maximum value across store dimension"
+}</span></div><div class='explanation'>First, identify potential ambiguities in the user's question about customer satisfaction by store: the metric for 'customer satisfaction' could mean CSAT, NPS, reviews, or complaint rates; the time period is unspecified (e.g., last month, quarter, year, all-time); the scope of 'stores' is unclear (all stores, a region, a specific chain); and whether the comparison is absolute or normalized by store size/traffic is not stated. Next, check whether the assistant addressed these ambiguities. The assistant declined the request citing capability limitations and redirected to supported descriptive topics, but did not state any assumptions about the metric, time frame, scope, or comparison method, nor did it note that multiple interpretations exist or ask clarifying questions. While it communicated system constraints (descriptive-only and not customer satisfaction), it did not engage with the ambiguities in the user's question. Therefore, key assumptions remain unaddressed despite the ambiguity, resulting in a score of 0.0.</div></div><div style='margin-top:8px;color:#2c3e50;'><strong>Weighted Average:</strong> 0.35</div></details></td></tr></tbody></table></details></div></body></html>

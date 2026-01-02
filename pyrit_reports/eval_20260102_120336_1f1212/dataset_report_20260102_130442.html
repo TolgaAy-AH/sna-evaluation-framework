@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>Test Report</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 20px; }
+    .container { background: #fff; padding: 30px; border-radius: 10px; max-width: 1100px; margin: auto; }
+    h1 { text-align: center; color: #2c3e50; }
+    .summary { font-size: 1rem; text-align: center; color: #444; margin-bottom: 30px; }
+    details.expandfield { border: 1px solid #e3eaf2; border-radius: 5px; background: #fafdff; margin-bottom: 4px; padding: 0 8px; }
+    details.expandfield[open] summary { color: #17406c; }
+    details.expandfield summary { font-size: 1rem; cursor: pointer; color: #0172bd; outline: none; padding: 7px 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    th { background: #0277bd; color: #fff; text-align: center; font-weight: bold; font-size: 1.06rem; padding: 12px 8px; letter-spacing: .02em; }
+    td { text-align: left; padding: 10px; border-bottom: 1px solid #eee; vertical-align: top; font-size: 1rem; }
+    .score-pass { color: green; font-weight: bold; }
+    .score-fail { color: red; font-weight: bold; }
+    .badge { display: inline-block; padding: 4px 10px; border-radius: 5px; font-weight: bold; }
+    .badge.pass { background: #c8e6c9; color: #1b5e20; }
+    .badge.fail { background: #ffcdd2; color: #b71c1c; }
+    .explanation { font-size: 0.95rem; margin-top: 6px; color: #555; }
+    pre { white-space: pre-wrap; word-wrap: break-word; font-family: Menlo, Monaco, Consolas, monospace; background: #f8f8fc; margin: 0; font-size: 0.98rem; }
+    details.testcase { margin-bottom: 12px; border: none; }
+    summary.testcasesum {
+      background: #f5faff; color: #1467a3; border: 1.5px solid #b3d1ed; border-radius: 7px;
+      font-weight: 600; font-size: 1.07rem; padding: 12px 22px; margin: 0; cursor: pointer;
+      box-shadow: 0 2px 10px 0 rgba(90,130,160,0.05);
+    }
+    details.testcase[open] summary.testcasesum {
+      background: #e2f1ff; color: #113255; border: 1.5px solid #6ab1f6;
+    }
+    summary.testcasesum:hover { background: #e9f2fc; color: #0d395d; }
+    .perf-box { border: 1px solid #e3eaf2; padding: 8px; border-radius: 6px; background: #fafdff; }
+    .perf-empty { color: #999; }
+    .perf-box details summary { cursor: pointer; color: #0172bd; }
+    .perf-box details { margin-top: 6px; }
+    .perf-box { background: #f8fbff; border: 1px solid #dfe8f5; border-radius: 8px; padding: 10px 12px; font-size: 0.96rem; color: #1f3b57; line-height: 1.45; }
+    .perf-label { font-weight: 600; margin-right: 6px; color: #0f5ba5; }
+    .perf-events { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+    .perf-chip { background: #e9f2fb; border-radius: 12px; padding: 4px 8px; font-size: 0.9rem; color: #0d3a63; border: 1px solid #d2e4f5; }
+    .perf-empty { color: #9aa6b8; }
+  </style>
+</head>
+<body>
+<div class='container'>
+  <h1>Test Report</h1>
+  <p class='overview'>Evaluation of dataset examples. Final conversation score is the minimum weighted step score across the transcript.</p>
+  <div class='summary'>
+    Total Test Cases: 1 |
+    Passed: 0 |
+    Failed: 1 |
+    Execution Time: 1m 0s
+  </div>
+<details class='testcase'><summary class='testcasesum'>Test Case 1: <strong>Objective:</strong> What were total sales in Q3 2024? | <strong>Achieved:</strong> <span class='badge fail'>Fail</span> | <strong>Turns:</strong> 1 | <strong>Score:</strong> 0.70 | <strong>Reason:</strong> Required Scorer</summary><table><thead><tr><th>User</th><th>Assistant</th><th>Performance</th><th>Scores</th></tr></thead><tbody><tr><td>What were total sales in Q3 2024?</td><td><details class='expandfield' open><summary><strong>Response</strong></summary><pre>Question
+What were total sales in Q3 2024?
+
+Answer:
+According to the hive_metastore.analytics_assistant.product_week_channel_kpis table, total sales in Q3 2024 were €4,459,017,155.65, aggregated across all units, categories, brands, products, and channels (QuarterKey = 202403).
+
+Details:
+- Total sales (Q3 2024): €4,459,017,155.65
+- Channel breakdown (aggregated at Channel level using ChannelKey and Channel):
+  - WWM (ChannelKey 0): €2,770,061,048.90
+  - FR (ChannelKey 1): €1,261,125,737.60
+  - ONLINE (ChannelKey 9): €427,830,369.15
+
+Assumptions Made:
+- Time period mapped using QuarterKey in yyyyqq format; Q3 2024 corresponds to QuarterKey = 202403.
+- Aggregation performed at Channel level (ChannelKey, Channel) using the product-week-channel KPIs and summing Sales; this sums across all units, categories, brands, and products.
+- No data completeness check was required since the question is for a historical quarter, not an in-progress period.
+
+SQL Query Used:
+```sql
+SELECT ChannelKey, Channel, SUM(Sales) AS sales_by_channel
+FROM hive_metastore.analytics_assistant.product_week_channel_kpis
+WHERE QuarterKey = 202403
+GROUP BY ChannelKey, Channel
+ORDER BY sales_by_channel DESC;
+```
+
+```sql
+SELECT SUM(Sales) AS total_sales
+FROM hive_metastore.analytics_assistant.product_week_channel_kpis
+WHERE QuarterKey = 202403;
+```
+
+Data Source: hive_metastore.analytics_assistant.product_week_channel_kpis table (Merchandising)</pre></details><details class='expandfield'><summary><strong>AgentUsed</strong></summary><pre>merchandising_descriptives</pre></details><details class='expandfield'><summary><strong>RoutingReason</strong></summary><pre>Question asks about total sales in a specific period (overall financial performance)</pre></details></td><td><div class='perf-box'><div>Total: 40581 ms</div></div></td><td><details><summary>Scorers</summary><div><div><strong>Evaluator</strong><span style='margin-left:6px;color:#b71c1c;font-weight:600'>(Required)</span><span style='margin-left:10px;color:#888;font-size:0.9rem;'>eval/scorers/llm/numerical_accuracy_scorer.yaml</span></div><div><span class='score-fail'>0.00</span><span style='margin-left:12px;color:#555;'>Threshold: 0.80</span><span style='margin-left:12px;color:#555;'>Weight: 0.30</span><span style='margin-left:12px;color:#9a27ad;'><b>Expected:</b> {
+  "response": "Total sales in Q3 2024 were \u20ac4,459,017,155.65.",
+  "agent": "merchandising_descriptives",
+  "reason": "Simple aggregation query for sales metrics"
+}</span></div><div class='explanation'>Step 1: Extract numbers from the expected outcome. The prompt does not provide any separate expected outcome values; only the agent's answer is present. Therefore, the expected set of numbers is empty.
+Step 2: Extract numbers from the agent's answer. Numbers identified (with units/currency and keys): Q3 (3), 2024, €4,459,017,155.65, QuarterKey = 202403, ChannelKey 0 with €2,770,061,048.90, ChannelKey 1 with €1,261,125,737.60, ChannelKey 9 with €427,830,369.15, and repeated QuarterKey = 202403.
+Step 3: Normalize formats. For example, €4,459,017,155.65 → €4459017155.65; €2,770,061,048.90 → €2770061048.90; €1,261,125,737.60 → €1261125737.60; €427,830,369.15 → €427830369.15; QuarterKey 202403 → 202403; ChannelKeys 0, 1, 9; year 2024; quarter 3.
+Step 4: Compare for exact matches. Since no expected outcome numbers were provided, there is nothing to compare against. According to the instructions, if any number is wrong or missing, the score is 0.0 (FALSE). The absence of expected numbers means the comparison cannot validate exact matches, so the criteria for TRUE are not met.
+Conclusion: Score is 0.0 (FALSE) because the expected outcome values are missing, preventing confirmation that all numbers match exactly.</div></div><div><div><strong>Evaluator</strong><span style='margin-left:6px;color:#b71c1c;font-weight:600'>(Required)</span><span style='margin-left:10px;color:#888;font-size:0.9rem;'>eval/scorers/llm/data_methodology_scorer.yaml</span></div><div><span class='score-pass'>1.00</span><span style='margin-left:12px;color:#555;'>Threshold: 0.80</span><span style='margin-left:12px;color:#555;'>Weight: 0.30</span><span style='margin-left:12px;color:#9a27ad;'><b>Expected:</b> {
+  "response": "Total sales in Q3 2024 were \u20ac4,459,017,155.65.",
+  "agent": "merchandising_descriptives",
+  "reason": "Simple aggregation query for sales metrics"
+}</span></div><div class='explanation'>Part 1 – SQL Logic: The question asks for total sales in Q3 2024. The provided SQL uses SUM(Sales), which correctly matches the requested aggregation for a total. The filter uses QuarterKey = 202403, and the assumptions clarify that QuarterKey is in yyyyqq format, meaning 202403 corresponds to Q3 2024. This is a correct period filter. The table hive_metastore.analytics_assistant.product_week_channel_kpis appears appropriate for sales KPIs at a product-week-channel granularity, and summing Sales for the quarter across all rows is a valid approach to return total sales. The second query provides the overall total, and the first query provides a channel breakdown consistent with a GROUP BY ChannelKey, Channel.
+
+Part 2 – Citations: The answer explicitly cites the source table in the narrative (“According to the hive_metastore.analytics_assistant.product_week_channel_kpis table...”) and reiterates it in the Data Source section. The SQL queries reference the same table name, and the answer attributes the figures to that table. Therefore, source attribution and table naming are properly handled.
+
+Given that both the SQL logic is correct and sources are properly cited, the response meets the criteria for a TRUE score.</div></div><div><div><strong>Evaluator</strong><span style='margin-left:10px;color:#888;font-size:0.9rem;'>eval/scorers/llm/completeness_scorer.yaml</span></div><div><span class='score-pass'>1.00</span><span style='margin-left:12px;color:#555;'>Threshold: 0.80</span><span style='margin-left:12px;color:#555;'>Weight: 0.10</span><span style='margin-left:12px;color:#9a27ad;'><b>Expected:</b> {
+  "response": "Total sales in Q3 2024 were \u20ac4,459,017,155.65.",
+  "agent": "merchandising_descriptives",
+  "reason": "Simple aggregation query for sales metrics"
+}</span></div><div class='explanation'>First, identify the parts of the question: it is a single-part request asking for the total sales in Q3 2024. There are no explicit sub-questions such as comparisons, trends, or breakdowns requested. Next, check the answer against this requirement: the response directly provides the total sales figure for Q3 2024 (€4,459,017,155.65). It also clarifies the period mapping (QuarterKey = 202403), the aggregation scope, and includes SQL queries and a data source, which are supportive details but not required. There are no missing components relative to the question's scope, and the core metric requested is clearly stated. Therefore, all parts of the question are fully answered.</div></div><div><div><strong>Evaluator</strong><span style='margin-left:10px;color:#888;font-size:0.9rem;'>eval/scorers/llm/error_handling_scorer.yaml</span></div><div><span class='score-pass'>1.00</span><span style='margin-left:12px;color:#555;'>Threshold: 0.80</span><span style='margin-left:12px;color:#555;'>Weight: 0.05</span><span style='margin-left:12px;color:#9a27ad;'><b>Expected:</b> {
+  "response": "Total sales in Q3 2024 were \u20ac4,459,017,155.65.",
+  "agent": "merchandising_descriptives",
+  "reason": "Simple aggregation query for sales metrics"
+}</span></div><div class='explanation'>First, identify whether the answer encountered any errors or limitations. The response provides a clear total sales figure for Q3 2024, shows a channel-level breakdown, includes the exact SQL used, and specifies the data source. There is no indication of query failure, missing permissions, or unavailable data. Next, check for ambiguity or assumptions that could create limitations. The answer explicitly states assumptions: the QuarterKey mapping (yyyyqq with Q3 2024 as 202403) and that aggregation sums across all units/categories/brands/products. It also notes no data completeness check was performed because the quarter is historical. These points acknowledge potential sources of ambiguity and communicate them in user-friendly terms. Evaluate tone and helpfulness: the tone is clear and non-defensive, and the details provided make the approach transparent. Although alternative actions (e.g., verifying data completeness or confirming fiscal vs. calendar quarter conventions) are not suggested, such alternatives are not necessary in the absence of an error or failure. Therefore, the response contains no errors, and its minor assumptions are clearly communicated, warranting a score of 1.0.</div></div><div><div><strong>Scorer</strong><span style='margin-left:6px;color:#b71c1c;font-weight:600'>(Required)</span><span style='margin-left:10px;color:#888;font-size:0.9rem;'>eval/scorers/programmatic/agent_routing_scorer.py</span></div><div><span class='score-pass'>1.00</span><span style='margin-left:12px;color:#555;'>Threshold: 0.80</span><span style='margin-left:12px;color:#555;'>Weight: 0.20</span></div><div class='explanation'>✓ Correct agent selected: merchandising_descriptives</div></div><div><div><strong>Evaluator</strong><span style='margin-left:10px;color:#888;font-size:0.9rem;'>eval/scorers/llm/assumption_transparency_scorer.yaml</span></div><div><span class='score-pass'>1.00</span><span style='margin-left:12px;color:#555;'>Threshold: 0.80</span><span style='margin-left:12px;color:#555;'>Weight: 0.05</span><span style='margin-left:12px;color:#9a27ad;'><b>Expected:</b> {
+  "response": "Total sales in Q3 2024 were \u20ac4,459,017,155.65.",
+  "agent": "merchandising_descriptives",
+  "reason": "Simple aggregation query for sales metrics"
+}</span></div><div class='explanation'>First, identify ambiguities in the question: "Q3 2024" could refer to calendar vs. fiscal quarter; "total sales" could mean various sales metrics (gross, net, GMV, revenue), and scope could vary by channels, products, geographies. Next, check how the answer handles these. The answer explicitly states key assumptions: it maps Q3 2024 to QuarterKey = 202403 (clarifying the time-period interpretation), specifies aggregation across all units/categories/brands/products/channels (clarifying scope), and states that it sums the Sales field from a specific table (clarifying the metric source and field used). It also notes no data completeness check was needed due to historical period. The answer provides SQL that concretely shows the interpretation applied. While it does not explicitly discuss whether Sales is gross vs. net or define currency beyond using the euro symbol, it still transparently ties the result to a specific data field and table, making its chosen interpretation clear. Therefore, the response meets the criterion of explicitly stating assumptions in the presence of ambiguities.</div></div><div style='margin-top:8px;color:#2c3e50;'><strong>Weighted Average:</strong> 0.70</div></details></td></tr></tbody></table></details></div></body></html>

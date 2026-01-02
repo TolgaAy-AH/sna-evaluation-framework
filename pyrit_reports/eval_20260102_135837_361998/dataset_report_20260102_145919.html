@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>Test Report</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 20px; }
+    .container { background: #fff; padding: 30px; border-radius: 10px; max-width: 1100px; margin: auto; }
+    h1 { text-align: center; color: #2c3e50; }
+    .summary { font-size: 1rem; text-align: center; color: #444; margin-bottom: 30px; }
+    details.expandfield { border: 1px solid #e3eaf2; border-radius: 5px; background: #fafdff; margin-bottom: 4px; padding: 0 8px; }
+    details.expandfield[open] summary { color: #17406c; }
+    details.expandfield summary { font-size: 1rem; cursor: pointer; color: #0172bd; outline: none; padding: 7px 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    th { background: #0277bd; color: #fff; text-align: center; font-weight: bold; font-size: 1.06rem; padding: 12px 8px; letter-spacing: .02em; }
+    td { text-align: left; padding: 10px; border-bottom: 1px solid #eee; vertical-align: top; font-size: 1rem; }
+    .score-pass { color: green; font-weight: bold; }
+    .score-fail { color: red; font-weight: bold; }
+    .badge { display: inline-block; padding: 4px 10px; border-radius: 5px; font-weight: bold; }
+    .badge.pass { background: #c8e6c9; color: #1b5e20; }
+    .badge.fail { background: #ffcdd2; color: #b71c1c; }
+    .explanation { font-size: 0.95rem; margin-top: 6px; color: #555; }
+    pre { white-space: pre-wrap; word-wrap: break-word; font-family: Menlo, Monaco, Consolas, monospace; background: #f8f8fc; margin: 0; font-size: 0.98rem; }
+    details.testcase { margin-bottom: 12px; border: none; }
+    summary.testcasesum {
+      background: #f5faff; color: #1467a3; border: 1.5px solid #b3d1ed; border-radius: 7px;
+      font-weight: 600; font-size: 1.07rem; padding: 12px 22px; margin: 0; cursor: pointer;
+      box-shadow: 0 2px 10px 0 rgba(90,130,160,0.05);
+    }
+    details.testcase[open] summary.testcasesum {
+      background: #e2f1ff; color: #113255; border: 1.5px solid #6ab1f6;
+    }
+    summary.testcasesum:hover { background: #e9f2fc; color: #0d395d; }
+    .perf-box { border: 1px solid #e3eaf2; padding: 8px; border-radius: 6px; background: #fafdff; }
+    .perf-empty { color: #999; }
+    .perf-box details summary { cursor: pointer; color: #0172bd; }
+    .perf-box details { margin-top: 6px; }
+    .perf-box { background: #f8fbff; border: 1px solid #dfe8f5; border-radius: 8px; padding: 10px 12px; font-size: 0.96rem; color: #1f3b57; line-height: 1.45; }
+    .perf-label { font-weight: 600; margin-right: 6px; color: #0f5ba5; }
+    .perf-events { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+    .perf-chip { background: #e9f2fb; border-radius: 12px; padding: 4px 8px; font-size: 0.9rem; color: #0d3a63; border: 1px solid #d2e4f5; }
+    .perf-empty { color: #9aa6b8; }
+  </style>
+</head>
+<body>
+<div class='container'>
+  <h1>Test Report</h1>
+  <p class='overview'>Evaluation of dataset examples. Final conversation score is the minimum weighted step score across the transcript.</p>
+  <div class='summary'>
+    Total Test Cases: 1 |
+    Passed: 0 |
+    Failed: 1 |
+    Execution Time: 36s
+  </div>
+<details class='testcase'><summary class='testcasesum'>Test Case 1: <strong>Objective:</strong> What were total sales in Q3 2024? | <strong>Achieved:</strong> <span class='badge fail'>Fail</span> | <strong>Turns:</strong> 1 | <strong>Score:</strong> 0.00 | <strong>Reason:</strong> Required Scorer</summary><table><thead><tr><th>User</th><th>Assistant</th><th>Performance</th><th>Scores</th></tr></thead><tbody><tr><td>What were total sales in Q3 2024?</td><td><pre>Cannot connect to host localhost:6000 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 6000, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 6000)]
+ClientConnectorError(ConnectionKey(host='localhost', port=6000, is_ssl=False, ssl=True, proxy=None, proxy_auth=None, proxy_headers_hash=None), ConnectionRefusedError(61, "Multiple exceptions: [Errno 61] Connect call failed ('::1', 6000, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 6000)"))
+Traceback (most recent call last):
+  File "/Users/tolgaay/PycharmProjects/sna-evaluation-framework/.venv-eval/lib/python3.10/site-packages/aiohttp/connector.py", line 1268, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+  File "/Users/tolgaay/PycharmProjects/sna-evaluation-framework/.venv-eval/lib/python3.10/site-packages/aiohappyeyeballs/impl.py", line 141, in start_connection
+    raise OSError(first_errno, msg)
+ConnectionRefusedError: [Errno 61] Multiple exceptions: [Errno 61] Connect call failed ('::1', 6000, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 6000)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/tolgaay/PycharmProjects/sna-evaluation-framework/.venv-eval/lib/python3.10/site-packages/pyrit/prompt_normalizer/prompt_normalizer.py", line 99, in send_prompt_async
+    responses = await target.send_prompt_async(message=request)
+  File "/Users/tolgaay/PycharmProjects/sn</pre></td><td><div class='perf-box perf-empty'>n/a</div></td><td><details><summary>Scorers</summary><div><div><strong>Evaluator</strong><span style='margin-left:6px;color:#b71c1c;font-weight:600'>(Required)</span><span style='margin-left:10px;color:#888;font-size:0.9rem;'>eval/scorers/llm/numerical_accuracy_scorer.yaml</span></div><div><span class='score-fail'>0.00</span><span style='margin-left:12px;color:#555;'>Threshold: 0.80</span><span style='margin-left:12px;color:#555;'>Weight: 0.30</span><span style='margin-left:12px;color:#9a27ad;'><b>Expected:</b> {
+  "response": "\u20ac4,459,017,155.65 total sales in Q3 2024",
+  "agent": "merchandising_descriptives",
+  "reason": "Question asks for total sales revenue for a specific period (Q3 2024)"
+}</span></div><div class='explanation'>Step 1: Identify the two items to compare: the expected outcome and the agent's answer. In the provided content, only an error traceback (the agent's answer) is present; no expected outcome with target numbers is provided.
+Step 2: Extract all numbers from the agent's answer. The traceback contains multiple numeric values, including ports and error codes: 6000, 61, ::1 (contains 1), 6000, 0, 0, 127.0.0.1 (contains 127, 0, 0, 1), 6000, 61, Python version 3.10, line numbers 1268, 141, 99, etc.
+Step 3: Normalize formatting. Numbers such as 127.0.0.1 are split into numeric components if needed (127, 0, 0, 1), and decimals like 3.10 remain as-is. No currency, percentage, or unit-specific formatting to consider here beyond ports and error codes.
+Step 4: Compare each number for exact match against the expected outcome. Since the expected outcome is missing, there is no basis for comparison. Per instructions, if any number is wrong or missing, the score must be 0.0.
+Conclusion: Because the expected outcome is not provided (i.e., missing), we cannot verify exact matches; therefore, the correct score is 0.0 (FALSE).</div></div><div><div><strong>Evaluator</strong><span style='margin-left:6px;color:#b71c1c;font-weight:600'>(Required)</span><span style='margin-left:10px;color:#888;font-size:0.9rem;'>eval/scorers/llm/data_methodology_scorer.yaml</span></div><div><span class='score-fail'>0.00</span><span style='margin-left:12px;color:#555;'>Threshold: 0.80</span><span style='margin-left:12px;color:#555;'>Weight: 0.30</span><span style='margin-left:12px;color:#9a27ad;'><b>Expected:</b> {
+  "response": "\u20ac4,459,017,155.65 total sales in Q3 2024",
+  "agent": "merchandising_descriptives",
+  "reason": "Question asks for total sales revenue for a specific period (Q3 2024)"
+}</span></div><div class='explanation'>There is no SQL query or analysis present to evaluate. Without any SQL, we cannot verify whether the aggregation functions match the question (e.g., AVG vs SUM), whether filters (such as quarter boundaries like Q2 corresponding to weeks 14–26) are correctly applied, or whether appropriate tables are selected. Additionally, there are no source citations: no table names are referenced in the answer text, and no explicit attribution (e.g., “According to &lt;table_name&gt;…”) is provided. Because the response lacks both evaluable SQL logic and proper source citations, it does not meet the criteria for a TRUE rating.</div></div><div><div><strong>Evaluator</strong><span style='margin-left:10px;color:#888;font-size:0.9rem;'>eval/scorers/llm/assumption_transparency_scorer.yaml</span></div><div><span class='score-fail'>0.00</span><span style='margin-left:12px;color:#555;'>Threshold: 0.80</span><span style='margin-left:12px;color:#555;'>Weight: 0.05</span><span style='margin-left:12px;color:#9a27ad;'><b>Expected:</b> {
+  "response": "\u20ac4,459,017,155.65 total sales in Q3 2024",
+  "agent": "merchandising_descriptives",
+  "reason": "Question asks for total sales revenue for a specific period (Q3 2024)"
+}</span></div><div class='explanation'>The user message is a connection error traceback, which is inherently ambiguous about several key aspects: what service should be running on localhost:6000, whether the request should be HTTP or HTTPS (noted by is_ssl=False vs ssl=True), the expected environment (local vs containerized, proxy, firewall), and configuration details (IPv4 vs IPv6 binding, server startup status, port correctness). Multiple interpretations are possible: a missing local server, a misconfigured SSL setting, or a network binding issue. However, no assistant answer is provided here, so there is no explicit statement of assumptions, no clarification of which interpretation is being used, and no rationale addressing these ambiguities. Given the ambiguous question and the absence of any articulated assumptions in an answer to assess, the score must be 0.0.</div></div><div><div><strong>Evaluator</strong><span style='margin-left:10px;color:#888;font-size:0.9rem;'>eval/scorers/llm/completeness_scorer.yaml</span></div><div><span class='score-fail'>0.00</span><span style='margin-left:12px;color:#555;'>Threshold: 0.80</span><span style='margin-left:12px;color:#555;'>Weight: 0.10</span><span style='margin-left:12px;color:#9a27ad;'><b>Expected:</b> {
+  "response": "\u20ac4,459,017,155.65 total sales in Q3 2024",
+  "agent": "merchandising_descriptives",
+  "reason": "Question asks for total sales revenue for a specific period (Q3 2024)"
+}</span></div><div class='explanation'>Step 1: Identify the parts of the user's request. The user provided a connection error and stack trace indicating a ClientConnectorError to localhost:6000 with connection refused, and hints of an SSL mismatch (is_ssl=False, ssl=True), plus dual IPv6/IPv4 attempts. Implicitly, they are seeking diagnosis and actionable troubleshooting steps (e.g., whether the server is running, correct port, URL scheme/SSL settings, IPv4 vs IPv6 binding, firewall, and configuration specifics for aiohttp/pyrit).
+Step 2: Check if each part was addressed in the assistant's answer. There is no assistant answer present to evaluate; therefore, no diagnosis, no mention of SSL scheme mismatch, no server/port checks, no IPv4/IPv6 considerations, and no concrete remediation steps are provided.
+Step 3: Conclusion. Significant parts of the implicit question are unanswered because there is no response to evaluate. Hence, the answer is incomplete.</div></div><div><div><strong>Scorer</strong><span style='margin-left:6px;color:#b71c1c;font-weight:600'>(Required)</span><span style='margin-left:10px;color:#888;font-size:0.9rem;'>eval/scorers/programmatic/agent_routing_scorer.py</span></div><div><span class='score-fail'>0.00</span><span style='margin-left:12px;color:#555;'>Threshold: 0.80</span><span style='margin-left:12px;color:#555;'>Weight: 0.20</span></div><div class='explanation'>Agent information missing from response</div></div><div><div><strong>Evaluator</strong><span style='margin-left:10px;color:#888;font-size:0.9rem;'>eval/scorers/llm/error_handling_scorer.yaml</span></div><div><span class='score-fail'>0.00</span><span style='margin-left:12px;color:#555;'>Threshold: 0.80</span><span style='margin-left:12px;color:#555;'>Weight: 0.05</span><span style='margin-left:12px;color:#9a27ad;'><b>Expected:</b> {
+  "response": "\u20ac4,459,017,155.65 total sales in Q3 2024",
+  "agent": "merchandising_descriptives",
+  "reason": "Question asks for total sales revenue for a specific period (Q3 2024)"
+}</span></div><div class='explanation'>First, there is a clear error: the client cannot connect to localhost:6000, with multiple connection refused exceptions for both IPv6 (::1) and IPv4 (127.0.0.1), and an SSL mismatch indicated in the connector details. Next, evaluate how the error is communicated. The content presented is a raw stack trace with technical details (e.g., ClientConnectorError, ConnectionRefusedError, aiohttp internals). It does not provide a plain-language explanation of why the connection failed or what it means for the user. It offers no guidance on next steps (e.g., verifying the service is running, checking port/host, SSL settings, firewall, or configuration). The tone is purely technical, not helpful or empathetic. Because the error is not clearly explained in a user-friendly way and no alternatives or actions are suggested, the error handling quality is poor, warranting a score of 0.0.</div></div><div style='margin-top:8px;color:#2c3e50;'><strong>Weighted Average:</strong> 0.00</div></details></td></tr></tbody></table></details></div></body></html>

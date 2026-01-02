@@ -1,0 +1,992 @@
+{
+  "report_threshold": 0.8,
+  "execution_time_seconds": 104.5991690158844,
+  "dataset_path": "eval/datasets_sensitive/in_scope_questions_hydrated_json.yaml",
+  "output_directory": "/Users/tolgaay/PycharmProjects/sna-evaluation-framework/pyrit_reports",
+  "report_html": "/Users/tolgaay/PycharmProjects/sna-evaluation-framework/pyrit_reports/dataset_report.html",
+  "scorer_weights": {
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/numerical_accuracy_scorer.yaml\", \"sub_identifier\": null}": 0.3,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/data_methodology_scorer.yaml\", \"sub_identifier\": null}": 0.3,
+    "{\"config_path\": \"eval/scorers/programmatic/agent_routing_scorer.py\", \"name\": \"AgentRoutingScorer\"}": 0.2,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/completeness_scorer.yaml\", \"sub_identifier\": null}": 0.1,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/assumption_transparency_scorer.yaml\", \"sub_identifier\": null}": 0.05,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/error_handling_scorer.yaml\", \"sub_identifier\": null}": 0.05
+  },
+  "scorer_required": {
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/numerical_accuracy_scorer.yaml\", \"sub_identifier\": null}": true,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/data_methodology_scorer.yaml\", \"sub_identifier\": null}": true,
+    "{\"config_path\": \"eval/scorers/programmatic/agent_routing_scorer.py\", \"name\": \"AgentRoutingScorer\"}": true,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/completeness_scorer.yaml\", \"sub_identifier\": null}": false,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/assumption_transparency_scorer.yaml\", \"sub_identifier\": null}": false,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/error_handling_scorer.yaml\", \"sub_identifier\": null}": false
+  },
+  "raw_result_count": 3,
+  "evaluators": [
+    {
+      "identifier": {
+        "__type__": "Evaluator",
+        "__module__": "pyrit.score.evaluator",
+        "sub_identifier": null,
+        "config_path": "eval/scorers/llm/numerical_accuracy_scorer.yaml"
+      },
+      "display_path": "eval/scorers/llm/numerical_accuracy_scorer.yaml",
+      "weight": 0.3,
+      "required": true
+    },
+    {
+      "identifier": {
+        "__type__": "Evaluator",
+        "__module__": "pyrit.score.evaluator",
+        "sub_identifier": null,
+        "config_path": "eval/scorers/llm/data_methodology_scorer.yaml"
+      },
+      "display_path": "eval/scorers/llm/data_methodology_scorer.yaml",
+      "weight": 0.3,
+      "required": true
+    },
+    {
+      "identifier": {
+        "name": "AgentRoutingScorer",
+        "config_path": "eval/scorers/programmatic/agent_routing_scorer.py"
+      },
+      "display_path": "eval/scorers/programmatic/agent_routing_scorer.py",
+      "weight": 0.2,
+      "required": true
+    },
+    {
+      "identifier": {
+        "__type__": "Evaluator",
+        "__module__": "pyrit.score.evaluator",
+        "sub_identifier": null,
+        "config_path": "eval/scorers/llm/completeness_scorer.yaml"
+      },
+      "display_path": "eval/scorers/llm/completeness_scorer.yaml",
+      "weight": 0.1,
+      "required": false
+    },
+    {
+      "identifier": {
+        "__type__": "Evaluator",
+        "__module__": "pyrit.score.evaluator",
+        "sub_identifier": null,
+        "config_path": "eval/scorers/llm/assumption_transparency_scorer.yaml"
+      },
+      "display_path": "eval/scorers/llm/assumption_transparency_scorer.yaml",
+      "weight": 0.05,
+      "required": false
+    },
+    {
+      "identifier": {
+        "__type__": "Evaluator",
+        "__module__": "pyrit.score.evaluator",
+        "sub_identifier": null,
+        "config_path": "eval/scorers/llm/error_handling_scorer.yaml"
+      },
+      "display_path": "eval/scorers/llm/error_handling_scorer.yaml",
+      "weight": 0.05,
+      "required": false
+    }
+  ],
+  "chat_reports": [
+    {
+      "objective": "What were total sales in Q3 2024?",
+      "achieved_objective": false,
+      "attack_identifier": {
+        "__type__": "PromptSendingAttack",
+        "__module__": "pyrit.executor.attack.single_turn.prompt_sending",
+        "id": "91c04031-2e0f-4411-a3cd-68a33a25ee66"
+      },
+      "executed_turns": 1,
+      "outcome": "failure",
+      "outcome_reason": "Objective not achieved according to scorer",
+      "metadata": {},
+      "conversation_id": "e56a4d43-7e2c-42b5-8e1c-8f93ba354847",
+      "transcript": [
+        {
+          "turn_index": 1,
+          "pieces": [
+            {
+              "role": "user",
+              "original_value": "What were total sales in Q3 2024?",
+              "converted_value": "What were total sales in Q3 2024?",
+              "scores": []
+            },
+            {
+              "role": "assistant",
+              "original_value": "{'Response': 'Question\\nWhat were total sales in Q3 2024?\\n\\nAnswer:\\nAccording to the analytics_assistant.product_week_channel_kpis table, total sales in Q3 2024 were \u20ac4,459,017,155.65.\\n\\nDetails:\\n- Time dimension used: QuarterKey = 202403 (Q3 2024)\\n- Metric: SUM(Sales) in euros\\n- Aggregation level: Overall (aggregated across all units, categories, brands, products, and channels)\\n\\nAssumptions Made:\\n- Interpreted \u201cQ3 2024\u201d using the QuarterKey time dimension (yyyyqq) and filtered exactly on QuarterKey = 202403.\\n- Aggregated at the total level across all channels and product hierarchies (no additional filters).\\n\\nSQL Query Used:\\n```sql\\nSELECT SUM(Sales) AS total_sales\\nFROM hive_metastore.analytics_assistant.product_week_channel_kpis\\nWHERE QuarterKey = 202403\\n```\\n\\nData Source: hive_metastore.analytics_assistant.product_week_channel_kpis table', 'AgentUsed': 'merchandising_descriptives', 'RoutingReason': 'Question asks about total sales revenue for a specific period (Q3 2024)'}",
+              "converted_value": "{'Response': 'Question\\nWhat were total sales in Q3 2024?\\n\\nAnswer:\\nAccording to the analytics_assistant.product_week_channel_kpis table, total sales in Q3 2024 were \u20ac4,459,017,155.65.\\n\\nDetails:\\n- Time dimension used: QuarterKey = 202403 (Q3 2024)\\n- Metric: SUM(Sales) in euros\\n- Aggregation level: Overall (aggregated across all units, categories, brands, products, and channels)\\n\\nAssumptions Made:\\n- Interpreted \u201cQ3 2024\u201d using the QuarterKey time dimension (yyyyqq) and filtered exactly on QuarterKey = 202403.\\n- Aggregated at the total level across all channels and product hierarchies (no additional filters).\\n\\nSQL Query Used:\\n```sql\\nSELECT SUM(Sales) AS total_sales\\nFROM hive_metastore.analytics_assistant.product_week_channel_kpis\\nWHERE QuarterKey = 202403\\n```\\n\\nData Source: hive_metastore.analytics_assistant.product_week_channel_kpis table', 'AgentUsed': 'merchandising_descriptives', 'RoutingReason': 'Question asks about total sales revenue for a specific period (Q3 2024)'}",
+              "scores": [
+                {
+                  "score": 1.0,
+                  "raw_score": "1.0",
+                  "score_type": "float_scale",
+                  "rationale": "Step 1: Identify parts of the question. The user asks a single, specific item: the total sales for Q3 2024. There are no explicit requests for comparisons, breakdowns, or multiple metrics.\nStep 2: Check if each part is addressed. The answer provides a single total sales figure (\u20ac4,459,017,155.65) for Q3 2024.\nStep 3: Consider completeness and context. The answer clearly states the time filter (QuarterKey = 202403), the metric (SUM(Sales) in euros), the aggregation level (overall), and even includes the SQL and data source. No additional context such as trends or comparisons was requested, so none is missing. Any potential ambiguity about quarter definition or currency is acknowledged via assumptions. Therefore, the answer fully addresses the single-part question.",
+                  "scorer_role": "auxiliary",
+                  "expected_output": "{\n  \"response\": \"Total sales in Q3 2024 were \u20ac1,234,567.89.\",\n  \"agent\": \"data_engineer\",\n  \"reason\": \"Simple aggregation query for sales metrics\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/completeness_scorer.yaml"
+                  },
+                  "score_category": [
+                    "completeness"
+                  ],
+                  "threshold": 0.8,
+                  "passed": true,
+                  "weight": 0.1,
+                  "required": false
+                },
+                {
+                  "score": 0.0,
+                  "raw_score": "0.0",
+                  "score_type": "float_scale",
+                  "rationale": "Step 1: Identify numbers in the expected outcome and the agent's answer. The prompt only provides the agent's answer; no separate expected outcome is present to compare against.\nStep 2: Extract numbers from the agent's answer: \u20ac4,459,017,155.65 (normalized to 4459017155.65 with euro currency), QuarterKey 202403, and the time reference Q3 2024 (numbers 3 and 2024).\nStep 3: Normalize formatting for comparison. The extracted agent numbers become: 4459017155.65 \u20ac, 202403, 3, 2024.\nStep 4: Compare each number with the expected outcome. Since the expected outcome is missing, there are no reference numbers to compare against. Per instructions, if any number is wrong or missing, the score is 0.0 (FALSE). The absence of expected numbers means we cannot verify exact matches, resulting in a FALSE score.\nConclusion: Without an expected outcome, exact numerical matching cannot be confirmed; therefore, the score is 0.0.",
+                  "scorer_role": "objective",
+                  "expected_output": "{\n  \"response\": \"Total sales in Q3 2024 were \u20ac1,234,567.89.\",\n  \"agent\": \"data_engineer\",\n  \"reason\": \"Simple aggregation query for sales metrics\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/numerical_accuracy_scorer.yaml"
+                  },
+                  "score_category": [
+                    "numerical_accuracy"
+                  ],
+                  "threshold": 0.8,
+                  "passed": false,
+                  "weight": 0.3,
+                  "required": true
+                },
+                {
+                  "score": 1.0,
+                  "raw_score": "1.0",
+                  "score_type": "float_scale",
+                  "rationale": "Part 1 \u2013 SQL Logic: The question asks for total sales in Q3 2024. The query uses SUM(Sales), which correctly matches the \"total\" aggregation required. The time filter uses QuarterKey = 202403, consistent with a yyyyqq format where 03 denotes Q3; thus Q3 2024 is correctly represented as 202403. The selected table (hive_metastore.analytics_assistant.product_week_channel_kpis) is appropriate for weekly/channel product KPIs and contains the QuarterKey field, making it suitable for aggregating sales over the specified quarter across all dimensions without additional filters.\n\nPart 2 \u2013 Citations: The answer explicitly cites the source both in narrative (\"According to the analytics_assistant.product_week_channel_kpis table\") and in the SQL (hive_metastore.analytics_assistant.product_week_channel_kpis). It clearly attributes the result to the named table and specifies the metric used, satisfying the citation requirements.\n\nGiven that both the SQL logic and the source attribution are correct and complete, the score is TRUE.",
+                  "scorer_role": "auxiliary",
+                  "expected_output": "{\n  \"response\": \"Total sales in Q3 2024 were \u20ac1,234,567.89.\",\n  \"agent\": \"data_engineer\",\n  \"reason\": \"Simple aggregation query for sales metrics\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/data_methodology_scorer.yaml"
+                  },
+                  "score_category": [
+                    "data_methodology"
+                  ],
+                  "threshold": 0.8,
+                  "passed": true,
+                  "weight": 0.3,
+                  "required": true
+                },
+                {
+                  "score": 0.0,
+                  "raw_score": "0.0",
+                  "score_type": "float_scale",
+                  "rationale": "\u2717 Wrong agent: expected data_engineer, got merchandising_descriptives",
+                  "scorer_role": null,
+                  "expected_output": null,
+                  "scorer_identifier": {
+                    "name": "AgentRoutingScorer",
+                    "config_path": "eval/scorers/programmatic/agent_routing_scorer.py"
+                  },
+                  "score_category": [
+                    "agent_routing"
+                  ],
+                  "threshold": 0.8,
+                  "passed": false,
+                  "weight": 0.2,
+                  "required": true
+                },
+                {
+                  "score": 1.0,
+                  "raw_score": "1.0",
+                  "score_type": "float_scale",
+                  "rationale": "First, I reviewed the assistant\u2019s response to see if it indicated any errors or limitations such as unavailable data, failed queries, permission issues, ambiguity, or incomplete data. The answer provides a specific total sales figure for Q3 2024, cites the exact data source table, includes the SQL used, and clearly states the time key and aggregation approach. There is no mention of data retrieval problems, missing permissions, or failures. Next, I considered potential ambiguity: the definition of \u201cQ3 2024\u201d and what \u201cSales\u201d represents. The assistant explicitly interprets Q3 via QuarterKey = 202403 (yyyyqq) and clarifies the metric as SUM(Sales) in euros at an overall aggregation, which addresses common ambiguities. While fiscal versus calendar quarters could vary by organization, the assistant\u2019s assumption is clearly communicated. Because no errors or limitations were present and the assumptions are clearly explained in a user-friendly manner, the response meets the criteria for a top score.",
+                  "scorer_role": "auxiliary",
+                  "expected_output": "{\n  \"response\": \"Total sales in Q3 2024 were \u20ac1,234,567.89.\",\n  \"agent\": \"data_engineer\",\n  \"reason\": \"Simple aggregation query for sales metrics\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/error_handling_scorer.yaml"
+                  },
+                  "score_category": [
+                    "error_handling"
+                  ],
+                  "threshold": 0.8,
+                  "passed": true,
+                  "weight": 0.05,
+                  "required": false
+                },
+                {
+                  "score": 1.0,
+                  "raw_score": "1.0",
+                  "score_type": "float_scale",
+                  "rationale": "The question 'What were total sales in Q3 2024?' is potentially ambiguous regarding the definition of Q3 (calendar vs fiscal), the exact metric for 'sales' (gross vs net, returns), currency, and aggregation scope (channels, products, regions). The answer directly addresses these by: (1) specifying the time interpretation via 'QuarterKey = 202403 (yyyyqq)', (2) defining the metric as 'SUM(Sales) in euros', (3) clarifying aggregation as overall across all units, categories, brands, products, and channels, and (4) listing explicit 'Assumptions Made' that it used that QuarterKey and aggregated across all channels and product hierarchies. It also shows the exact SQL and data source. While it does not explicitly discuss alternative interpretations like fiscal vs calendar or net vs gross beyond the chosen metric, it clearly states the assumptions it made and the interpretation chosen. Therefore, the answer meets the criterion of explicitly stating assumptions in the face of ambiguity.",
+                  "scorer_role": "auxiliary",
+                  "expected_output": "{\n  \"response\": \"Total sales in Q3 2024 were \u20ac1,234,567.89.\",\n  \"agent\": \"data_engineer\",\n  \"reason\": \"Simple aggregation query for sales metrics\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/assumption_transparency_scorer.yaml"
+                  },
+                  "score_category": [
+                    "assumption_transparency"
+                  ],
+                  "threshold": 0.8,
+                  "passed": true,
+                  "weight": 0.05,
+                  "required": false
+                }
+              ],
+              "prompt_metadata": {
+                "latency_ms": 90982,
+                "latency_first_token_ms": 90982
+              },
+              "latency_ms": 90982,
+              "latency_first_token_ms": 90982,
+              "weighted_average": 0.5
+            }
+          ]
+        }
+      ],
+      "aggregated_metrics": {
+        "total_turns": 1,
+        "final_score": 1.0,
+        "scores_by_turn": [
+          {
+            "turn_index": 1,
+            "score_details": [
+              {
+                "score": 1.0,
+                "raw_score": "1.0",
+                "score_type": "float_scale",
+                "rationale": "Step 1: Identify parts of the question. The user asks a single, specific item: the total sales for Q3 2024. There are no explicit requests for comparisons, breakdowns, or multiple metrics.\nStep 2: Check if each part is addressed. The answer provides a single total sales figure (\u20ac4,459,017,155.65) for Q3 2024.\nStep 3: Consider completeness and context. The answer clearly states the time filter (QuarterKey = 202403), the metric (SUM(Sales) in euros), the aggregation level (overall), and even includes the SQL and data source. No additional context such as trends or comparisons was requested, so none is missing. Any potential ambiguity about quarter definition or currency is acknowledged via assumptions. Therefore, the answer fully addresses the single-part question.",
+                "scorer_role": "auxiliary",
+                "expected_output": "{\n  \"response\": \"Total sales in Q3 2024 were \u20ac1,234,567.89.\",\n  \"agent\": \"data_engineer\",\n  \"reason\": \"Simple aggregation query for sales metrics\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/completeness_scorer.yaml"
+                },
+                "score_category": [
+                  "completeness"
+                ],
+                "threshold": 0.8,
+                "passed": true,
+                "weight": 0.1,
+                "required": false
+              },
+              {
+                "score": 0.0,
+                "raw_score": "0.0",
+                "score_type": "float_scale",
+                "rationale": "Step 1: Identify numbers in the expected outcome and the agent's answer. The prompt only provides the agent's answer; no separate expected outcome is present to compare against.\nStep 2: Extract numbers from the agent's answer: \u20ac4,459,017,155.65 (normalized to 4459017155.65 with euro currency), QuarterKey 202403, and the time reference Q3 2024 (numbers 3 and 2024).\nStep 3: Normalize formatting for comparison. The extracted agent numbers become: 4459017155.65 \u20ac, 202403, 3, 2024.\nStep 4: Compare each number with the expected outcome. Since the expected outcome is missing, there are no reference numbers to compare against. Per instructions, if any number is wrong or missing, the score is 0.0 (FALSE). The absence of expected numbers means we cannot verify exact matches, resulting in a FALSE score.\nConclusion: Without an expected outcome, exact numerical matching cannot be confirmed; therefore, the score is 0.0.",
+                "scorer_role": "objective",
+                "expected_output": "{\n  \"response\": \"Total sales in Q3 2024 were \u20ac1,234,567.89.\",\n  \"agent\": \"data_engineer\",\n  \"reason\": \"Simple aggregation query for sales metrics\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/numerical_accuracy_scorer.yaml"
+                },
+                "score_category": [
+                  "numerical_accuracy"
+                ],
+                "threshold": 0.8,
+                "passed": false,
+                "weight": 0.3,
+                "required": true
+              },
+              {
+                "score": 1.0,
+                "raw_score": "1.0",
+                "score_type": "float_scale",
+                "rationale": "Part 1 \u2013 SQL Logic: The question asks for total sales in Q3 2024. The query uses SUM(Sales), which correctly matches the \"total\" aggregation required. The time filter uses QuarterKey = 202403, consistent with a yyyyqq format where 03 denotes Q3; thus Q3 2024 is correctly represented as 202403. The selected table (hive_metastore.analytics_assistant.product_week_channel_kpis) is appropriate for weekly/channel product KPIs and contains the QuarterKey field, making it suitable for aggregating sales over the specified quarter across all dimensions without additional filters.\n\nPart 2 \u2013 Citations: The answer explicitly cites the source both in narrative (\"According to the analytics_assistant.product_week_channel_kpis table\") and in the SQL (hive_metastore.analytics_assistant.product_week_channel_kpis). It clearly attributes the result to the named table and specifies the metric used, satisfying the citation requirements.\n\nGiven that both the SQL logic and the source attribution are correct and complete, the score is TRUE.",
+                "scorer_role": "auxiliary",
+                "expected_output": "{\n  \"response\": \"Total sales in Q3 2024 were \u20ac1,234,567.89.\",\n  \"agent\": \"data_engineer\",\n  \"reason\": \"Simple aggregation query for sales metrics\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/data_methodology_scorer.yaml"
+                },
+                "score_category": [
+                  "data_methodology"
+                ],
+                "threshold": 0.8,
+                "passed": true,
+                "weight": 0.3,
+                "required": true
+              },
+              {
+                "score": 0.0,
+                "raw_score": "0.0",
+                "score_type": "float_scale",
+                "rationale": "\u2717 Wrong agent: expected data_engineer, got merchandising_descriptives",
+                "scorer_role": null,
+                "expected_output": null,
+                "scorer_identifier": {
+                  "name": "AgentRoutingScorer",
+                  "config_path": "eval/scorers/programmatic/agent_routing_scorer.py"
+                },
+                "score_category": [
+                  "agent_routing"
+                ],
+                "threshold": 0.8,
+                "passed": false,
+                "weight": 0.2,
+                "required": true
+              },
+              {
+                "score": 1.0,
+                "raw_score": "1.0",
+                "score_type": "float_scale",
+                "rationale": "First, I reviewed the assistant\u2019s response to see if it indicated any errors or limitations such as unavailable data, failed queries, permission issues, ambiguity, or incomplete data. The answer provides a specific total sales figure for Q3 2024, cites the exact data source table, includes the SQL used, and clearly states the time key and aggregation approach. There is no mention of data retrieval problems, missing permissions, or failures. Next, I considered potential ambiguity: the definition of \u201cQ3 2024\u201d and what \u201cSales\u201d represents. The assistant explicitly interprets Q3 via QuarterKey = 202403 (yyyyqq) and clarifies the metric as SUM(Sales) in euros at an overall aggregation, which addresses common ambiguities. While fiscal versus calendar quarters could vary by organization, the assistant\u2019s assumption is clearly communicated. Because no errors or limitations were present and the assumptions are clearly explained in a user-friendly manner, the response meets the criteria for a top score.",
+                "scorer_role": "auxiliary",
+                "expected_output": "{\n  \"response\": \"Total sales in Q3 2024 were \u20ac1,234,567.89.\",\n  \"agent\": \"data_engineer\",\n  \"reason\": \"Simple aggregation query for sales metrics\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/error_handling_scorer.yaml"
+                },
+                "score_category": [
+                  "error_handling"
+                ],
+                "threshold": 0.8,
+                "passed": true,
+                "weight": 0.05,
+                "required": false
+              },
+              {
+                "score": 1.0,
+                "raw_score": "1.0",
+                "score_type": "float_scale",
+                "rationale": "The question 'What were total sales in Q3 2024?' is potentially ambiguous regarding the definition of Q3 (calendar vs fiscal), the exact metric for 'sales' (gross vs net, returns), currency, and aggregation scope (channels, products, regions). The answer directly addresses these by: (1) specifying the time interpretation via 'QuarterKey = 202403 (yyyyqq)', (2) defining the metric as 'SUM(Sales) in euros', (3) clarifying aggregation as overall across all units, categories, brands, products, and channels, and (4) listing explicit 'Assumptions Made' that it used that QuarterKey and aggregated across all channels and product hierarchies. It also shows the exact SQL and data source. While it does not explicitly discuss alternative interpretations like fiscal vs calendar or net vs gross beyond the chosen metric, it clearly states the assumptions it made and the interpretation chosen. Therefore, the answer meets the criterion of explicitly stating assumptions in the face of ambiguity.",
+                "scorer_role": "auxiliary",
+                "expected_output": "{\n  \"response\": \"Total sales in Q3 2024 were \u20ac1,234,567.89.\",\n  \"agent\": \"data_engineer\",\n  \"reason\": \"Simple aggregation query for sales metrics\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/assumption_transparency_scorer.yaml"
+                },
+                "score_category": [
+                  "assumption_transparency"
+                ],
+                "threshold": 0.8,
+                "passed": true,
+                "weight": 0.05,
+                "required": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "objective": "What was the average weekly customer count in Q2 2024?",
+      "achieved_objective": false,
+      "attack_identifier": {
+        "__type__": "PromptSendingAttack",
+        "__module__": "pyrit.executor.attack.single_turn.prompt_sending",
+        "id": "91c04031-2e0f-4411-a3cd-68a33a25ee66"
+      },
+      "executed_turns": 1,
+      "outcome": "failure",
+      "outcome_reason": "Objective not achieved according to scorer",
+      "metadata": {},
+      "conversation_id": "186ed1dc-91a0-4c5a-b4e9-82e57b85cf21",
+      "transcript": [
+        {
+          "turn_index": 1,
+          "pieces": [
+            {
+              "role": "user",
+              "original_value": "What was the average weekly customer count in Q2 2024?",
+              "converted_value": "What was the average weekly customer count in Q2 2024?",
+              "scores": []
+            },
+            {
+              "role": "assistant",
+              "original_value": "{'Response': 'Thank you for your question about the average weekly customer count in Q2 2024!\\n\\nThis functionality is currently not yet available. We are working hard to answer questions about customers, segments, and demographics in the future.\\n\\nNote: This system can only answer descriptive questions (what, how much). Diagnostic, predictive, and prescriptive analyses are not (yet) supported.\\n\\nAt the moment, I can help you with descriptive questions about:\\n- Sales and revenue figures\\n- Product and category performance\\n- Promotional effectiveness (promo pressure, promo sales)\\n- Channel comparisons (online vs stores)\\n- Brand and assortment analysis\\n\\nDo you have a descriptive question about one of these topics?', 'AgentUsed': 'customer_insights', 'RoutingReason': 'Question asks about customer count (average weekly customers) for Q2 2024'}",
+              "converted_value": "{'Response': 'Thank you for your question about the average weekly customer count in Q2 2024!\\n\\nThis functionality is currently not yet available. We are working hard to answer questions about customers, segments, and demographics in the future.\\n\\nNote: This system can only answer descriptive questions (what, how much). Diagnostic, predictive, and prescriptive analyses are not (yet) supported.\\n\\nAt the moment, I can help you with descriptive questions about:\\n- Sales and revenue figures\\n- Product and category performance\\n- Promotional effectiveness (promo pressure, promo sales)\\n- Channel comparisons (online vs stores)\\n- Brand and assortment analysis\\n\\nDo you have a descriptive question about one of these topics?', 'AgentUsed': 'customer_insights', 'RoutingReason': 'Question asks about customer count (average weekly customers) for Q2 2024'}",
+              "scores": [
+                {
+                  "score": 0.0,
+                  "raw_score": "0.0",
+                  "score_type": "float_scale",
+                  "rationale": "\u2717 Wrong agent: expected analytics_specialist, got customer_insights",
+                  "scorer_role": null,
+                  "expected_output": null,
+                  "scorer_identifier": {
+                    "name": "AgentRoutingScorer",
+                    "config_path": "eval/scorers/programmatic/agent_routing_scorer.py"
+                  },
+                  "score_category": [
+                    "agent_routing"
+                  ],
+                  "threshold": 0.8,
+                  "passed": false,
+                  "weight": 0.2,
+                  "required": true
+                },
+                {
+                  "score": 0.0,
+                  "raw_score": "0.0",
+                  "score_type": "float_scale",
+                  "rationale": "The evaluation requires checking both SQL logic and source citations. First, on SQL logic: the answer provides no SQL query at all, so there is no aggregation matching the request (e.g., AVG for average weekly customer count), no filter for Q2 2024 (e.g., April\u2013June or weeks 14\u201326), and no validation of table selection. This constitutes a major omission. Second, on citations: the answer does not mention any table names or provide explicit source attribution, such as referencing a customer or transactions table. Because the SQL logic is absent and citations are missing, the response fails the criteria and receives a score of 0.0.",
+                  "scorer_role": "auxiliary",
+                  "expected_output": "{\n  \"response\": \"The average weekly customer count in Q2 2024 was 45,678 customers.\",\n  \"agent\": \"analytics_specialist\",\n  \"reason\": \"Average calculation over time period requires analytics agent\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/data_methodology_scorer.yaml"
+                  },
+                  "score_category": [
+                    "data_methodology"
+                  ],
+                  "threshold": 0.8,
+                  "passed": false,
+                  "weight": 0.3,
+                  "required": true
+                },
+                {
+                  "score": 1.0,
+                  "raw_score": "1.0",
+                  "score_type": "float_scale",
+                  "rationale": "First, identify whether the assistant encountered an error or limitation. The response clearly states a capability limitation: questions about customers, segments, and demographics (including average weekly customer count) are not yet supported. Next, assess clarity and tone. The explanation is straightforward and user-friendly (\u201cThis functionality is currently not yet available\u201d), avoids technical jargon, and maintains a helpful tone by acknowledging future improvements. Then, check for alternatives. The assistant offers actionable alternatives by listing supported descriptive topics (sales, product performance, promotions, channels, brand/assortment) and inviting the user to ask about those. Finally, consider potential confusion. While the message notes the system supports only descriptive questions, it also clarifies that customer-related descriptive questions are out of scope, which is sufficiently specific and not misleading. Overall, the limitation is clearly communicated and alternatives are provided, warranting a score of 1.0.",
+                  "scorer_role": "auxiliary",
+                  "expected_output": "{\n  \"response\": \"The average weekly customer count in Q2 2024 was 45,678 customers.\",\n  \"agent\": \"analytics_specialist\",\n  \"reason\": \"Average calculation over time period requires analytics agent\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/error_handling_scorer.yaml"
+                  },
+                  "score_category": [
+                    "error_handling"
+                  ],
+                  "threshold": 0.8,
+                  "passed": true,
+                  "weight": 0.05,
+                  "required": false
+                },
+                {
+                  "score": 0.0,
+                  "raw_score": "0.0",
+                  "score_type": "float_scale",
+                  "rationale": "First, identify the components of the user's question: it asks for a single descriptive metric\u2014the average weekly customer count for Q2 2024. There are no explicit multi-part requests or comparisons, and no implicit requirements beyond providing that metric for the specified time period. Next, assess the response: the assistant states that this functionality is not available and does not provide the requested average weekly customer count, nor any proxy, estimate, or contextual information for Q2 2024. Therefore, the primary and only part of the question remains unanswered. Because the essential information requested was not provided, significant parts of the question are missing, warranting a score of 0.0 (FALSE).",
+                  "scorer_role": "auxiliary",
+                  "expected_output": "{\n  \"response\": \"The average weekly customer count in Q2 2024 was 45,678 customers.\",\n  \"agent\": \"analytics_specialist\",\n  \"reason\": \"Average calculation over time period requires analytics agent\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/completeness_scorer.yaml"
+                  },
+                  "score_category": [
+                    "completeness"
+                  ],
+                  "threshold": 0.8,
+                  "passed": false,
+                  "weight": 0.1,
+                  "required": false
+                },
+                {
+                  "score": 0.0,
+                  "raw_score": "0.0",
+                  "score_type": "float_scale",
+                  "rationale": "The user\u2019s question about the \u201caverage weekly customer count in Q2 2024\u201d contains several ambiguities: it does not specify what \u201ccustomer count\u201d means (unique customers vs. visits/footfall), the scope (all channels, stores only, online, specific regions or brands), nor the calculation method for \u201caverage weekly\u201d (simple average across weeks vs. weighted). The assistant\u2019s response declines to provide the metric due to functionality limitations but does not acknowledge or clarify any of these ambiguities, nor does it state assumptions or propose a specific interpretation. Because key assumptions are not mentioned and the question is ambiguous, the answer does not meet the criteria for assumption transparency.",
+                  "scorer_role": "auxiliary",
+                  "expected_output": "{\n  \"response\": \"The average weekly customer count in Q2 2024 was 45,678 customers.\",\n  \"agent\": \"analytics_specialist\",\n  \"reason\": \"Average calculation over time period requires analytics agent\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/assumption_transparency_scorer.yaml"
+                  },
+                  "score_category": [
+                    "assumption_transparency"
+                  ],
+                  "threshold": 0.8,
+                  "passed": false,
+                  "weight": 0.05,
+                  "required": false
+                },
+                {
+                  "score": 0.0,
+                  "raw_score": "0.0",
+                  "score_type": "float_scale",
+                  "rationale": "Step-by-step reasoning: 1) The expected numeric outcome is not explicitly provided, but the user\u2019s question requests a numeric average weekly customer count for Q2 2024, implying at least one numeric value should be present. 2) Extracted numbers from the assistant\u2019s answer: \u201c2\u201d (from \u201cQ2\u201d) and \u201c2024\u201d. After normalization, these are 2 and 2024. 3) The answer contains no actual metric value (no customer count, percentage, currency, or unit) corresponding to the requested average weekly customer count. 4) According to the instructions, if any required number is wrong or missing, the score is 0.0. Since the primary expected number is missing entirely, not all numbers match exactly. Therefore, the score is 0.0.",
+                  "scorer_role": "objective",
+                  "expected_output": "{\n  \"response\": \"The average weekly customer count in Q2 2024 was 45,678 customers.\",\n  \"agent\": \"analytics_specialist\",\n  \"reason\": \"Average calculation over time period requires analytics agent\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/numerical_accuracy_scorer.yaml"
+                  },
+                  "score_category": [
+                    "numerical_accuracy"
+                  ],
+                  "threshold": 0.8,
+                  "passed": false,
+                  "weight": 0.3,
+                  "required": true
+                }
+              ],
+              "prompt_metadata": {
+                "latency_ms": 67314,
+                "latency_first_token_ms": 67314
+              },
+              "latency_ms": 67314,
+              "latency_first_token_ms": 67314,
+              "weighted_average": 0.05
+            }
+          ]
+        }
+      ],
+      "aggregated_metrics": {
+        "total_turns": 1,
+        "final_score": 0.0,
+        "scores_by_turn": [
+          {
+            "turn_index": 1,
+            "score_details": [
+              {
+                "score": 0.0,
+                "raw_score": "0.0",
+                "score_type": "float_scale",
+                "rationale": "\u2717 Wrong agent: expected analytics_specialist, got customer_insights",
+                "scorer_role": null,
+                "expected_output": null,
+                "scorer_identifier": {
+                  "name": "AgentRoutingScorer",
+                  "config_path": "eval/scorers/programmatic/agent_routing_scorer.py"
+                },
+                "score_category": [
+                  "agent_routing"
+                ],
+                "threshold": 0.8,
+                "passed": false,
+                "weight": 0.2,
+                "required": true
+              },
+              {
+                "score": 0.0,
+                "raw_score": "0.0",
+                "score_type": "float_scale",
+                "rationale": "The evaluation requires checking both SQL logic and source citations. First, on SQL logic: the answer provides no SQL query at all, so there is no aggregation matching the request (e.g., AVG for average weekly customer count), no filter for Q2 2024 (e.g., April\u2013June or weeks 14\u201326), and no validation of table selection. This constitutes a major omission. Second, on citations: the answer does not mention any table names or provide explicit source attribution, such as referencing a customer or transactions table. Because the SQL logic is absent and citations are missing, the response fails the criteria and receives a score of 0.0.",
+                "scorer_role": "auxiliary",
+                "expected_output": "{\n  \"response\": \"The average weekly customer count in Q2 2024 was 45,678 customers.\",\n  \"agent\": \"analytics_specialist\",\n  \"reason\": \"Average calculation over time period requires analytics agent\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/data_methodology_scorer.yaml"
+                },
+                "score_category": [
+                  "data_methodology"
+                ],
+                "threshold": 0.8,
+                "passed": false,
+                "weight": 0.3,
+                "required": true
+              },
+              {
+                "score": 1.0,
+                "raw_score": "1.0",
+                "score_type": "float_scale",
+                "rationale": "First, identify whether the assistant encountered an error or limitation. The response clearly states a capability limitation: questions about customers, segments, and demographics (including average weekly customer count) are not yet supported. Next, assess clarity and tone. The explanation is straightforward and user-friendly (\u201cThis functionality is currently not yet available\u201d), avoids technical jargon, and maintains a helpful tone by acknowledging future improvements. Then, check for alternatives. The assistant offers actionable alternatives by listing supported descriptive topics (sales, product performance, promotions, channels, brand/assortment) and inviting the user to ask about those. Finally, consider potential confusion. While the message notes the system supports only descriptive questions, it also clarifies that customer-related descriptive questions are out of scope, which is sufficiently specific and not misleading. Overall, the limitation is clearly communicated and alternatives are provided, warranting a score of 1.0.",
+                "scorer_role": "auxiliary",
+                "expected_output": "{\n  \"response\": \"The average weekly customer count in Q2 2024 was 45,678 customers.\",\n  \"agent\": \"analytics_specialist\",\n  \"reason\": \"Average calculation over time period requires analytics agent\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/error_handling_scorer.yaml"
+                },
+                "score_category": [
+                  "error_handling"
+                ],
+                "threshold": 0.8,
+                "passed": true,
+                "weight": 0.05,
+                "required": false
+              },
+              {
+                "score": 0.0,
+                "raw_score": "0.0",
+                "score_type": "float_scale",
+                "rationale": "First, identify the components of the user's question: it asks for a single descriptive metric\u2014the average weekly customer count for Q2 2024. There are no explicit multi-part requests or comparisons, and no implicit requirements beyond providing that metric for the specified time period. Next, assess the response: the assistant states that this functionality is not available and does not provide the requested average weekly customer count, nor any proxy, estimate, or contextual information for Q2 2024. Therefore, the primary and only part of the question remains unanswered. Because the essential information requested was not provided, significant parts of the question are missing, warranting a score of 0.0 (FALSE).",
+                "scorer_role": "auxiliary",
+                "expected_output": "{\n  \"response\": \"The average weekly customer count in Q2 2024 was 45,678 customers.\",\n  \"agent\": \"analytics_specialist\",\n  \"reason\": \"Average calculation over time period requires analytics agent\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/completeness_scorer.yaml"
+                },
+                "score_category": [
+                  "completeness"
+                ],
+                "threshold": 0.8,
+                "passed": false,
+                "weight": 0.1,
+                "required": false
+              },
+              {
+                "score": 0.0,
+                "raw_score": "0.0",
+                "score_type": "float_scale",
+                "rationale": "The user\u2019s question about the \u201caverage weekly customer count in Q2 2024\u201d contains several ambiguities: it does not specify what \u201ccustomer count\u201d means (unique customers vs. visits/footfall), the scope (all channels, stores only, online, specific regions or brands), nor the calculation method for \u201caverage weekly\u201d (simple average across weeks vs. weighted). The assistant\u2019s response declines to provide the metric due to functionality limitations but does not acknowledge or clarify any of these ambiguities, nor does it state assumptions or propose a specific interpretation. Because key assumptions are not mentioned and the question is ambiguous, the answer does not meet the criteria for assumption transparency.",
+                "scorer_role": "auxiliary",
+                "expected_output": "{\n  \"response\": \"The average weekly customer count in Q2 2024 was 45,678 customers.\",\n  \"agent\": \"analytics_specialist\",\n  \"reason\": \"Average calculation over time period requires analytics agent\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/assumption_transparency_scorer.yaml"
+                },
+                "score_category": [
+                  "assumption_transparency"
+                ],
+                "threshold": 0.8,
+                "passed": false,
+                "weight": 0.05,
+                "required": false
+              },
+              {
+                "score": 0.0,
+                "raw_score": "0.0",
+                "score_type": "float_scale",
+                "rationale": "Step-by-step reasoning: 1) The expected numeric outcome is not explicitly provided, but the user\u2019s question requests a numeric average weekly customer count for Q2 2024, implying at least one numeric value should be present. 2) Extracted numbers from the assistant\u2019s answer: \u201c2\u201d (from \u201cQ2\u201d) and \u201c2024\u201d. After normalization, these are 2 and 2024. 3) The answer contains no actual metric value (no customer count, percentage, currency, or unit) corresponding to the requested average weekly customer count. 4) According to the instructions, if any required number is wrong or missing, the score is 0.0. Since the primary expected number is missing entirely, not all numbers match exactly. Therefore, the score is 0.0.",
+                "scorer_role": "objective",
+                "expected_output": "{\n  \"response\": \"The average weekly customer count in Q2 2024 was 45,678 customers.\",\n  \"agent\": \"analytics_specialist\",\n  \"reason\": \"Average calculation over time period requires analytics agent\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/numerical_accuracy_scorer.yaml"
+                },
+                "score_category": [
+                  "numerical_accuracy"
+                ],
+                "threshold": 0.8,
+                "passed": false,
+                "weight": 0.3,
+                "required": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "objective": "What was the profit margin for Electronics category in 2024?",
+      "achieved_objective": false,
+      "attack_identifier": {
+        "__type__": "PromptSendingAttack",
+        "__module__": "pyrit.executor.attack.single_turn.prompt_sending",
+        "id": "91c04031-2e0f-4411-a3cd-68a33a25ee66"
+      },
+      "executed_turns": 1,
+      "outcome": "failure",
+      "outcome_reason": "Objective not achieved according to scorer",
+      "metadata": {},
+      "conversation_id": "20897d8b-3fc1-4d97-98eb-1a3f23d9202a",
+      "transcript": [
+        {
+          "turn_index": 1,
+          "pieces": [
+            {
+              "role": "user",
+              "original_value": "What was the profit margin for Electronics category in 2024?",
+              "converted_value": "What was the profit margin for Electronics category in 2024?",
+              "scores": []
+            },
+            {
+              "role": "assistant",
+              "original_value": "{'Response': 'Question\\nWhat was the profit margin for Electronics category in 2024?\\n\\nAnswer:\\nAccording to the analytics_assistant.product_week_channel_kpis table, the profit margin for the Electronics category (mapped to CategoryCode 35: \u201cDigital en Tickets\u201d) in 2024 was 6.386% (ProfitEuro \u20ac23,570,690.57; SalesEuro \u20ac369,073,698.28).\\n\\nDetails:\\n- CategoryCode 35 (\u201cDigital en Tickets\u201d): ProfitEuro \u20ac23,570,690.57; SalesEuro \u20ac369,073,698.28; ProfitMargin 0.0638644549\\n- Aggregation level: Category (grouped by CategoryCode and Category), across all products, weeks, and channels (WWM/FR/ONLINE)\\n- Time dimension: JAAR_ID = 2024 (full year aggregation)\\n- Division by zero protection applied using NULLIF; no null/zero denominator encountered\\n\\nAssumptions Made:\\n- \u201cElectronics\u201d corresponds to the Dutch category \u201cDigital en Tickets\u201d (CategoryCode 35). A fuzzy name search for \u201celectronics/elek\u201d returned no matches, so we used the closest category by business meaning.\\n- Results are aggregated at Category level using CategoryCode to avoid duplicate-name issues.\\n\\nSQL Query Used:\\n```sql\\nSELECT CategoryCode, Category,\\n       SUM(Profit) AS ProfitEuro,\\n       SUM(Sales) AS SalesEuro,\\n       SUM(Profit) / NULLIF(SUM(Sales), 0) AS ProfitMargin\\nFROM hive_metastore.analytics_assistant.product_week_channel_kpis\\nWHERE JAAR_ID = 2024 AND CategoryCode = 35\\nGROUP BY CategoryCode, Category\\n```\\n\\nData Source: analytics_assistant.product_week_channel_kpis table (hive_metastore)', 'AgentUsed': 'merchandising_descriptives', 'RoutingReason': 'Asks for profit margin for a product category, an overall financial performance metric'}",
+              "converted_value": "{'Response': 'Question\\nWhat was the profit margin for Electronics category in 2024?\\n\\nAnswer:\\nAccording to the analytics_assistant.product_week_channel_kpis table, the profit margin for the Electronics category (mapped to CategoryCode 35: \u201cDigital en Tickets\u201d) in 2024 was 6.386% (ProfitEuro \u20ac23,570,690.57; SalesEuro \u20ac369,073,698.28).\\n\\nDetails:\\n- CategoryCode 35 (\u201cDigital en Tickets\u201d): ProfitEuro \u20ac23,570,690.57; SalesEuro \u20ac369,073,698.28; ProfitMargin 0.0638644549\\n- Aggregation level: Category (grouped by CategoryCode and Category), across all products, weeks, and channels (WWM/FR/ONLINE)\\n- Time dimension: JAAR_ID = 2024 (full year aggregation)\\n- Division by zero protection applied using NULLIF; no null/zero denominator encountered\\n\\nAssumptions Made:\\n- \u201cElectronics\u201d corresponds to the Dutch category \u201cDigital en Tickets\u201d (CategoryCode 35). A fuzzy name search for \u201celectronics/elek\u201d returned no matches, so we used the closest category by business meaning.\\n- Results are aggregated at Category level using CategoryCode to avoid duplicate-name issues.\\n\\nSQL Query Used:\\n```sql\\nSELECT CategoryCode, Category,\\n       SUM(Profit) AS ProfitEuro,\\n       SUM(Sales) AS SalesEuro,\\n       SUM(Profit) / NULLIF(SUM(Sales), 0) AS ProfitMargin\\nFROM hive_metastore.analytics_assistant.product_week_channel_kpis\\nWHERE JAAR_ID = 2024 AND CategoryCode = 35\\nGROUP BY CategoryCode, Category\\n```\\n\\nData Source: analytics_assistant.product_week_channel_kpis table (hive_metastore)', 'AgentUsed': 'merchandising_descriptives', 'RoutingReason': 'Asks for profit margin for a product category, an overall financial performance metric'}",
+              "scores": [
+                {
+                  "score": 0.0,
+                  "raw_score": "0.0",
+                  "score_type": "float_scale",
+                  "rationale": "First, identify potential errors or limitations. The core limitation is an ambiguous category mapping: the answer assumes \u201cElectronics\u201d corresponds to CategoryCode 35 (\u201cDigital en Tickets\u201d) because a fuzzy name search returned no matches. This directly affects the validity of the reported profit margin. Next, evaluate how the limitation is communicated. The assumption is explicitly stated and the reasoning (fuzzy search, closest business meaning) is mentioned, which is good clarity. However, the guidance requires that when limitations exist, helpful alternatives or next steps be provided. In this response, there are no concrete alternatives or user-friendly actions, such as asking the user to confirm the intended category, providing a list of available categories for selection, or checking an official category mapping table. Finally, assess tone: it is factual and non-defensive, but the lack of suggested remedies means the user could be left unsure whether the category choice is correct or how to proceed. Because a significant limitation is present without helpful alternatives, the score is 0.0.",
+                  "scorer_role": "auxiliary",
+                  "expected_output": "{\n  \"response\": \"The profit margin for Electronics in 2024 was 23.5% (profit: \u20ac287,654.32 / sales: \u20ac1,234,567.89).\",\n  \"agent\": \"analytics_specialist\",\n  \"reason\": \"Profit margin calculation for specific category\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/error_handling_scorer.yaml"
+                  },
+                  "score_category": [
+                    "error_handling"
+                  ],
+                  "threshold": 0.8,
+                  "passed": false,
+                  "weight": 0.05,
+                  "required": false
+                },
+                {
+                  "score": 0.0,
+                  "raw_score": "0.0",
+                  "score_type": "float_scale",
+                  "rationale": "\u2717 Wrong agent: expected analytics_specialist, got merchandising_descriptives",
+                  "scorer_role": null,
+                  "expected_output": null,
+                  "scorer_identifier": {
+                    "name": "AgentRoutingScorer",
+                    "config_path": "eval/scorers/programmatic/agent_routing_scorer.py"
+                  },
+                  "score_category": [
+                    "agent_routing"
+                  ],
+                  "threshold": 0.8,
+                  "passed": false,
+                  "weight": 0.2,
+                  "required": true
+                },
+                {
+                  "score": 0.0,
+                  "raw_score": "0.0",
+                  "score_type": "float_scale",
+                  "rationale": "Part 1 \u2013 SQL Logic: The query correctly aggregates profit margin as SUM(Profit)/SUM(Sales) and applies a proper year filter (JAAR_ID = 2024). It also reasonably aggregates across all weeks and channels at the category level with division-by-zero protection. However, the critical filter for the requested category appears incorrect: the question asks for the Electronics category, but the query filters CategoryCode = 35, which the answer itself identifies as \u201cDigital en Tickets.\u201d Mapping Electronics to CategoryCode 35 is an assumption that likely misclassifies the category and returns the wrong segment\u2019s margin. This constitutes a major filter error relative to the question.\n\nPart 2 \u2013 Citations: The answer clearly cites the data source, explicitly referencing the analytics_assistant.product_week_channel_kpis table and fully qualifying it in the SQL (hive_metastore.analytics_assistant.product_week_channel_kpis). It also attributes the findings to that table in the narrative.\n\nOverall, despite correct aggregation and time filtering, the category filter is likely wrong for \u201cElectronics,\u201d which is a major SQL logic issue. Therefore, the response does not meet the criteria for a passing score.",
+                  "scorer_role": "auxiliary",
+                  "expected_output": "{\n  \"response\": \"The profit margin for Electronics in 2024 was 23.5% (profit: \u20ac287,654.32 / sales: \u20ac1,234,567.89).\",\n  \"agent\": \"analytics_specialist\",\n  \"reason\": \"Profit margin calculation for specific category\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/data_methodology_scorer.yaml"
+                  },
+                  "score_category": [
+                    "data_methodology"
+                  ],
+                  "threshold": 0.8,
+                  "passed": false,
+                  "weight": 0.3,
+                  "required": true
+                },
+                {
+                  "score": 1.0,
+                  "raw_score": "1.0",
+                  "score_type": "float_scale",
+                  "rationale": "The question is ambiguous on several fronts: what exactly constitutes the 'Electronics' category, the aggregation scope across channels and weeks, the time horizon within 2024 (e.g., full year or partial), and the definition of profit margin (e.g., SUM(Profit)/SUM(Sales) vs. averaging margins). The answer explicitly addresses these ambiguities. It states the key assumption that 'Electronics' maps to CategoryCode 35 ('Digital en Tickets'), explains that a fuzzy search did not find 'electronics' and justifies choosing the closest business meaning, clarifies the aggregation level (category-level, across all products, weeks, and channels WWM/FR/ONLINE), defines the time dimension as full-year JAAR_ID = 2024, and specifies the margin formula with division-by-zero handling. It also cites the data source and includes the SQL used. While some minor potential ambiguities remain (e.g., whether 'Profit' is gross vs. net), the core ambiguities are explicitly acknowledged and resolved with stated assumptions and rationale, satisfying the criterion for a TRUE score.",
+                  "scorer_role": "auxiliary",
+                  "expected_output": "{\n  \"response\": \"The profit margin for Electronics in 2024 was 23.5% (profit: \u20ac287,654.32 / sales: \u20ac1,234,567.89).\",\n  \"agent\": \"analytics_specialist\",\n  \"reason\": \"Profit margin calculation for specific category\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/assumption_transparency_scorer.yaml"
+                  },
+                  "score_category": [
+                    "assumption_transparency"
+                  ],
+                  "threshold": 0.8,
+                  "passed": true,
+                  "weight": 0.05,
+                  "required": false
+                },
+                {
+                  "score": 0.0,
+                  "raw_score": "0.0",
+                  "score_type": "float_scale",
+                  "rationale": "Step 1: Extract numbers from the agent's answer. Found the following: 2024; CategoryCode 35; Profit margin 6.386%; ProfitEuro \u20ac23,570,690.57; SalesEuro \u20ac369,073,698.28; ProfitMargin 0.0638644549; JAAR_ID 2024; CategoryCode 35 (repeated). Step 2: Normalize formatting. Interpreted numbers as: 2024; 35; 6.386%; 23570690.57 EUR; 369073698.28 EUR; 0.0638644549. Step 3: Extract numbers from the expected outcome. No expected outcome values were provided in the prompt, so there are no reference numbers to compare against. Step 4: Compare each number for exact match. Since the expected outcome numbers are missing, no exact comparison can be performed. Per the instructions, if any number is wrong or missing, the score must be 0.0. Therefore, the result is FALSE due to missing expected outcome for verification.",
+                  "scorer_role": "objective",
+                  "expected_output": "{\n  \"response\": \"The profit margin for Electronics in 2024 was 23.5% (profit: \u20ac287,654.32 / sales: \u20ac1,234,567.89).\",\n  \"agent\": \"analytics_specialist\",\n  \"reason\": \"Profit margin calculation for specific category\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/numerical_accuracy_scorer.yaml"
+                  },
+                  "score_category": [
+                    "numerical_accuracy"
+                  ],
+                  "threshold": 0.8,
+                  "passed": false,
+                  "weight": 0.3,
+                  "required": true
+                },
+                {
+                  "score": 1.0,
+                  "raw_score": "1.0",
+                  "score_type": "float_scale",
+                  "rationale": "Step 1: Identify parts of the question. The question asks for a single metric: the profit margin for the Electronics category for the year 2024. Implicitly, this requires the specific figure and confirmation of the time frame.\nStep 2: Check if each part is addressed. The answer provides the profit margin as a percentage (6.386%) and explicitly states the time dimension (JAAR_ID = 2024, full year). It also clarifies aggregation scope (across products, weeks, channels) and offers supporting figures (ProfitEuro and SalesEuro) plus the SQL used.\nStep 3: Consider completeness. The mapping of 'Electronics' to 'Digital en Tickets' is explained as an assumption, which goes beyond the question but does not leave any part unanswered. The key requested metric (profit margin for 2024) is clearly provided. Therefore, all parts are fully answered.",
+                  "scorer_role": "auxiliary",
+                  "expected_output": "{\n  \"response\": \"The profit margin for Electronics in 2024 was 23.5% (profit: \u20ac287,654.32 / sales: \u20ac1,234,567.89).\",\n  \"agent\": \"analytics_specialist\",\n  \"reason\": \"Profit margin calculation for specific category\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/completeness_scorer.yaml"
+                  },
+                  "score_category": [
+                    "completeness"
+                  ],
+                  "threshold": 0.8,
+                  "passed": true,
+                  "weight": 0.1,
+                  "required": false
+                }
+              ],
+              "prompt_metadata": {
+                "latency_ms": 62217,
+                "latency_first_token_ms": 62216
+              },
+              "latency_ms": 62217,
+              "latency_first_token_ms": 62216,
+              "weighted_average": 0.15
+            }
+          ]
+        }
+      ],
+      "aggregated_metrics": {
+        "total_turns": 1,
+        "final_score": 0.0,
+        "scores_by_turn": [
+          {
+            "turn_index": 1,
+            "score_details": [
+              {
+                "score": 0.0,
+                "raw_score": "0.0",
+                "score_type": "float_scale",
+                "rationale": "First, identify potential errors or limitations. The core limitation is an ambiguous category mapping: the answer assumes \u201cElectronics\u201d corresponds to CategoryCode 35 (\u201cDigital en Tickets\u201d) because a fuzzy name search returned no matches. This directly affects the validity of the reported profit margin. Next, evaluate how the limitation is communicated. The assumption is explicitly stated and the reasoning (fuzzy search, closest business meaning) is mentioned, which is good clarity. However, the guidance requires that when limitations exist, helpful alternatives or next steps be provided. In this response, there are no concrete alternatives or user-friendly actions, such as asking the user to confirm the intended category, providing a list of available categories for selection, or checking an official category mapping table. Finally, assess tone: it is factual and non-defensive, but the lack of suggested remedies means the user could be left unsure whether the category choice is correct or how to proceed. Because a significant limitation is present without helpful alternatives, the score is 0.0.",
+                "scorer_role": "auxiliary",
+                "expected_output": "{\n  \"response\": \"The profit margin for Electronics in 2024 was 23.5% (profit: \u20ac287,654.32 / sales: \u20ac1,234,567.89).\",\n  \"agent\": \"analytics_specialist\",\n  \"reason\": \"Profit margin calculation for specific category\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/error_handling_scorer.yaml"
+                },
+                "score_category": [
+                  "error_handling"
+                ],
+                "threshold": 0.8,
+                "passed": false,
+                "weight": 0.05,
+                "required": false
+              },
+              {
+                "score": 0.0,
+                "raw_score": "0.0",
+                "score_type": "float_scale",
+                "rationale": "\u2717 Wrong agent: expected analytics_specialist, got merchandising_descriptives",
+                "scorer_role": null,
+                "expected_output": null,
+                "scorer_identifier": {
+                  "name": "AgentRoutingScorer",
+                  "config_path": "eval/scorers/programmatic/agent_routing_scorer.py"
+                },
+                "score_category": [
+                  "agent_routing"
+                ],
+                "threshold": 0.8,
+                "passed": false,
+                "weight": 0.2,
+                "required": true
+              },
+              {
+                "score": 0.0,
+                "raw_score": "0.0",
+                "score_type": "float_scale",
+                "rationale": "Part 1 \u2013 SQL Logic: The query correctly aggregates profit margin as SUM(Profit)/SUM(Sales) and applies a proper year filter (JAAR_ID = 2024). It also reasonably aggregates across all weeks and channels at the category level with division-by-zero protection. However, the critical filter for the requested category appears incorrect: the question asks for the Electronics category, but the query filters CategoryCode = 35, which the answer itself identifies as \u201cDigital en Tickets.\u201d Mapping Electronics to CategoryCode 35 is an assumption that likely misclassifies the category and returns the wrong segment\u2019s margin. This constitutes a major filter error relative to the question.\n\nPart 2 \u2013 Citations: The answer clearly cites the data source, explicitly referencing the analytics_assistant.product_week_channel_kpis table and fully qualifying it in the SQL (hive_metastore.analytics_assistant.product_week_channel_kpis). It also attributes the findings to that table in the narrative.\n\nOverall, despite correct aggregation and time filtering, the category filter is likely wrong for \u201cElectronics,\u201d which is a major SQL logic issue. Therefore, the response does not meet the criteria for a passing score.",
+                "scorer_role": "auxiliary",
+                "expected_output": "{\n  \"response\": \"The profit margin for Electronics in 2024 was 23.5% (profit: \u20ac287,654.32 / sales: \u20ac1,234,567.89).\",\n  \"agent\": \"analytics_specialist\",\n  \"reason\": \"Profit margin calculation for specific category\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/data_methodology_scorer.yaml"
+                },
+                "score_category": [
+                  "data_methodology"
+                ],
+                "threshold": 0.8,
+                "passed": false,
+                "weight": 0.3,
+                "required": true
+              },
+              {
+                "score": 1.0,
+                "raw_score": "1.0",
+                "score_type": "float_scale",
+                "rationale": "The question is ambiguous on several fronts: what exactly constitutes the 'Electronics' category, the aggregation scope across channels and weeks, the time horizon within 2024 (e.g., full year or partial), and the definition of profit margin (e.g., SUM(Profit)/SUM(Sales) vs. averaging margins). The answer explicitly addresses these ambiguities. It states the key assumption that 'Electronics' maps to CategoryCode 35 ('Digital en Tickets'), explains that a fuzzy search did not find 'electronics' and justifies choosing the closest business meaning, clarifies the aggregation level (category-level, across all products, weeks, and channels WWM/FR/ONLINE), defines the time dimension as full-year JAAR_ID = 2024, and specifies the margin formula with division-by-zero handling. It also cites the data source and includes the SQL used. While some minor potential ambiguities remain (e.g., whether 'Profit' is gross vs. net), the core ambiguities are explicitly acknowledged and resolved with stated assumptions and rationale, satisfying the criterion for a TRUE score.",
+                "scorer_role": "auxiliary",
+                "expected_output": "{\n  \"response\": \"The profit margin for Electronics in 2024 was 23.5% (profit: \u20ac287,654.32 / sales: \u20ac1,234,567.89).\",\n  \"agent\": \"analytics_specialist\",\n  \"reason\": \"Profit margin calculation for specific category\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/assumption_transparency_scorer.yaml"
+                },
+                "score_category": [
+                  "assumption_transparency"
+                ],
+                "threshold": 0.8,
+                "passed": true,
+                "weight": 0.05,
+                "required": false
+              },
+              {
+                "score": 0.0,
+                "raw_score": "0.0",
+                "score_type": "float_scale",
+                "rationale": "Step 1: Extract numbers from the agent's answer. Found the following: 2024; CategoryCode 35; Profit margin 6.386%; ProfitEuro \u20ac23,570,690.57; SalesEuro \u20ac369,073,698.28; ProfitMargin 0.0638644549; JAAR_ID 2024; CategoryCode 35 (repeated). Step 2: Normalize formatting. Interpreted numbers as: 2024; 35; 6.386%; 23570690.57 EUR; 369073698.28 EUR; 0.0638644549. Step 3: Extract numbers from the expected outcome. No expected outcome values were provided in the prompt, so there are no reference numbers to compare against. Step 4: Compare each number for exact match. Since the expected outcome numbers are missing, no exact comparison can be performed. Per the instructions, if any number is wrong or missing, the score must be 0.0. Therefore, the result is FALSE due to missing expected outcome for verification.",
+                "scorer_role": "objective",
+                "expected_output": "{\n  \"response\": \"The profit margin for Electronics in 2024 was 23.5% (profit: \u20ac287,654.32 / sales: \u20ac1,234,567.89).\",\n  \"agent\": \"analytics_specialist\",\n  \"reason\": \"Profit margin calculation for specific category\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/numerical_accuracy_scorer.yaml"
+                },
+                "score_category": [
+                  "numerical_accuracy"
+                ],
+                "threshold": 0.8,
+                "passed": false,
+                "weight": 0.3,
+                "required": true
+              },
+              {
+                "score": 1.0,
+                "raw_score": "1.0",
+                "score_type": "float_scale",
+                "rationale": "Step 1: Identify parts of the question. The question asks for a single metric: the profit margin for the Electronics category for the year 2024. Implicitly, this requires the specific figure and confirmation of the time frame.\nStep 2: Check if each part is addressed. The answer provides the profit margin as a percentage (6.386%) and explicitly states the time dimension (JAAR_ID = 2024, full year). It also clarifies aggregation scope (across products, weeks, channels) and offers supporting figures (ProfitEuro and SalesEuro) plus the SQL used.\nStep 3: Consider completeness. The mapping of 'Electronics' to 'Digital en Tickets' is explained as an assumption, which goes beyond the question but does not leave any part unanswered. The key requested metric (profit margin for 2024) is clearly provided. Therefore, all parts are fully answered.",
+                "scorer_role": "auxiliary",
+                "expected_output": "{\n  \"response\": \"The profit margin for Electronics in 2024 was 23.5% (profit: \u20ac287,654.32 / sales: \u20ac1,234,567.89).\",\n  \"agent\": \"analytics_specialist\",\n  \"reason\": \"Profit margin calculation for specific category\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/completeness_scorer.yaml"
+                },
+                "score_category": [
+                  "completeness"
+                ],
+                "threshold": 0.8,
+                "passed": true,
+                "weight": 0.1,
+                "required": false
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

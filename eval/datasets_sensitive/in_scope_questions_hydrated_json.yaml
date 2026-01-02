@@ -1,0 +1,28 @@
+# ============================================================================
+# HYDRATED EVALUATION DATASET - JSON FORMAT
+# ============================================================================
+# Converted to JSON format for PyRIT evaluation
+
+- question: "What were total sales in Q3 2024?"
+  expected_outcome: |-
+    {
+      "response": "Total sales in Q3 2024 were €1,234,567.89.",
+      "agent": "data_engineer",
+      "reason": "Simple aggregation query for sales metrics"
+    }
+
+- question: "What was the average weekly customer count in Q2 2024?"
+  expected_outcome: |-
+    {
+      "response": "The average weekly customer count in Q2 2024 was 45,678 customers.",
+      "agent": "analytics_specialist",
+      "reason": "Average calculation over time period requires analytics agent"
+    }
+
+- question: "What was the profit margin for Electronics category in 2024?"
+  expected_outcome: |-
+    {
+      "response": "The profit margin for Electronics in 2024 was 23.5% (profit: €287,654.32 / sales: €1,234,567.89).",
+      "agent": "analytics_specialist",
+      "reason": "Profit margin calculation for specific category"
+    }

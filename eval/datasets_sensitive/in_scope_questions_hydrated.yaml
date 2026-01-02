@@ -1,0 +1,54 @@
+# ============================================================================
+# HYDRATED EVALUATION DATASET - CONFIDENTIAL
+# ============================================================================
+# 🔒 AUTO-GENERATED FILE - DO NOT COMMIT TO VERSION CONTROL
+#
+# Generated: 2025-12-31 09:21:02
+# Source template: in_scope_questions.yaml
+# Total test cases: 12
+#
+# This file contains real business data.
+# All {{PLACEHOLDER|format}} tokens have been replaced with actual values.
+#
+# To regenerate this file:
+#   python eval/datasets/hydrate_test_data.py --template eval/datasets/in_scope_questions.yaml
+#
+# ⚠️  SECURITY WARNING: This file may contain sensitive metrics.
+#     Never commit to git, share publicly, or store in unencrypted locations.
+# ============================================================================
+
+- question: "What were total sales in Q3 2024?"
+  expected_outcome: "Total sales in Q3 2024 were €1,234,567.89. [AGENT:data_engineer|REASON:Simple aggregation query for sales metrics]"
+
+- question: "What was the average weekly customer count in Q2 2024?"
+  expected_outcome: "The average weekly customer count in Q2 2024 was 45,678 customers. [AGENT:analytics_specialist|REASON:Average calculation over time period requires analytics agent]"
+
+- question: "What was the profit margin for Electronics category in 2024?"
+  expected_outcome: "The profit margin for Electronics in 2024 was 23.5% (profit: €287,654.32 / sales: €1,234,567.89). [AGENT:analytics_specialist|REASON:Profit margin calculation for specific category]"
+
+- question: "What was the total volume sold for product SKU 'ABC123' in January 2024?"
+  expected_outcome: "Product SKU ABC123 sold 9,876 units in January 2024. [AGENT:data_engineer|REASON:Volume query for specific SKU]"
+
+- question: "How many orders were placed in the ONLINE channel in week 24, 2024?"
+  expected_outcome: "In week 24 of 2024, the ONLINE channel had 12,345 orders. According to the orders table, this represents online orders only. [AGENT:analytics_specialist|REASON:Channel-specific order count query]"
+
+- question: "What was the sales growth rate comparing Q1 2024 vs Q1 2023?"
+  expected_outcome: "Q1 2024 sales were €5,678,901.23, compared to Q1 2023 sales of €4,567,890.12, representing a growth rate of 24.3%. Data sourced from quarterly_sales table. [AGENT:analytics_specialist|REASON:Year-over-year comparison requires historical analysis]"
+
+- question: "Compare online vs store sales for Q1 2024. Which channel performed better?"
+  expected_outcome: "Q1 2024 comparison: Online sales were €2,345,678.90 (40.3% of total), while store sales were €3,456,789.01 (59.7% of total). The {{BetterChannel}} channel performed better with higher absolute sales. Data from channel_sales table. [AGENT:channel_analytics|REASON:Multi-channel comparison requires channel analytics agent]"
+
+- question: "What is the current year-to-date revenue?"
+  expected_outcome: "The agent must identify the most recent complete year in the dataset and calculate YTD revenue: €8,765,432.10. **Assumption:** YTD calculated from most recent year in dataset (2,024). Data from revenue_data table. [AGENT:analytics_specialist|REASON:Implicit time reference requiring dataset analysis]"
+
+- question: "What was the performance of premium products last quarter?"
+  expected_outcome: "The agent must define 'premium products' and 'performance'. **Assumption:** Premium products defined as items with price > $100. Performance measured as total sales. Last quarter: {{LastQuarter}} with sales of €987,654.32. Data from product_sales table. [AGENT:product_analytics|REASON:Vague terms require explicit assumption statements]"
+
+- question: "What was the sales for product SKU 'NONEXISTENT' in 2024?"
+  expected_outcome: "I couldn't find any sales data for product SKU 'NONEXISTENT' in 2024. This could mean: 1) The SKU doesn't exist in our system, 2) No sales occurred for this SKU in 2024, or 3) Data may not be loaded yet. Please verify the SKU code or check with the data team. [AGENT:data_engineer|REASON:Data availability check]"
+
+- question: "How many unique customers did we have in 2024?"
+  expected_outcome: "In 2024, we had 78,901 unique customers. [AGENT:customer_analytics|REASON:Customer count question requires customer analytics agent]"
+
+- question: "Which product category had the highest sales in Q4 2024?"
+  expected_outcome: "In Q4 2024, the {{TopCategory}} category had the highest sales with €4,567,890.12. [AGENT:product_analytics|REASON:Product category analysis requires product analytics agent]"

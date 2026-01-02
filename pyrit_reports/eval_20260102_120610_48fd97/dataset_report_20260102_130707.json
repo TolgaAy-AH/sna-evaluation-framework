@@ -1,0 +1,332 @@
+{
+  "title": "Test Report",
+  "description": "Evaluation of dataset examples. Final conversation score is the minimum weighted step score across the transcript.",
+  "threshold": 0.8,
+  "execution_time_seconds": 37.12948703765869,
+  "generated_at": "2026-01-02T13:07:07.693906",
+  "total_cases": 1,
+  "passed_cases": 0,
+  "failed_cases": 1,
+  "scorer_weights": {
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/numerical_accuracy_scorer.yaml\", \"sub_identifier\": null}": 0.3,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/data_methodology_scorer.yaml\", \"sub_identifier\": null}": 0.3,
+    "{\"config_path\": \"eval/scorers/programmatic/agent_routing_scorer.py\", \"name\": \"AgentRoutingScorer\"}": 0.2,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/completeness_scorer.yaml\", \"sub_identifier\": null}": 0.1,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/assumption_transparency_scorer.yaml\", \"sub_identifier\": null}": 0.05,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/error_handling_scorer.yaml\", \"sub_identifier\": null}": 0.05
+  },
+  "scorer_required": {
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/numerical_accuracy_scorer.yaml\", \"sub_identifier\": null}": true,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/data_methodology_scorer.yaml\", \"sub_identifier\": null}": true,
+    "{\"config_path\": \"eval/scorers/programmatic/agent_routing_scorer.py\", \"name\": \"AgentRoutingScorer\"}": true,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/completeness_scorer.yaml\", \"sub_identifier\": null}": false,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/assumption_transparency_scorer.yaml\", \"sub_identifier\": null}": false,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/error_handling_scorer.yaml\", \"sub_identifier\": null}": false
+  },
+  "default_thresholds": {
+    "float_scale": 0.8,
+    "true_false": 1.0
+  },
+  "cases": [
+    {
+      "objective": "What were total sales in Q3 2024?",
+      "transcript": [
+        {
+          "turn_index": 1,
+          "pieces": [
+            {
+              "role": "user",
+              "original_value": "What were total sales in Q3 2024?",
+              "converted_value": "What were total sales in Q3 2024?",
+              "scores": []
+            },
+            {
+              "role": "assistant",
+              "original_value": "{'Response': '[Question]\\nWhat were total sales in Q3 2024?\\n\\nAnswer:\\nTotal sales in Q3 2024 were €4,459,017,155.65, according to the analytics_assistant.product_week_channel_kpis table.\\n\\nDetails:\\n- Aggregated across all units, categories, brands, and channels (WWM, FR, ONLINE)\\n- Time dimension used: QuarterKey (yyyyqq), filtered for 202403 (Q3 2024)\\n- Aggregation level: summed Sales at the product-week-channel grain, rolled up to the quarter\\n\\nAssumptions Made:\\n- Q3 2024 interpreted as QuarterKey = 202403 per the yyyyqq format\\n- No breakdowns requested; provided total sales across all product hierarchies and channels\\n\\nSQL Query Used:\\n```sql\\nSELECT SUM(Sales) AS total_sales_eur\\nFROM hive_metastore.analytics_assistant.product_week_channel_kpis\\nWHERE QuarterKey = 202403\\n```\\n\\nData Source: hive_metastore.analytics_assistant.product_week_channel_kpis table', 'AgentUsed': 'merchandising_descriptives', 'RoutingReason': 'Question asks about total sales in Q3 2024 (overall financial performance)'}",
+              "converted_value": "{'Response': '[Question]\\nWhat were total sales in Q3 2024?\\n\\nAnswer:\\nTotal sales in Q3 2024 were €4,459,017,155.65, according to the analytics_assistant.product_week_channel_kpis table.\\n\\nDetails:\\n- Aggregated across all units, categories, brands, and channels (WWM, FR, ONLINE)\\n- Time dimension used: QuarterKey (yyyyqq), filtered for 202403 (Q3 2024)\\n- Aggregation level: summed Sales at the product-week-channel grain, rolled up to the quarter\\n\\nAssumptions Made:\\n- Q3 2024 interpreted as QuarterKey = 202403 per the yyyyqq format\\n- No breakdowns requested; provided total sales across all product hierarchies and channels\\n\\nSQL Query Used:\\n```sql\\nSELECT SUM(Sales) AS total_sales_eur\\nFROM hive_metastore.analytics_assistant.product_week_channel_kpis\\nWHERE QuarterKey = 202403\\n```\\n\\nData Source: hive_metastore.analytics_assistant.product_week_channel_kpis table', 'AgentUsed': 'merchandising_descriptives', 'RoutingReason': 'Question asks about total sales in Q3 2024 (overall financial performance)'}",
+              "scores": [
+                {
+                  "score": 1.0,
+                  "raw_score": "1.0",
+                  "score_type": "float_scale",
+                  "rationale": "✓ Correct agent selected: merchandising_descriptives",
+                  "scorer_role": null,
+                  "expected_output": null,
+                  "scorer_identifier": {
+                    "name": "AgentRoutingScorer",
+                    "config_path": "eval/scorers/programmatic/agent_routing_scorer.py"
+                  },
+                  "score_category": [
+                    "agent_routing"
+                  ],
+                  "threshold": 0.8,
+                  "passed": true,
+                  "weight": 0.2,
+                  "required": true
+                },
+                {
+                  "score": 1.0,
+                  "raw_score": "1.0",
+                  "score_type": "float_scale",
+                  "rationale": "Part 1 - SQL Logic: The query uses SUM(Sales), which correctly matches the request for total sales. The filter QuarterKey = 202403 aligns with the yyyyqq format for Q3 2024 (year 2024, quarter 3), and the table grain (product-week-channel) is appropriately rolled up to the quarter level. The selected table (hive_metastore.analytics_assistant.product_week_channel_kpis) is appropriate for a KPI metric like Sales with a QuarterKey dimension. No major logic issues are evident. Part 2 - Citations: The answer explicitly cites the source table in the narrative (\"according to the analytics_assistant.product_week_channel_kpis table\") and provides the fully qualified table name under Data Source, matching the SQL query. The table name used in SQL is consistently referenced in the explanation. Therefore, both SQL logic and source citation meet the criteria.",
+                  "scorer_role": "auxiliary",
+                  "expected_output": "{\n  \"response\": \"Total sales in Q3 2024 were \\u20ac4,459,017,155.65.\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Simple aggregation query for sales metrics\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/data_methodology_scorer.yaml"
+                  },
+                  "score_category": [
+                    "data_methodology"
+                  ],
+                  "threshold": 0.8,
+                  "passed": true,
+                  "weight": 0.3,
+                  "required": true
+                },
+                {
+                  "score": 1.0,
+                  "raw_score": "1.0",
+                  "score_type": "float_scale",
+                  "rationale": "First, check for errors or limitations: there is no indication of data unavailability, query failure, missing permissions, or incomplete data. The assistant provides a concrete result and shows the SQL used, which supports transparency. Next, consider potential ambiguities: the phrase “Q3 2024” could be interpreted differently (e.g., fiscal vs. calendar), but the assistant explicitly states the assumption that Q3 2024 corresponds to QuarterKey = 202403 in a yyyyqq format. This addresses the ambiguity directly. The response also clarifies the aggregation scope (all units, categories, brands, and channels) and time grain (product-week-channel rolled up to quarter), so the user understands what’s included. The tone is neutral and helpful, with minimal jargon. Even though alternative actions (e.g., confirming fiscal vs. calendar definition or currency conventions) are not proposed, no actual error occurred, and the stated assumptions are adequate for clarity. Therefore, the response meets the criterion for a full score: no errors are present, and assumptions are clearly communicated.",
+                  "scorer_role": "auxiliary",
+                  "expected_output": "{\n  \"response\": \"Total sales in Q3 2024 were \\u20ac4,459,017,155.65.\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Simple aggregation query for sales metrics\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/error_handling_scorer.yaml"
+                  },
+                  "score_category": [
+                    "error_handling"
+                  ],
+                  "threshold": 0.8,
+                  "passed": true,
+                  "weight": 0.05,
+                  "required": false
+                },
+                {
+                  "score": 0.0,
+                  "raw_score": "0.0",
+                  "score_type": "float_scale",
+                  "rationale": "Following the instructions, I first attempted to extract all numbers from both the expected outcome and the agent's answer. The prompt provides only the agent's answer and accompanying context; there is no separate expected outcome with numerical values to compare against. From the agent's answer, the extracted numbers are: €4,459,017,155.65 (total sales), 202403 (QuarterKey, appears twice), 2024 (year), and 3 (Q3). After normalizing, these become: EUR 4459017155.65, 202403, 2024, and 3. Because the expected outcome is missing, there are no reference numbers to compare to. Per the scoring rule, if any number is wrong or missing, we must assign 0.0; in this case, the expected set is missing entirely, so an exact match cannot be confirmed.",
+                  "scorer_role": "objective",
+                  "expected_output": "{\n  \"response\": \"Total sales in Q3 2024 were \\u20ac4,459,017,155.65.\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Simple aggregation query for sales metrics\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/numerical_accuracy_scorer.yaml"
+                  },
+                  "score_category": [
+                    "numerical_accuracy"
+                  ],
+                  "threshold": 0.8,
+                  "passed": false,
+                  "weight": 0.3,
+                  "required": true
+                },
+                {
+                  "score": 1.0,
+                  "raw_score": "1.0",
+                  "score_type": "float_scale",
+                  "rationale": "Step 1: Identify parts of the question. The original question is a single-part request asking for the total sales in Q3 2024, with no explicit demand for breakdowns, comparisons, trends, or additional metrics.\nStep 2: Check if each part is addressed. The answer provides a specific total sales figure (€4,459,017,155.65) for Q3 2024. It also clarifies the time filter used (QuarterKey = 202403 corresponding to Q3 2024) and confirms aggregation across all units, categories, brands, and channels, which matches the implied scope of 'total sales.'\nStep 3: Consider completeness. There were no requests for multiple metrics or comparisons, and the answer includes the data source and the SQL used, adding transparency. The assumption about the quarter key format is stated, which addresses any potential ambiguity. Hence, all parts of the question are fully answered.",
+                  "scorer_role": "auxiliary",
+                  "expected_output": "{\n  \"response\": \"Total sales in Q3 2024 were \\u20ac4,459,017,155.65.\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Simple aggregation query for sales metrics\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/completeness_scorer.yaml"
+                  },
+                  "score_category": [
+                    "completeness"
+                  ],
+                  "threshold": 0.8,
+                  "passed": true,
+                  "weight": 0.1,
+                  "required": false
+                },
+                {
+                  "score": 1.0,
+                  "raw_score": "1.0",
+                  "score_type": "float_scale",
+                  "rationale": "The question 'What were total sales in Q3 2024?' contains potential ambiguities, notably how Q3 2024 is defined (calendar vs. fiscal quarter), the scope of aggregation (products, channels, geographies), and the exact metric definition (gross vs. net sales, currency). The answer addresses these by: (1) explicitly stating the assumption that Q3 2024 maps to QuarterKey = 202403 in a yyyyqq format, thereby clarifying the time definition used; (2) specifying scope as aggregated across all units, categories, brands, and channels (WWM, FR, ONLINE), clarifying the breadth of coverage; (3) identifying the metric and currency via the 'Sales' field and reporting in euros, with the SQL alias indicating EUR; and (4) providing the grain (product-week-channel) and roll-up method. While it does not distinguish gross versus net sales, it transparently ties the number to the 'Sales' column in a specific table, which is reasonable given the question and the dataset context. Overall, key assumptions and interpretations are clearly communicated.",
+                  "scorer_role": "auxiliary",
+                  "expected_output": "{\n  \"response\": \"Total sales in Q3 2024 were \\u20ac4,459,017,155.65.\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Simple aggregation query for sales metrics\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/assumption_transparency_scorer.yaml"
+                  },
+                  "score_category": [
+                    "assumption_transparency"
+                  ],
+                  "threshold": 0.8,
+                  "passed": true,
+                  "weight": 0.05,
+                  "required": false
+                }
+              ],
+              "prompt_metadata": {
+                "latency_ms": 19966,
+                "latency_first_token_ms": 19966
+              },
+              "latency_ms": 19966,
+              "latency_first_token_ms": 19966,
+              "weighted_average": 0.7000000000000001
+            }
+          ]
+        }
+      ],
+      "aggregated_metrics": {
+        "total_turns": 1,
+        "final_score": 1.0,
+        "scores_by_turn": [
+          {
+            "turn_index": 1,
+            "score_details": [
+              {
+                "score": 1.0,
+                "raw_score": "1.0",
+                "score_type": "float_scale",
+                "rationale": "✓ Correct agent selected: merchandising_descriptives",
+                "scorer_role": null,
+                "expected_output": null,
+                "scorer_identifier": {
+                  "name": "AgentRoutingScorer",
+                  "config_path": "eval/scorers/programmatic/agent_routing_scorer.py"
+                },
+                "score_category": [
+                  "agent_routing"
+                ],
+                "threshold": 0.8,
+                "passed": true,
+                "weight": 0.2,
+                "required": true
+              },
+              {
+                "score": 1.0,
+                "raw_score": "1.0",
+                "score_type": "float_scale",
+                "rationale": "Part 1 - SQL Logic: The query uses SUM(Sales), which correctly matches the request for total sales. The filter QuarterKey = 202403 aligns with the yyyyqq format for Q3 2024 (year 2024, quarter 3), and the table grain (product-week-channel) is appropriately rolled up to the quarter level. The selected table (hive_metastore.analytics_assistant.product_week_channel_kpis) is appropriate for a KPI metric like Sales with a QuarterKey dimension. No major logic issues are evident. Part 2 - Citations: The answer explicitly cites the source table in the narrative (\"according to the analytics_assistant.product_week_channel_kpis table\") and provides the fully qualified table name under Data Source, matching the SQL query. The table name used in SQL is consistently referenced in the explanation. Therefore, both SQL logic and source citation meet the criteria.",
+                "scorer_role": "auxiliary",
+                "expected_output": "{\n  \"response\": \"Total sales in Q3 2024 were \\u20ac4,459,017,155.65.\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Simple aggregation query for sales metrics\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/data_methodology_scorer.yaml"
+                },
+                "score_category": [
+                  "data_methodology"
+                ],
+                "threshold": 0.8,
+                "passed": true,
+                "weight": 0.3,
+                "required": true
+              },
+              {
+                "score": 1.0,
+                "raw_score": "1.0",
+                "score_type": "float_scale",
+                "rationale": "First, check for errors or limitations: there is no indication of data unavailability, query failure, missing permissions, or incomplete data. The assistant provides a concrete result and shows the SQL used, which supports transparency. Next, consider potential ambiguities: the phrase “Q3 2024” could be interpreted differently (e.g., fiscal vs. calendar), but the assistant explicitly states the assumption that Q3 2024 corresponds to QuarterKey = 202403 in a yyyyqq format. This addresses the ambiguity directly. The response also clarifies the aggregation scope (all units, categories, brands, and channels) and time grain (product-week-channel rolled up to quarter), so the user understands what’s included. The tone is neutral and helpful, with minimal jargon. Even though alternative actions (e.g., confirming fiscal vs. calendar definition or currency conventions) are not proposed, no actual error occurred, and the stated assumptions are adequate for clarity. Therefore, the response meets the criterion for a full score: no errors are present, and assumptions are clearly communicated.",
+                "scorer_role": "auxiliary",
+                "expected_output": "{\n  \"response\": \"Total sales in Q3 2024 were \\u20ac4,459,017,155.65.\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Simple aggregation query for sales metrics\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/error_handling_scorer.yaml"
+                },
+                "score_category": [
+                  "error_handling"
+                ],
+                "threshold": 0.8,
+                "passed": true,
+                "weight": 0.05,
+                "required": false
+              },
+              {
+                "score": 0.0,
+                "raw_score": "0.0",
+                "score_type": "float_scale",
+                "rationale": "Following the instructions, I first attempted to extract all numbers from both the expected outcome and the agent's answer. The prompt provides only the agent's answer and accompanying context; there is no separate expected outcome with numerical values to compare against. From the agent's answer, the extracted numbers are: €4,459,017,155.65 (total sales), 202403 (QuarterKey, appears twice), 2024 (year), and 3 (Q3). After normalizing, these become: EUR 4459017155.65, 202403, 2024, and 3. Because the expected outcome is missing, there are no reference numbers to compare to. Per the scoring rule, if any number is wrong or missing, we must assign 0.0; in this case, the expected set is missing entirely, so an exact match cannot be confirmed.",
+                "scorer_role": "objective",
+                "expected_output": "{\n  \"response\": \"Total sales in Q3 2024 were \\u20ac4,459,017,155.65.\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Simple aggregation query for sales metrics\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/numerical_accuracy_scorer.yaml"
+                },
+                "score_category": [
+                  "numerical_accuracy"
+                ],
+                "threshold": 0.8,
+                "passed": false,
+                "weight": 0.3,
+                "required": true
+              },
+              {
+                "score": 1.0,
+                "raw_score": "1.0",
+                "score_type": "float_scale",
+                "rationale": "Step 1: Identify parts of the question. The original question is a single-part request asking for the total sales in Q3 2024, with no explicit demand for breakdowns, comparisons, trends, or additional metrics.\nStep 2: Check if each part is addressed. The answer provides a specific total sales figure (€4,459,017,155.65) for Q3 2024. It also clarifies the time filter used (QuarterKey = 202403 corresponding to Q3 2024) and confirms aggregation across all units, categories, brands, and channels, which matches the implied scope of 'total sales.'\nStep 3: Consider completeness. There were no requests for multiple metrics or comparisons, and the answer includes the data source and the SQL used, adding transparency. The assumption about the quarter key format is stated, which addresses any potential ambiguity. Hence, all parts of the question are fully answered.",
+                "scorer_role": "auxiliary",
+                "expected_output": "{\n  \"response\": \"Total sales in Q3 2024 were \\u20ac4,459,017,155.65.\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Simple aggregation query for sales metrics\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/completeness_scorer.yaml"
+                },
+                "score_category": [
+                  "completeness"
+                ],
+                "threshold": 0.8,
+                "passed": true,
+                "weight": 0.1,
+                "required": false
+              },
+              {
+                "score": 1.0,
+                "raw_score": "1.0",
+                "score_type": "float_scale",
+                "rationale": "The question 'What were total sales in Q3 2024?' contains potential ambiguities, notably how Q3 2024 is defined (calendar vs. fiscal quarter), the scope of aggregation (products, channels, geographies), and the exact metric definition (gross vs. net sales, currency). The answer addresses these by: (1) explicitly stating the assumption that Q3 2024 maps to QuarterKey = 202403 in a yyyyqq format, thereby clarifying the time definition used; (2) specifying scope as aggregated across all units, categories, brands, and channels (WWM, FR, ONLINE), clarifying the breadth of coverage; (3) identifying the metric and currency via the 'Sales' field and reporting in euros, with the SQL alias indicating EUR; and (4) providing the grain (product-week-channel) and roll-up method. While it does not distinguish gross versus net sales, it transparently ties the number to the 'Sales' column in a specific table, which is reasonable given the question and the dataset context. Overall, key assumptions and interpretations are clearly communicated.",
+                "scorer_role": "auxiliary",
+                "expected_output": "{\n  \"response\": \"Total sales in Q3 2024 were \\u20ac4,459,017,155.65.\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Simple aggregation query for sales metrics\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/assumption_transparency_scorer.yaml"
+                },
+                "score_category": [
+                  "assumption_transparency"
+                ],
+                "threshold": 0.8,
+                "passed": true,
+                "weight": 0.05,
+                "required": false
+              }
+            ]
+          }
+        ]
+      },
+      "turns": 1,
+      "final_score": 0.7000000000000001,
+      "passed": false,
+      "failure_reason": "required",
+      "required_failed": true,
+      "weighted_failed": true,
+      "original_index": 1,
+      "metadata": {},
+      "test_case_id": null
+    }
+  ],
+  "report_html": "/Users/tolgaay/PycharmProjects/sna-evaluation-framework/pyrit_reports/eval_20260102_120610_48fd97/dataset_report_20260102_130707.html",
+  "report_json": "/Users/tolgaay/PycharmProjects/sna-evaluation-framework/pyrit_reports/eval_20260102_120610_48fd97/dataset_report_20260102_130707.json"
+}

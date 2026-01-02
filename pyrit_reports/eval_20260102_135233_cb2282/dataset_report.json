@@ -1,0 +1,392 @@
+{
+  "report_threshold": 0.8,
+  "execution_time_seconds": 28.858190059661865,
+  "dataset_path": "/Users/tolgaay/PycharmProjects/sna-evaluation-framework/eval/tmprnl3g7nd.yaml",
+  "output_directory": "/Users/tolgaay/PycharmProjects/sna-evaluation-framework/pyrit_reports/eval_20260102_135233_cb2282",
+  "report_html": "/Users/tolgaay/PycharmProjects/sna-evaluation-framework/pyrit_reports/eval_20260102_135233_cb2282/dataset_report.html",
+  "scorer_weights": {
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/numerical_accuracy_scorer.yaml\", \"sub_identifier\": null}": 0.3,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/data_methodology_scorer.yaml\", \"sub_identifier\": null}": 0.3,
+    "{\"config_path\": \"eval/scorers/programmatic/agent_routing_scorer.py\", \"name\": \"AgentRoutingScorer\"}": 0.2,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/completeness_scorer.yaml\", \"sub_identifier\": null}": 0.1,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/assumption_transparency_scorer.yaml\", \"sub_identifier\": null}": 0.05,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/error_handling_scorer.yaml\", \"sub_identifier\": null}": 0.05
+  },
+  "scorer_required": {
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/numerical_accuracy_scorer.yaml\", \"sub_identifier\": null}": true,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/data_methodology_scorer.yaml\", \"sub_identifier\": null}": true,
+    "{\"config_path\": \"eval/scorers/programmatic/agent_routing_scorer.py\", \"name\": \"AgentRoutingScorer\"}": true,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/completeness_scorer.yaml\", \"sub_identifier\": null}": false,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/assumption_transparency_scorer.yaml\", \"sub_identifier\": null}": false,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/error_handling_scorer.yaml\", \"sub_identifier\": null}": false
+  },
+  "raw_result_count": 1,
+  "evaluators": [
+    {
+      "identifier": {
+        "__type__": "Evaluator",
+        "__module__": "pyrit.score.evaluator",
+        "sub_identifier": null,
+        "config_path": "eval/scorers/llm/numerical_accuracy_scorer.yaml"
+      },
+      "display_path": "eval/scorers/llm/numerical_accuracy_scorer.yaml",
+      "weight": 0.3,
+      "required": true
+    },
+    {
+      "identifier": {
+        "__type__": "Evaluator",
+        "__module__": "pyrit.score.evaluator",
+        "sub_identifier": null,
+        "config_path": "eval/scorers/llm/data_methodology_scorer.yaml"
+      },
+      "display_path": "eval/scorers/llm/data_methodology_scorer.yaml",
+      "weight": 0.3,
+      "required": true
+    },
+    {
+      "identifier": {
+        "name": "AgentRoutingScorer",
+        "config_path": "eval/scorers/programmatic/agent_routing_scorer.py"
+      },
+      "display_path": "eval/scorers/programmatic/agent_routing_scorer.py",
+      "weight": 0.2,
+      "required": true
+    },
+    {
+      "identifier": {
+        "__type__": "Evaluator",
+        "__module__": "pyrit.score.evaluator",
+        "sub_identifier": null,
+        "config_path": "eval/scorers/llm/completeness_scorer.yaml"
+      },
+      "display_path": "eval/scorers/llm/completeness_scorer.yaml",
+      "weight": 0.1,
+      "required": false
+    },
+    {
+      "identifier": {
+        "__type__": "Evaluator",
+        "__module__": "pyrit.score.evaluator",
+        "sub_identifier": null,
+        "config_path": "eval/scorers/llm/assumption_transparency_scorer.yaml"
+      },
+      "display_path": "eval/scorers/llm/assumption_transparency_scorer.yaml",
+      "weight": 0.05,
+      "required": false
+    },
+    {
+      "identifier": {
+        "__type__": "Evaluator",
+        "__module__": "pyrit.score.evaluator",
+        "sub_identifier": null,
+        "config_path": "eval/scorers/llm/error_handling_scorer.yaml"
+      },
+      "display_path": "eval/scorers/llm/error_handling_scorer.yaml",
+      "weight": 0.05,
+      "required": false
+    }
+  ],
+  "chat_reports": [
+    {
+      "objective": "Test UC disabled",
+      "achieved_objective": true,
+      "attack_identifier": {
+        "__type__": "PromptSendingAttack",
+        "__module__": "pyrit.executor.attack.single_turn.prompt_sending",
+        "id": "56140c1c-575c-4517-a86f-9de457048c59"
+      },
+      "executed_turns": 1,
+      "outcome": "success",
+      "outcome_reason": "Objective achieved according to scorer",
+      "metadata": {},
+      "conversation_id": "90223b0a-dd28-4c95-a0f2-1950097f7fcb",
+      "transcript": [
+        {
+          "turn_index": 1,
+          "pieces": [
+            {
+              "role": "user",
+              "original_value": "Test UC disabled",
+              "converted_value": "Test UC disabled",
+              "scores": []
+            },
+            {
+              "role": "assistant",
+              "original_value": "{'Response': 'Got it. If Unity Catalog is disabled, I can still work against hive_metastore (e.g., hive_metastore.pimvd.markt_table). Let me know the descriptive data you need\u2014for example:\\n- Get all data for a specific week (e.g., \u201cGet all data for week 202451\u201d)\\n- Show top 5 brands by sales\\n- What\u2019s the total market share for last week?\\n- Compare brands across multiple weeks\\n\\nIf you\u2019d like me to verify or update the dataset catalog despite UC being disabled, I can run a verification and sync it accordingly.', 'AgentUsed': 'data_engineer', 'RoutingReason': 'Technical/meta message indicating a test or use case (UC) is disabled; this pertains to configuration/data engineering support'}",
+              "converted_value": "{'Response': 'Got it. If Unity Catalog is disabled, I can still work against hive_metastore (e.g., hive_metastore.pimvd.markt_table). Let me know the descriptive data you need\u2014for example:\\n- Get all data for a specific week (e.g., \u201cGet all data for week 202451\u201d)\\n- Show top 5 brands by sales\\n- What\u2019s the total market share for last week?\\n- Compare brands across multiple weeks\\n\\nIf you\u2019d like me to verify or update the dataset catalog despite UC being disabled, I can run a verification and sync it accordingly.', 'AgentUsed': 'data_engineer', 'RoutingReason': 'Technical/meta message indicating a test or use case (UC) is disabled; this pertains to configuration/data engineering support'}",
+              "scores": [
+                {
+                  "score": 0.0,
+                  "raw_score": "0.0",
+                  "score_type": "float_scale",
+                  "rationale": "To determine assumption transparency, we first identify ambiguities in the exchange. The response suggests potential analyses like \"Show top 5 brands by sales,\" \"What\u2019s the total market share for last week?,\" and \"Compare brands across multiple weeks.\" Each of these contains ambiguous elements: sales could mean revenue or units; market share could be defined by revenue, units, or another measure; \"last week\" is vague without a calendar reference (ISO week vs. fiscal week), timezone, or data refresh cadence; week code \"202451\" implies a specific week-numbering scheme but is not explained; scope (geography, channel, product categories) and brand taxonomy are not specified; and access/permissions to hive_metastore objects may vary. Next, we check if the response explicitly states assumptions, clarifies interpretations, notes multiple possible interpretations, or provides rationale. The reply only acknowledges the environmental condition (Unity Catalog disabled) and offers to work against hive_metastore, plus proposes example queries. It does not call out the ambiguities in metrics, time periods, scope, or definitions, nor does it state any assumptions or chosen interpretations. While it invites the user to specify the data they need, it does not enumerate the key ambiguities or ask targeted clarifying questions (e.g., definition of sales/market share, week standard, geographic scope). Therefore, the answer does not make its assumptions explicit in the face of an ambiguous set of potential requests, yielding a score of 0.0.",
+                  "scorer_role": "auxiliary",
+                  "expected_output": "{\n  \"response\": \"Test\",\n  \"agent\": \"test\",\n  \"reason\": \"Test\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/assumption_transparency_scorer.yaml"
+                  },
+                  "score_category": [
+                    "assumption_transparency"
+                  ],
+                  "threshold": 0.8,
+                  "passed": false,
+                  "weight": 0.05,
+                  "required": false
+                },
+                {
+                  "score": 1.0,
+                  "raw_score": "1.0",
+                  "score_type": "float_scale",
+                  "rationale": "First, identify whether there is an error or limitation: the message states that Unity Catalog (UC) is disabled, which is a configuration limitation. Next, assess how the assistant handled it. The assistant explicitly acknowledges the limitation (\u201cIf Unity Catalog is disabled\u201d) and immediately presents a clear, practical alternative: working against hive_metastore with a concrete example path. It offers user-friendly next steps by suggesting specific types of queries the user might request (e.g., data for a week, top brands, market share, comparisons), which helps the user proceed despite UC being disabled. Additionally, the assistant proposes an action to \u201cverify or update the dataset catalog\u201d and to \u201crun a verification and sync,\u201d indicating proactive support. The explanation is clear, avoids technical jargon, maintains a helpful tone, and provides actionable alternatives. There is no confusion left for the user, satisfying the criteria for a full score.",
+                  "scorer_role": "auxiliary",
+                  "expected_output": "{\n  \"response\": \"Test\",\n  \"agent\": \"test\",\n  \"reason\": \"Test\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/error_handling_scorer.yaml"
+                  },
+                  "score_category": [
+                    "error_handling"
+                  ],
+                  "threshold": 0.8,
+                  "passed": true,
+                  "weight": 0.05,
+                  "required": false
+                },
+                {
+                  "score": 0.0,
+                  "raw_score": "0.0",
+                  "score_type": "float_scale",
+                  "rationale": "Part 1 \u2013 SQL Logic: There is no SQL query provided to evaluate. Without a query, we cannot verify aggregation functions (e.g., AVG, SUM), filters (e.g., week ranges, specific week), or table selection appropriateness. Thus, SQL logic is missing, which qualifies as a major error under the rubric. Part 2 \u2013 Citations: While the response mentions a possible table location (hive_metastore.pimvd.markt_table), it does not present any computed results or analysis that explicitly attributes findings to a specific source table (e.g., \u201cAccording to hive_metastore.pimvd.markt_table\u2026\u201d). The instruction requires explicit source attribution tied to the answer\u2019s content. Since no results or queries are given, citations are effectively missing. Therefore, the score is 0.0.",
+                  "scorer_role": "auxiliary",
+                  "expected_output": "{\n  \"response\": \"Test\",\n  \"agent\": \"test\",\n  \"reason\": \"Test\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/data_methodology_scorer.yaml"
+                  },
+                  "score_category": [
+                    "data_methodology"
+                  ],
+                  "threshold": 0.8,
+                  "passed": false,
+                  "weight": 0.3,
+                  "required": true
+                },
+                {
+                  "score": 0.0,
+                  "raw_score": "0.0",
+                  "score_type": "float_scale",
+                  "rationale": "First, identify the likely parts of the original question. Based on the provided context, the user appears to be asking whether work can proceed with Unity Catalog disabled and possibly expecting specific data outputs or actions such as retrieving data for a particular week, showing top brands by sales, calculating total market share for last week, comparing brands across multiple weeks, and verifying/updating the dataset catalog. Next, check whether each part was addressed: (1) The assistant confirmed it can still work against hive_metastore when Unity Catalog is disabled, which addresses the operational feasibility. (2) For the analytical requests (get data for a specific week, top 5 brands, total market share, compare brands across weeks), the assistant did not provide any actual results or queries; it only suggested examples and asked the user to specify needs. These parts remain unanswered. (3) Regarding verification/update of the dataset catalog, the assistant offered to run a verification and sync but did not perform or detail the verification or provide confirmation of completion. Since significant parts\u2014namely the requested analyses and concrete verification\u2014are missing, the answer is not fully complete.",
+                  "scorer_role": "auxiliary",
+                  "expected_output": "{\n  \"response\": \"Test\",\n  \"agent\": \"test\",\n  \"reason\": \"Test\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/completeness_scorer.yaml"
+                  },
+                  "score_category": [
+                    "completeness"
+                  ],
+                  "threshold": 0.8,
+                  "passed": false,
+                  "weight": 0.1,
+                  "required": false
+                },
+                {
+                  "score": 1.0,
+                  "raw_score": "1.0",
+                  "score_type": "float_scale",
+                  "rationale": "Step 1: Extract numbers from the expected outcome and the agent's answer. Both contain two numeric values: 202451 (as a week identifier example) and 5 (as the top-N count for brands).\nStep 2: Normalize formatting. The numbers are already in simple integer form: 202451 and 5.\nStep 3: Compare each number for exact match. The sets match exactly: [202451, 5] vs. [202451, 5].\nStep 4: Consider symbols and units. There are no currencies or percentage values present; the unit words like \"week\" and \"brands\" do not alter numeric comparison.\nConclusion: All numbers match exactly with no discrepancies or omissions. Therefore, the score is 1.0 (TRUE).",
+                  "scorer_role": "objective",
+                  "expected_output": "{\n  \"response\": \"Test\",\n  \"agent\": \"test\",\n  \"reason\": \"Test\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/numerical_accuracy_scorer.yaml"
+                  },
+                  "score_category": [
+                    "numerical_accuracy"
+                  ],
+                  "threshold": 0.8,
+                  "passed": true,
+                  "weight": 0.3,
+                  "required": true
+                },
+                {
+                  "score": 0.0,
+                  "raw_score": "0.0",
+                  "score_type": "float_scale",
+                  "rationale": "\u2717 Wrong agent: expected test, got data_engineer",
+                  "scorer_role": null,
+                  "expected_output": null,
+                  "scorer_identifier": {
+                    "name": "AgentRoutingScorer",
+                    "config_path": "eval/scorers/programmatic/agent_routing_scorer.py"
+                  },
+                  "score_category": [
+                    "agent_routing"
+                  ],
+                  "threshold": 0.8,
+                  "passed": false,
+                  "weight": 0.2,
+                  "required": true
+                }
+              ],
+              "prompt_metadata": {
+                "latency_ms": 8249,
+                "latency_first_token_ms": 8249
+              },
+              "latency_ms": 8249,
+              "latency_first_token_ms": 8249,
+              "weighted_average": 0.35
+            }
+          ]
+        }
+      ],
+      "aggregated_metrics": {
+        "total_turns": 1,
+        "final_score": 0.0,
+        "scores_by_turn": [
+          {
+            "turn_index": 1,
+            "score_details": [
+              {
+                "score": 0.0,
+                "raw_score": "0.0",
+                "score_type": "float_scale",
+                "rationale": "To determine assumption transparency, we first identify ambiguities in the exchange. The response suggests potential analyses like \"Show top 5 brands by sales,\" \"What\u2019s the total market share for last week?,\" and \"Compare brands across multiple weeks.\" Each of these contains ambiguous elements: sales could mean revenue or units; market share could be defined by revenue, units, or another measure; \"last week\" is vague without a calendar reference (ISO week vs. fiscal week), timezone, or data refresh cadence; week code \"202451\" implies a specific week-numbering scheme but is not explained; scope (geography, channel, product categories) and brand taxonomy are not specified; and access/permissions to hive_metastore objects may vary. Next, we check if the response explicitly states assumptions, clarifies interpretations, notes multiple possible interpretations, or provides rationale. The reply only acknowledges the environmental condition (Unity Catalog disabled) and offers to work against hive_metastore, plus proposes example queries. It does not call out the ambiguities in metrics, time periods, scope, or definitions, nor does it state any assumptions or chosen interpretations. While it invites the user to specify the data they need, it does not enumerate the key ambiguities or ask targeted clarifying questions (e.g., definition of sales/market share, week standard, geographic scope). Therefore, the answer does not make its assumptions explicit in the face of an ambiguous set of potential requests, yielding a score of 0.0.",
+                "scorer_role": "auxiliary",
+                "expected_output": "{\n  \"response\": \"Test\",\n  \"agent\": \"test\",\n  \"reason\": \"Test\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/assumption_transparency_scorer.yaml"
+                },
+                "score_category": [
+                  "assumption_transparency"
+                ],
+                "threshold": 0.8,
+                "passed": false,
+                "weight": 0.05,
+                "required": false
+              },
+              {
+                "score": 1.0,
+                "raw_score": "1.0",
+                "score_type": "float_scale",
+                "rationale": "First, identify whether there is an error or limitation: the message states that Unity Catalog (UC) is disabled, which is a configuration limitation. Next, assess how the assistant handled it. The assistant explicitly acknowledges the limitation (\u201cIf Unity Catalog is disabled\u201d) and immediately presents a clear, practical alternative: working against hive_metastore with a concrete example path. It offers user-friendly next steps by suggesting specific types of queries the user might request (e.g., data for a week, top brands, market share, comparisons), which helps the user proceed despite UC being disabled. Additionally, the assistant proposes an action to \u201cverify or update the dataset catalog\u201d and to \u201crun a verification and sync,\u201d indicating proactive support. The explanation is clear, avoids technical jargon, maintains a helpful tone, and provides actionable alternatives. There is no confusion left for the user, satisfying the criteria for a full score.",
+                "scorer_role": "auxiliary",
+                "expected_output": "{\n  \"response\": \"Test\",\n  \"agent\": \"test\",\n  \"reason\": \"Test\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/error_handling_scorer.yaml"
+                },
+                "score_category": [
+                  "error_handling"
+                ],
+                "threshold": 0.8,
+                "passed": true,
+                "weight": 0.05,
+                "required": false
+              },
+              {
+                "score": 0.0,
+                "raw_score": "0.0",
+                "score_type": "float_scale",
+                "rationale": "Part 1 \u2013 SQL Logic: There is no SQL query provided to evaluate. Without a query, we cannot verify aggregation functions (e.g., AVG, SUM), filters (e.g., week ranges, specific week), or table selection appropriateness. Thus, SQL logic is missing, which qualifies as a major error under the rubric. Part 2 \u2013 Citations: While the response mentions a possible table location (hive_metastore.pimvd.markt_table), it does not present any computed results or analysis that explicitly attributes findings to a specific source table (e.g., \u201cAccording to hive_metastore.pimvd.markt_table\u2026\u201d). The instruction requires explicit source attribution tied to the answer\u2019s content. Since no results or queries are given, citations are effectively missing. Therefore, the score is 0.0.",
+                "scorer_role": "auxiliary",
+                "expected_output": "{\n  \"response\": \"Test\",\n  \"agent\": \"test\",\n  \"reason\": \"Test\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/data_methodology_scorer.yaml"
+                },
+                "score_category": [
+                  "data_methodology"
+                ],
+                "threshold": 0.8,
+                "passed": false,
+                "weight": 0.3,
+                "required": true
+              },
+              {
+                "score": 0.0,
+                "raw_score": "0.0",
+                "score_type": "float_scale",
+                "rationale": "First, identify the likely parts of the original question. Based on the provided context, the user appears to be asking whether work can proceed with Unity Catalog disabled and possibly expecting specific data outputs or actions such as retrieving data for a particular week, showing top brands by sales, calculating total market share for last week, comparing brands across multiple weeks, and verifying/updating the dataset catalog. Next, check whether each part was addressed: (1) The assistant confirmed it can still work against hive_metastore when Unity Catalog is disabled, which addresses the operational feasibility. (2) For the analytical requests (get data for a specific week, top 5 brands, total market share, compare brands across weeks), the assistant did not provide any actual results or queries; it only suggested examples and asked the user to specify needs. These parts remain unanswered. (3) Regarding verification/update of the dataset catalog, the assistant offered to run a verification and sync but did not perform or detail the verification or provide confirmation of completion. Since significant parts\u2014namely the requested analyses and concrete verification\u2014are missing, the answer is not fully complete.",
+                "scorer_role": "auxiliary",
+                "expected_output": "{\n  \"response\": \"Test\",\n  \"agent\": \"test\",\n  \"reason\": \"Test\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/completeness_scorer.yaml"
+                },
+                "score_category": [
+                  "completeness"
+                ],
+                "threshold": 0.8,
+                "passed": false,
+                "weight": 0.1,
+                "required": false
+              },
+              {
+                "score": 1.0,
+                "raw_score": "1.0",
+                "score_type": "float_scale",
+                "rationale": "Step 1: Extract numbers from the expected outcome and the agent's answer. Both contain two numeric values: 202451 (as a week identifier example) and 5 (as the top-N count for brands).\nStep 2: Normalize formatting. The numbers are already in simple integer form: 202451 and 5.\nStep 3: Compare each number for exact match. The sets match exactly: [202451, 5] vs. [202451, 5].\nStep 4: Consider symbols and units. There are no currencies or percentage values present; the unit words like \"week\" and \"brands\" do not alter numeric comparison.\nConclusion: All numbers match exactly with no discrepancies or omissions. Therefore, the score is 1.0 (TRUE).",
+                "scorer_role": "objective",
+                "expected_output": "{\n  \"response\": \"Test\",\n  \"agent\": \"test\",\n  \"reason\": \"Test\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/numerical_accuracy_scorer.yaml"
+                },
+                "score_category": [
+                  "numerical_accuracy"
+                ],
+                "threshold": 0.8,
+                "passed": true,
+                "weight": 0.3,
+                "required": true
+              },
+              {
+                "score": 0.0,
+                "raw_score": "0.0",
+                "score_type": "float_scale",
+                "rationale": "\u2717 Wrong agent: expected test, got data_engineer",
+                "scorer_role": null,
+                "expected_output": null,
+                "scorer_identifier": {
+                  "name": "AgentRoutingScorer",
+                  "config_path": "eval/scorers/programmatic/agent_routing_scorer.py"
+                },
+                "score_category": [
+                  "agent_routing"
+                ],
+                "threshold": 0.8,
+                "passed": false,
+                "weight": 0.2,
+                "required": true
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

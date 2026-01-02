@@ -2,66 +2,127 @@
 
 ## Project Overview
 
-This is a standalone evaluation framework extracted from `ah-sa-commerce_agents_crew`. It tests AI agent responses using PyRIT with 6 specialized scorers.
+This is an Evaluation-as-a-Service framework that provides async API for testing AI agent responses using PyRIT with 6 specialized scorers.
 
 **Key Context:**
-- Evaluates agents from the commerce_agents app (runs separately on port 6000)
-- Uses PyRIT custom fork: `albert-heijn-technology/PyRIT@cc729fcb959d146642bddd422453f46db94d632e`
-- Python 3.10, venv: `.venv-eval`
+- **Mode**: Async FastAPI service with batch evaluation support
+- **Target**: Evaluates agents from commerce_agents app (runs on port 6000)
+- **PyRIT**: Custom fork `albert-heijn-technology/PyRIT@cc729fcb959d146642bddd422453f46db94d632e`
+- **Python**: 3.10, venv: `.venv-eval`
+- **Port**: 8000
+
+## Architecture
+
+**Components:**
+- `eval/api.py` - FastAPI service with 7 endpoints
+- `eval/models.py` - Pydantic models (request/response validation)
+- `eval/job_queue.py` - Thread-safe in-memory job queue
+- `eval/worker.py` - Background worker for PyRIT execution
+- `eval/unity_catalog.py` - Databricks UC integration (optional)
+
+**Flow:**
+1. Client POSTs batch evaluation → API returns 202 + job_id
+2. Background worker executes PyRIT CLI → Generates reports
+3. Client polls GET /evaluate/{job_id} for status
+4. Client fetches GET /evaluate/{job_id}/results when complete
 
 ## Critical Configuration
 
 ### Azure OpenAI Endpoint
-**MUST use full Azure-format URL** (discovered from original repo):
+**MUST use full Azure-format URL:**
 ```
 https://api-ai.digitaldev.nl/openai/deployments/gpt-5/chat/completions?api-version=2024-04-01-preview
 ```
 
 Path is `/openai/deployments/`, NOT `/openai/v1/deployments/`
 
-### Temperature Setting
-**REQUIRED:** `--scorer-temperature 1.0` in CLI command (gpt-5 doesn't support 0.0)
+### Environment Variables (.env)
+**Required:**
+- `OPENAI_CHAT_ENDPOINT` - Azure OpenAI endpoint (full format)
+- `OPENAI_API_KEY` - API key
 
-Temperature in YAML files is **ignored** - CLI flag overrides everything.
+**Optional (Unity Catalog):**
+- `DATABRICKS_SERVER_HOSTNAME` - Databricks workspace
+- `DATABRICKS_HTTP_PATH` - SQL warehouse path
+- `DATABRICKS_TOKEN` - Access token
+- `UNITY_CATALOG_ENABLED` - true/false (default: false until permissions granted)
+
+### Temperature Setting
+**REQUIRED:** `--scorer-temperature 1.0` in worker.py (gpt-5 doesn't support 0.0)
+
+Temperature in YAML files is **ignored** - only CLI flag works.
+
+Temperature in YAML files is **ignored** - only CLI flag works.
 
 ## File Structure
 
 ```
 eval/
+├── api.py                   # FastAPI app with 7 endpoints
+├── models.py                # Pydantic models (JobStatus, EvaluationRequest, etc.)
+├── job_queue.py             # Thread-safe in-memory job queue
+├── worker.py                # Background worker for PyRIT CLI execution
+├── unity_catalog.py         # Databricks UC writer (conditional)
 ├── config.yaml              # HTTP template for target API
-├── datasets/                # Question templates
-├── datasets_sensitive/      # Hydrated data (gitignored)
 └── scorers/
     ├── llm/*.yaml          # 5 LLM scorers
     └── programmatic/*.py   # 1 programmatic scorer
 
+examples/
+└── client_example.py        # Full API client with polling
+
 scripts/
-└── run_evaluation.sh       # Main runner
+└── start_api.sh            # Start API service
 ```
 
-## Key Commands
+## API Endpoints
 
-**Run evaluation:**
-```bash
-./scripts/run_evaluation.sh
+1. `GET /` - Health check
+2. `GET /health` - Detailed health with timestamp
+3. `GET /scorers` - List 6 scorers with weights
+4. `POST /evaluate` - Submit batch (returns 202 + job_id)
+5. `GET /evaluate/{job_id}` - Poll status with progress
+6. `GET /evaluate/{job_id}/results` - Get detailed results
+7. `GET /jobs` - List all jobs
+
+## Request/Response Format
+
+**Request (POST /evaluate):**
+```json
+{
+  "target_url": "http://localhost:6000/chat",
+  "questions": [{
+    "question": "What were total sales in Q3?",
+    "expected_outcome": {
+      "response": "€4.46B total sales",
+      "agent": "merchandising_descriptives",
+      "reason": "Sales aggregation query"
+    }
+  }]
+}
 ```
 
-**Hydrate test data:**
-```bash
-python eval/datasets/hydrate_test_data.py --template eval/datasets/in_scope_questions.yaml
+**Response (GET /evaluate/{job_id}/results):**
+```json
+{
+  "overall_score": 0.8,
+  "questions_completed": 1,
+  "question_results": [{
+    "question": "...",
+    "scorer_results": [{
+      "scorer_name": "numerical_accuracy",
+      "score": 0.8,
+      "weight": 0.3,
+      "weighted_score": 0.24,
+      "rationale": "..."
+    }]
+  }],
+  "report_json_path": "pyrit_reports/.../report.json",
+  "report_html_path": "pyrit_reports/.../report.html"
+}
 ```
 
 ## Scorer Configuration
-
-All LLM scorers use PyRIT Evaluator format:
-```yaml
-category: <name>
-evaluation_criteria: |
-  <instructions>
-true_description: <pass condition>
-false_description: <fail condition>
-# NO temperature field - use CLI flag
-```
 
 6 scorers (3 required):
 1. Numerical Accuracy (30%, required)
@@ -71,33 +132,59 @@ false_description: <fail condition>
 5. Assumption Transparency (5%)
 6. Error Handling (5%)
 
+All LLM scorers use PyRIT Evaluator YAML format. NO temperature field in YAML - use CLI flag only.
+
 ## Common Issues
 
-**Temperature 0.0 error:**
-- Check `--scorer-temperature 1.0` in run_evaluation.sh
-- YAML temperature fields don't work - CLI only
+**Unity Catalog permission denied:**
+- Set `UNITY_CATALOG_ENABLED=false` in .env
+- Results still saved locally in pyrit_reports/
+- Wait for CREATE SCHEMA permissions before enabling
+
+**Port 8000 already in use:**
+```bash
+lsof -ti:8000 | xargs kill -9
+```
 
 **Connection refused port 6000:**
 - Commerce agents API not running
 - Start: `cd ~/ah-sa-commerce_agents_crew && python -m commerce_agents.main_langchain api`
 
-**404 from Azure endpoint:**
-- Verify full Azure-format URL in command
-- Must include `/deployments/gpt-5/` and `?api-version=` parameter
+**Worker not loading .env:**
+- Lazy initialization pattern: worker created on first request, not import
+- API loads .env with `load_dotenv()` before importing worker
 
 ## When Making Changes
 
 **DO:**
-- Use CLI flags for runtime config (temperature, endpoints)
-- Keep scorers in PyRIT Evaluator YAML format
-- Test against commerce_agents on port 6000
+- Use Pydantic models for all request/response validation
+- Keep job queue operations thread-safe
+- Make Unity Catalog writes conditional on UNITY_CATALOG_ENABLED
+- Test with both UC enabled and disabled
 
 **DON'T:**
-- Set temperature in YAML files (ignored)
-- Change PyRIT commit hash without testing
-- Modify HTTP template in config.yaml without verifying field_defs match
+- Instantiate worker at module level (breaks .env loading)
+- Modify PyRIT CLI parameters without testing
+- Remove error handling from UC writes (should gracefully degrade)
 
-## Original Repository
+## Testing
+
+**Start API:**
+```bash
+uvicorn eval.api:app --host 0.0.0.0 --port 8000
+```
+
+**Submit test request:**
+```bash
+curl -X POST http://localhost:8000/evaluate \
+  -H "Content-Type: application/json" \
+  -d '{"target_url":"http://localhost:6000/chat","questions":[...]}'
+```
+
+**Check status:**
+```bash
+curl http://localhost:8000/evaluate/{job_id}
+```
 
 All evaluation components match `eval/` directory in:
 https://github.com/RoyalAholdDelhaize/ah-sa-commerce_agents_crew

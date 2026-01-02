@@ -1,0 +1,392 @@
+{
+  "report_threshold": 0.8,
+  "execution_time_seconds": 20.446874856948853,
+  "dataset_path": "/Users/tolgaay/PycharmProjects/sna-evaluation-framework/eval/tmpn3ofhq0k.yaml",
+  "output_directory": "/Users/tolgaay/PycharmProjects/sna-evaluation-framework/pyrit_reports/eval_20260102_134940_38d600",
+  "report_html": "/Users/tolgaay/PycharmProjects/sna-evaluation-framework/pyrit_reports/eval_20260102_134940_38d600/dataset_report.html",
+  "scorer_weights": {
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/numerical_accuracy_scorer.yaml\", \"sub_identifier\": null}": 0.3,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/data_methodology_scorer.yaml\", \"sub_identifier\": null}": 0.3,
+    "{\"config_path\": \"eval/scorers/programmatic/agent_routing_scorer.py\", \"name\": \"AgentRoutingScorer\"}": 0.2,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/completeness_scorer.yaml\", \"sub_identifier\": null}": 0.1,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/assumption_transparency_scorer.yaml\", \"sub_identifier\": null}": 0.05,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/error_handling_scorer.yaml\", \"sub_identifier\": null}": 0.05
+  },
+  "scorer_required": {
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/numerical_accuracy_scorer.yaml\", \"sub_identifier\": null}": true,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/data_methodology_scorer.yaml\", \"sub_identifier\": null}": true,
+    "{\"config_path\": \"eval/scorers/programmatic/agent_routing_scorer.py\", \"name\": \"AgentRoutingScorer\"}": true,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/completeness_scorer.yaml\", \"sub_identifier\": null}": false,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/assumption_transparency_scorer.yaml\", \"sub_identifier\": null}": false,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/error_handling_scorer.yaml\", \"sub_identifier\": null}": false
+  },
+  "raw_result_count": 1,
+  "evaluators": [
+    {
+      "identifier": {
+        "__type__": "Evaluator",
+        "__module__": "pyrit.score.evaluator",
+        "sub_identifier": null,
+        "config_path": "eval/scorers/llm/numerical_accuracy_scorer.yaml"
+      },
+      "display_path": "eval/scorers/llm/numerical_accuracy_scorer.yaml",
+      "weight": 0.3,
+      "required": true
+    },
+    {
+      "identifier": {
+        "__type__": "Evaluator",
+        "__module__": "pyrit.score.evaluator",
+        "sub_identifier": null,
+        "config_path": "eval/scorers/llm/data_methodology_scorer.yaml"
+      },
+      "display_path": "eval/scorers/llm/data_methodology_scorer.yaml",
+      "weight": 0.3,
+      "required": true
+    },
+    {
+      "identifier": {
+        "name": "AgentRoutingScorer",
+        "config_path": "eval/scorers/programmatic/agent_routing_scorer.py"
+      },
+      "display_path": "eval/scorers/programmatic/agent_routing_scorer.py",
+      "weight": 0.2,
+      "required": true
+    },
+    {
+      "identifier": {
+        "__type__": "Evaluator",
+        "__module__": "pyrit.score.evaluator",
+        "sub_identifier": null,
+        "config_path": "eval/scorers/llm/completeness_scorer.yaml"
+      },
+      "display_path": "eval/scorers/llm/completeness_scorer.yaml",
+      "weight": 0.1,
+      "required": false
+    },
+    {
+      "identifier": {
+        "__type__": "Evaluator",
+        "__module__": "pyrit.score.evaluator",
+        "sub_identifier": null,
+        "config_path": "eval/scorers/llm/assumption_transparency_scorer.yaml"
+      },
+      "display_path": "eval/scorers/llm/assumption_transparency_scorer.yaml",
+      "weight": 0.05,
+      "required": false
+    },
+    {
+      "identifier": {
+        "__type__": "Evaluator",
+        "__module__": "pyrit.score.evaluator",
+        "sub_identifier": null,
+        "config_path": "eval/scorers/llm/error_handling_scorer.yaml"
+      },
+      "display_path": "eval/scorers/llm/error_handling_scorer.yaml",
+      "weight": 0.05,
+      "required": false
+    }
+  ],
+  "chat_reports": [
+    {
+      "objective": "Test question with UC disabled",
+      "achieved_objective": true,
+      "attack_identifier": {
+        "__type__": "PromptSendingAttack",
+        "__module__": "pyrit.executor.attack.single_turn.prompt_sending",
+        "id": "266afc91-e889-408e-b17a-eec4c2f74f68"
+      },
+      "executed_turns": 1,
+      "outcome": "success",
+      "outcome_reason": "Objective achieved according to scorer",
+      "metadata": {},
+      "conversation_id": "9a5bf3ac-6a12-4d34-9835-c1682b4a4bbd",
+      "transcript": [
+        {
+          "turn_index": 1,
+          "pieces": [
+            {
+              "role": "user",
+              "original_value": "Test question with UC disabled",
+              "converted_value": "Test question with UC disabled",
+              "scores": []
+            },
+            {
+              "role": "assistant",
+              "original_value": "{'Response': 'This system can currently only answer descriptive questions (what, how much). Diagnostic, predictive, and prescriptive analyses are not (yet) supported.', 'AgentUsed': 'merchandising_descriptives', 'RoutingReason': 'Question is unclear; defaulting to merchandising_descriptives per rule 4'}",
+              "converted_value": "{'Response': 'This system can currently only answer descriptive questions (what, how much). Diagnostic, predictive, and prescriptive analyses are not (yet) supported.', 'AgentUsed': 'merchandising_descriptives', 'RoutingReason': 'Question is unclear; defaulting to merchandising_descriptives per rule 4'}",
+              "scores": [
+                {
+                  "score": 0.0,
+                  "raw_score": "0.0",
+                  "score_type": "float_scale",
+                  "rationale": "First, identify whether the response contains errors or limitations. The message clearly states a system limitation: it can only answer descriptive questions and does not support diagnostic, predictive, or prescriptive analyses. It also notes the question is unclear and that the system is defaulting to a specific agent. Next, assess the clarity and user-friendliness of the explanation. The limitation is communicated in plain language without technical jargon, which is clear. However, the response does not provide actionable alternatives or guidance\u2014such as asking the user to clarify their question, offering examples of acceptable descriptive queries, or suggesting how to rephrase to fit supported capabilities. The mention of \"per rule 4\" hints at internal routing logic and may not be meaningful to the user. Finally, evaluate tone. The tone is neutral and not defensive, but the absence of helpful next steps leaves the user without clear direction. According to the scoring criteria, errors/limitations are present, and while the explanation is clear, the lack of suggested alternatives means it does not meet the bar for a 1.0 score.",
+                  "scorer_role": "auxiliary",
+                  "expected_output": "{\n  \"response\": \"Expected response\",\n  \"agent\": \"test_agent\",\n  \"reason\": \"Testing local-only storage\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/error_handling_scorer.yaml"
+                  },
+                  "score_category": [
+                    "error_handling"
+                  ],
+                  "threshold": 0.8,
+                  "passed": false,
+                  "weight": 0.05,
+                  "required": false
+                },
+                {
+                  "score": 0.0,
+                  "raw_score": "0.0",
+                  "score_type": "float_scale",
+                  "rationale": "Part 1 \u2013 SQL Logic: The provided answer contains no SQL query at all\u2014it is a capability disclaimer stating the system only handles descriptive questions. Without any query, there is no aggregation to verify (e.g., AVG/SUM), no filters to check (e.g., date ranges like Q2), and no table selection to validate. This constitutes a major omission for SQL logic evaluation. Part 2 \u2013 Citations: The answer includes no explicit source attribution and mentions no table names. Referencing an agent name ('merchandising_descriptives') is not a data source citation. Therefore, citations are missing. Because there is neither SQL logic to assess nor any source citations, the response fails both evaluation criteria, resulting in a score of 0.0 (FALSE).",
+                  "scorer_role": "auxiliary",
+                  "expected_output": "{\n  \"response\": \"Expected response\",\n  \"agent\": \"test_agent\",\n  \"reason\": \"Testing local-only storage\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/data_methodology_scorer.yaml"
+                  },
+                  "score_category": [
+                    "data_methodology"
+                  ],
+                  "threshold": 0.8,
+                  "passed": false,
+                  "weight": 0.3,
+                  "required": true
+                },
+                {
+                  "score": 0.0,
+                  "raw_score": "0.0",
+                  "score_type": "float_scale",
+                  "rationale": "\u2717 Wrong agent: expected test_agent, got merchandising_descriptives",
+                  "scorer_role": null,
+                  "expected_output": null,
+                  "scorer_identifier": {
+                    "name": "AgentRoutingScorer",
+                    "config_path": "eval/scorers/programmatic/agent_routing_scorer.py"
+                  },
+                  "score_category": [
+                    "agent_routing"
+                  ],
+                  "threshold": 0.8,
+                  "passed": false,
+                  "weight": 0.2,
+                  "required": true
+                },
+                {
+                  "score": 1.0,
+                  "raw_score": "1.0",
+                  "score_type": "float_scale",
+                  "rationale": "Step 1: Identify numeric content in the agent's answer. The provided answer text contains no numbers (no digits, percentages, currencies, or units).\nStep 2: Identify numeric content in the expected outcome. No separate expected outcome with numbers was provided; therefore there are no expected numbers to compare against.\nStep 3: Normalize formatting. Not applicable as no numbers were found.\nStep 4: Compare numbers exactly. With no numbers in either the agent's answer or the available expected content, there are no discrepancies.\nConclusion: Since there are zero numbers to compare, all numbers match by vacuous truth, so the score is 1.0 (TRUE).",
+                  "scorer_role": "objective",
+                  "expected_output": "{\n  \"response\": \"Expected response\",\n  \"agent\": \"test_agent\",\n  \"reason\": \"Testing local-only storage\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/numerical_accuracy_scorer.yaml"
+                  },
+                  "score_category": [
+                    "numerical_accuracy"
+                  ],
+                  "threshold": 0.8,
+                  "passed": true,
+                  "weight": 0.3,
+                  "required": true
+                },
+                {
+                  "score": 1.0,
+                  "raw_score": "1.0",
+                  "score_type": "float_scale",
+                  "rationale": "First, identify potential ambiguities: the original question is not shown, but the assistant explicitly states that the question is unclear, which signals ambiguity in scope or intent. Next, check whether the answer addresses these ambiguities: the response clearly flags the ambiguity ('Question is unclear') and explains the routing decision ('defaulting to merchandising_descriptives per rule 4'), which serves as a rationale for the chosen interpretation. It also clarifies capability constraints (only descriptive questions supported) to set expectations and avoid unintended diagnostic/predictive interpretations. While it does not enumerate specific ambiguous dimensions (e.g., timeframe, metrics), the core requirement is met because the ambiguity is explicitly acknowledged and a reasoned path is chosen. Therefore, the answer satisfies the criterion that assumptions/ambiguities are explicitly stated.",
+                  "scorer_role": "auxiliary",
+                  "expected_output": "{\n  \"response\": \"Expected response\",\n  \"agent\": \"test_agent\",\n  \"reason\": \"Testing local-only storage\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/assumption_transparency_scorer.yaml"
+                  },
+                  "score_category": [
+                    "assumption_transparency"
+                  ],
+                  "threshold": 0.8,
+                  "passed": true,
+                  "weight": 0.05,
+                  "required": false
+                },
+                {
+                  "score": 0.0,
+                  "raw_score": "0.0",
+                  "score_type": "float_scale",
+                  "rationale": "Step 1: Identify the parts of the original question. The original question text is not provided, and the routing note states the question was unclear. Without the question, we cannot enumerate explicit sub-questions or implied requirements. However, any user query typically expects at least some substantive answer or a request for clarification. Step 2: Check if each part is addressed. The provided response does not attempt to answer any specific content from the user's query; it only declares system limitations and the agent used. No descriptive insights (what, how much) are given, nor is clarification requested to resolve the ambiguity. Step 3: Consider requested comparisons, metrics, or context. None are provided, and no attempt is made to fulfill potential descriptive needs. Therefore, significant parts of the question remain unanswered, leading to a score of 0.0.",
+                  "scorer_role": "auxiliary",
+                  "expected_output": "{\n  \"response\": \"Expected response\",\n  \"agent\": \"test_agent\",\n  \"reason\": \"Testing local-only storage\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/completeness_scorer.yaml"
+                  },
+                  "score_category": [
+                    "completeness"
+                  ],
+                  "threshold": 0.8,
+                  "passed": false,
+                  "weight": 0.1,
+                  "required": false
+                }
+              ],
+              "prompt_metadata": {
+                "latency_ms": 4442,
+                "latency_first_token_ms": 4442
+              },
+              "latency_ms": 4442,
+              "latency_first_token_ms": 4442,
+              "weighted_average": 0.3499999999999999
+            }
+          ]
+        }
+      ],
+      "aggregated_metrics": {
+        "total_turns": 1,
+        "final_score": 0.0,
+        "scores_by_turn": [
+          {
+            "turn_index": 1,
+            "score_details": [
+              {
+                "score": 0.0,
+                "raw_score": "0.0",
+                "score_type": "float_scale",
+                "rationale": "First, identify whether the response contains errors or limitations. The message clearly states a system limitation: it can only answer descriptive questions and does not support diagnostic, predictive, or prescriptive analyses. It also notes the question is unclear and that the system is defaulting to a specific agent. Next, assess the clarity and user-friendliness of the explanation. The limitation is communicated in plain language without technical jargon, which is clear. However, the response does not provide actionable alternatives or guidance\u2014such as asking the user to clarify their question, offering examples of acceptable descriptive queries, or suggesting how to rephrase to fit supported capabilities. The mention of \"per rule 4\" hints at internal routing logic and may not be meaningful to the user. Finally, evaluate tone. The tone is neutral and not defensive, but the absence of helpful next steps leaves the user without clear direction. According to the scoring criteria, errors/limitations are present, and while the explanation is clear, the lack of suggested alternatives means it does not meet the bar for a 1.0 score.",
+                "scorer_role": "auxiliary",
+                "expected_output": "{\n  \"response\": \"Expected response\",\n  \"agent\": \"test_agent\",\n  \"reason\": \"Testing local-only storage\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/error_handling_scorer.yaml"
+                },
+                "score_category": [
+                  "error_handling"
+                ],
+                "threshold": 0.8,
+                "passed": false,
+                "weight": 0.05,
+                "required": false
+              },
+              {
+                "score": 0.0,
+                "raw_score": "0.0",
+                "score_type": "float_scale",
+                "rationale": "Part 1 \u2013 SQL Logic: The provided answer contains no SQL query at all\u2014it is a capability disclaimer stating the system only handles descriptive questions. Without any query, there is no aggregation to verify (e.g., AVG/SUM), no filters to check (e.g., date ranges like Q2), and no table selection to validate. This constitutes a major omission for SQL logic evaluation. Part 2 \u2013 Citations: The answer includes no explicit source attribution and mentions no table names. Referencing an agent name ('merchandising_descriptives') is not a data source citation. Therefore, citations are missing. Because there is neither SQL logic to assess nor any source citations, the response fails both evaluation criteria, resulting in a score of 0.0 (FALSE).",
+                "scorer_role": "auxiliary",
+                "expected_output": "{\n  \"response\": \"Expected response\",\n  \"agent\": \"test_agent\",\n  \"reason\": \"Testing local-only storage\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/data_methodology_scorer.yaml"
+                },
+                "score_category": [
+                  "data_methodology"
+                ],
+                "threshold": 0.8,
+                "passed": false,
+                "weight": 0.3,
+                "required": true
+              },
+              {
+                "score": 0.0,
+                "raw_score": "0.0",
+                "score_type": "float_scale",
+                "rationale": "\u2717 Wrong agent: expected test_agent, got merchandising_descriptives",
+                "scorer_role": null,
+                "expected_output": null,
+                "scorer_identifier": {
+                  "name": "AgentRoutingScorer",
+                  "config_path": "eval/scorers/programmatic/agent_routing_scorer.py"
+                },
+                "score_category": [
+                  "agent_routing"
+                ],
+                "threshold": 0.8,
+                "passed": false,
+                "weight": 0.2,
+                "required": true
+              },
+              {
+                "score": 1.0,
+                "raw_score": "1.0",
+                "score_type": "float_scale",
+                "rationale": "Step 1: Identify numeric content in the agent's answer. The provided answer text contains no numbers (no digits, percentages, currencies, or units).\nStep 2: Identify numeric content in the expected outcome. No separate expected outcome with numbers was provided; therefore there are no expected numbers to compare against.\nStep 3: Normalize formatting. Not applicable as no numbers were found.\nStep 4: Compare numbers exactly. With no numbers in either the agent's answer or the available expected content, there are no discrepancies.\nConclusion: Since there are zero numbers to compare, all numbers match by vacuous truth, so the score is 1.0 (TRUE).",
+                "scorer_role": "objective",
+                "expected_output": "{\n  \"response\": \"Expected response\",\n  \"agent\": \"test_agent\",\n  \"reason\": \"Testing local-only storage\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/numerical_accuracy_scorer.yaml"
+                },
+                "score_category": [
+                  "numerical_accuracy"
+                ],
+                "threshold": 0.8,
+                "passed": true,
+                "weight": 0.3,
+                "required": true
+              },
+              {
+                "score": 1.0,
+                "raw_score": "1.0",
+                "score_type": "float_scale",
+                "rationale": "First, identify potential ambiguities: the original question is not shown, but the assistant explicitly states that the question is unclear, which signals ambiguity in scope or intent. Next, check whether the answer addresses these ambiguities: the response clearly flags the ambiguity ('Question is unclear') and explains the routing decision ('defaulting to merchandising_descriptives per rule 4'), which serves as a rationale for the chosen interpretation. It also clarifies capability constraints (only descriptive questions supported) to set expectations and avoid unintended diagnostic/predictive interpretations. While it does not enumerate specific ambiguous dimensions (e.g., timeframe, metrics), the core requirement is met because the ambiguity is explicitly acknowledged and a reasoned path is chosen. Therefore, the answer satisfies the criterion that assumptions/ambiguities are explicitly stated.",
+                "scorer_role": "auxiliary",
+                "expected_output": "{\n  \"response\": \"Expected response\",\n  \"agent\": \"test_agent\",\n  \"reason\": \"Testing local-only storage\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/assumption_transparency_scorer.yaml"
+                },
+                "score_category": [
+                  "assumption_transparency"
+                ],
+                "threshold": 0.8,
+                "passed": true,
+                "weight": 0.05,
+                "required": false
+              },
+              {
+                "score": 0.0,
+                "raw_score": "0.0",
+                "score_type": "float_scale",
+                "rationale": "Step 1: Identify the parts of the original question. The original question text is not provided, and the routing note states the question was unclear. Without the question, we cannot enumerate explicit sub-questions or implied requirements. However, any user query typically expects at least some substantive answer or a request for clarification. Step 2: Check if each part is addressed. The provided response does not attempt to answer any specific content from the user's query; it only declares system limitations and the agent used. No descriptive insights (what, how much) are given, nor is clarification requested to resolve the ambiguity. Step 3: Consider requested comparisons, metrics, or context. None are provided, and no attempt is made to fulfill potential descriptive needs. Therefore, significant parts of the question remain unanswered, leading to a score of 0.0.",
+                "scorer_role": "auxiliary",
+                "expected_output": "{\n  \"response\": \"Expected response\",\n  \"agent\": \"test_agent\",\n  \"reason\": \"Testing local-only storage\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/completeness_scorer.yaml"
+                },
+                "score_category": [
+                  "completeness"
+                ],
+                "threshold": 0.8,
+                "passed": false,
+                "weight": 0.1,
+                "required": false
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

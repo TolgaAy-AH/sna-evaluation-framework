@@ -1,0 +1,392 @@
+{
+  "report_threshold": 0.8,
+  "execution_time_seconds": 16.240574836730957,
+  "dataset_path": "/Users/tolgaay/PycharmProjects/sna-evaluation-framework/eval/tmput7n7xgo.yaml",
+  "output_directory": "/Users/tolgaay/PycharmProjects/sna-evaluation-framework/pyrit_reports/eval_20260102_134728_39d5dc",
+  "report_html": "/Users/tolgaay/PycharmProjects/sna-evaluation-framework/pyrit_reports/eval_20260102_134728_39d5dc/dataset_report.html",
+  "scorer_weights": {
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/numerical_accuracy_scorer.yaml\", \"sub_identifier\": null}": 0.3,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/data_methodology_scorer.yaml\", \"sub_identifier\": null}": 0.3,
+    "{\"config_path\": \"eval/scorers/programmatic/agent_routing_scorer.py\", \"name\": \"AgentRoutingScorer\"}": 0.2,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/completeness_scorer.yaml\", \"sub_identifier\": null}": 0.1,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/assumption_transparency_scorer.yaml\", \"sub_identifier\": null}": 0.05,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/error_handling_scorer.yaml\", \"sub_identifier\": null}": 0.05
+  },
+  "scorer_required": {
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/numerical_accuracy_scorer.yaml\", \"sub_identifier\": null}": true,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/data_methodology_scorer.yaml\", \"sub_identifier\": null}": true,
+    "{\"config_path\": \"eval/scorers/programmatic/agent_routing_scorer.py\", \"name\": \"AgentRoutingScorer\"}": true,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/completeness_scorer.yaml\", \"sub_identifier\": null}": false,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/assumption_transparency_scorer.yaml\", \"sub_identifier\": null}": false,
+    "{\"__module__\": \"pyrit.score.evaluator\", \"__type__\": \"Evaluator\", \"config_path\": \"eval/scorers/llm/error_handling_scorer.yaml\", \"sub_identifier\": null}": false
+  },
+  "raw_result_count": 1,
+  "evaluators": [
+    {
+      "identifier": {
+        "__type__": "Evaluator",
+        "__module__": "pyrit.score.evaluator",
+        "sub_identifier": null,
+        "config_path": "eval/scorers/llm/numerical_accuracy_scorer.yaml"
+      },
+      "display_path": "eval/scorers/llm/numerical_accuracy_scorer.yaml",
+      "weight": 0.3,
+      "required": true
+    },
+    {
+      "identifier": {
+        "__type__": "Evaluator",
+        "__module__": "pyrit.score.evaluator",
+        "sub_identifier": null,
+        "config_path": "eval/scorers/llm/data_methodology_scorer.yaml"
+      },
+      "display_path": "eval/scorers/llm/data_methodology_scorer.yaml",
+      "weight": 0.3,
+      "required": true
+    },
+    {
+      "identifier": {
+        "name": "AgentRoutingScorer",
+        "config_path": "eval/scorers/programmatic/agent_routing_scorer.py"
+      },
+      "display_path": "eval/scorers/programmatic/agent_routing_scorer.py",
+      "weight": 0.2,
+      "required": true
+    },
+    {
+      "identifier": {
+        "__type__": "Evaluator",
+        "__module__": "pyrit.score.evaluator",
+        "sub_identifier": null,
+        "config_path": "eval/scorers/llm/completeness_scorer.yaml"
+      },
+      "display_path": "eval/scorers/llm/completeness_scorer.yaml",
+      "weight": 0.1,
+      "required": false
+    },
+    {
+      "identifier": {
+        "__type__": "Evaluator",
+        "__module__": "pyrit.score.evaluator",
+        "sub_identifier": null,
+        "config_path": "eval/scorers/llm/assumption_transparency_scorer.yaml"
+      },
+      "display_path": "eval/scorers/llm/assumption_transparency_scorer.yaml",
+      "weight": 0.05,
+      "required": false
+    },
+    {
+      "identifier": {
+        "__type__": "Evaluator",
+        "__module__": "pyrit.score.evaluator",
+        "sub_identifier": null,
+        "config_path": "eval/scorers/llm/error_handling_scorer.yaml"
+      },
+      "display_path": "eval/scorers/llm/error_handling_scorer.yaml",
+      "weight": 0.05,
+      "required": false
+    }
+  ],
+  "chat_reports": [
+    {
+      "objective": "Which store had the highest customer satisfaction score?",
+      "achieved_objective": true,
+      "attack_identifier": {
+        "__type__": "PromptSendingAttack",
+        "__module__": "pyrit.executor.attack.single_turn.prompt_sending",
+        "id": "a7a5dc38-19cd-406c-b4d3-0f755f362c45"
+      },
+      "executed_turns": 1,
+      "outcome": "success",
+      "outcome_reason": "Objective achieved according to scorer",
+      "metadata": {},
+      "conversation_id": "39e4eb00-b95e-43b5-8ac1-32c10d127858",
+      "transcript": [
+        {
+          "turn_index": 1,
+          "pieces": [
+            {
+              "role": "user",
+              "original_value": "Which store had the highest customer satisfaction score?",
+              "converted_value": "Which store had the highest customer satisfaction score?",
+              "scores": []
+            },
+            {
+              "role": "assistant",
+              "original_value": "{'Response': 'Thank you for your question about customer satisfaction by store!\\n\\nThis functionality is currently not yet available. We are working hard to answer questions about customers, segments, and demographics in the future.\\n\\nNote: This system can only answer descriptive questions (what, how much). Diagnostic, predictive, and prescriptive analyses are not (yet) supported.\\n\\nAt the moment, I can help you with descriptive questions about:\\n- Sales and revenue figures\\n- Product and category performance\\n- Promotional effectiveness (promo pressure, promo sales)\\n- Channel comparisons (online vs stores)\\n- Brand and assortment analysis\\n\\nDo you have a descriptive question about one of these topics?', 'AgentUsed': 'customer_insights', 'RoutingReason': 'Asks for the store with highest customer satisfaction, which is a customer behavior metric rather than financial performance'}",
+              "converted_value": "{'Response': 'Thank you for your question about customer satisfaction by store!\\n\\nThis functionality is currently not yet available. We are working hard to answer questions about customers, segments, and demographics in the future.\\n\\nNote: This system can only answer descriptive questions (what, how much). Diagnostic, predictive, and prescriptive analyses are not (yet) supported.\\n\\nAt the moment, I can help you with descriptive questions about:\\n- Sales and revenue figures\\n- Product and category performance\\n- Promotional effectiveness (promo pressure, promo sales)\\n- Channel comparisons (online vs stores)\\n- Brand and assortment analysis\\n\\nDo you have a descriptive question about one of these topics?', 'AgentUsed': 'customer_insights', 'RoutingReason': 'Asks for the store with highest customer satisfaction, which is a customer behavior metric rather than financial performance'}",
+              "scores": [
+                {
+                  "score": 0.0,
+                  "raw_score": "0.0",
+                  "score_type": "float_scale",
+                  "rationale": "First, identify the likely parts of the original question. Based on the assistant's opening line and routing reason, the user asked about customer satisfaction by store, which can imply either: (a) a breakdown of customer satisfaction metrics for each store, or (b) a specific comparison such as which store has the highest customer satisfaction. These constitute requests for descriptive metrics and potentially a ranking or identification of the top-performing store. Next, check whether the response addresses these parts. The response states that the functionality is not available and does not provide any customer satisfaction metrics, store-level breakdowns, rankings, or identification of the store with the highest satisfaction. It also does not offer proxy measures, alternative relevant data, or partial answers. Therefore, the key components of the user's request are left unanswered. As a result, significant parts of the question are missing, and the answer is incomplete.",
+                  "scorer_role": "auxiliary",
+                  "expected_output": "{\n  \"response\": \"Store Amsterdam-Centraal had the highest satisfaction score of 4.8/5.0\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Query for maximum value across store dimension\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/completeness_scorer.yaml"
+                  },
+                  "score_category": [
+                    "completeness"
+                  ],
+                  "threshold": 0.8,
+                  "passed": false,
+                  "weight": 0.1,
+                  "required": false
+                },
+                {
+                  "score": 0.0,
+                  "raw_score": "0.0",
+                  "score_type": "float_scale",
+                  "rationale": "Part 1 \u2013 SQL Logic: The assistant did not provide any SQL query, so there is no aggregation to verify (e.g., AVG for satisfaction), no filters to check (such as date ranges or store-level constraints), and no table selection to validate. As a result, the SQL logic cannot be assessed and effectively fails the requirement.\n\nPart 2 \u2013 Citations: The response does not mention any table names or data sources. There is no explicit attribution such as \"According to the X table\" or references to specific datasets used. Therefore, source citation requirements are not met.\n\nBecause there is neither SQL logic to evaluate nor proper source citation, the score is 0.0 (FALSE).",
+                  "scorer_role": "auxiliary",
+                  "expected_output": "{\n  \"response\": \"Store Amsterdam-Centraal had the highest satisfaction score of 4.8/5.0\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Query for maximum value across store dimension\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/data_methodology_scorer.yaml"
+                  },
+                  "score_category": [
+                    "data_methodology"
+                  ],
+                  "threshold": 0.8,
+                  "passed": false,
+                  "weight": 0.3,
+                  "required": true
+                },
+                {
+                  "score": 0.0,
+                  "raw_score": "0.0",
+                  "score_type": "float_scale",
+                  "rationale": "\u2717 Wrong agent: expected merchandising_descriptives, got customer_insights",
+                  "scorer_role": null,
+                  "expected_output": null,
+                  "scorer_identifier": {
+                    "name": "AgentRoutingScorer",
+                    "config_path": "eval/scorers/programmatic/agent_routing_scorer.py"
+                  },
+                  "score_category": [
+                    "agent_routing"
+                  ],
+                  "threshold": 0.8,
+                  "passed": false,
+                  "weight": 0.2,
+                  "required": true
+                },
+                {
+                  "score": 1.0,
+                  "raw_score": "1.0",
+                  "score_type": "float_scale",
+                  "rationale": "Step 1: Identify and extract all numbers from the expected outcome and the agent's answer. The expected outcome is not provided, so the set of expected numbers is empty. The agent's answer text contains no numeric values (no digits, percentages, currencies, or units).\nStep 2: Normalize formatting. There are no numbers to normalize in either set.\nStep 3: Compare each number for an exact match, considering symbols and units. Since both the expected set and the agent's set are empty, there are no discrepancies or missing values.\nConclusion: All numbers match exactly (trivially), so the correct score is 1.0 (TRUE).",
+                  "scorer_role": "objective",
+                  "expected_output": "{\n  \"response\": \"Store Amsterdam-Centraal had the highest satisfaction score of 4.8/5.0\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Query for maximum value across store dimension\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/numerical_accuracy_scorer.yaml"
+                  },
+                  "score_category": [
+                    "numerical_accuracy"
+                  ],
+                  "threshold": 0.8,
+                  "passed": true,
+                  "weight": 0.3,
+                  "required": true
+                },
+                {
+                  "score": 1.0,
+                  "raw_score": "1.0",
+                  "score_type": "float_scale",
+                  "rationale": "First, identify whether the assistant faced any errors or limitations. The response explicitly states that customer satisfaction functionality is not yet available and clarifies a broader limitation: the system currently supports only descriptive questions and does not support diagnostic, predictive, or prescriptive analyses. Next, assess how these limitations are communicated. The explanation is clear, concise, and user-friendly\u2014no technical jargon is used\u2014and it directly addresses why the original request cannot be fulfilled. Then, check if alternatives are offered. The assistant provides concrete areas where it can help (sales and revenue, product performance, promotions, channels, brand/assortment) and invites the user to ask a descriptive question in those domains, which is a helpful path forward. Finally, consider tone. The tone is polite and constructive, expressing that they are working to add the requested capability in the future. Given the presence of a limitation and the clear, helpful communication with suggested alternatives, this meets the criteria for a top score.",
+                  "scorer_role": "auxiliary",
+                  "expected_output": "{\n  \"response\": \"Store Amsterdam-Centraal had the highest satisfaction score of 4.8/5.0\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Query for maximum value across store dimension\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/error_handling_scorer.yaml"
+                  },
+                  "score_category": [
+                    "error_handling"
+                  ],
+                  "threshold": 0.8,
+                  "passed": true,
+                  "weight": 0.05,
+                  "required": false
+                },
+                {
+                  "score": 0.0,
+                  "raw_score": "0.0",
+                  "score_type": "float_scale",
+                  "rationale": "First, identify potential ambiguities in the user's question about customer satisfaction by store: the metric for 'customer satisfaction' could mean CSAT, NPS, reviews, or complaint rates; the time period is unspecified (e.g., last month, quarter, year, all-time); the scope of 'stores' is unclear (all stores, a region, a specific chain); and whether the comparison is absolute or normalized by store size/traffic is not stated. Next, check whether the assistant addressed these ambiguities. The assistant declined the request citing capability limitations and redirected to supported descriptive topics, but did not state any assumptions about the metric, time frame, scope, or comparison method, nor did it note that multiple interpretations exist or ask clarifying questions. While it communicated system constraints (descriptive-only and not customer satisfaction), it did not engage with the ambiguities in the user's question. Therefore, key assumptions remain unaddressed despite the ambiguity, resulting in a score of 0.0.",
+                  "scorer_role": "auxiliary",
+                  "expected_output": "{\n  \"response\": \"Store Amsterdam-Centraal had the highest satisfaction score of 4.8/5.0\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Query for maximum value across store dimension\"\n}",
+                  "scorer_identifier": {
+                    "__type__": "Evaluator",
+                    "__module__": "pyrit.score.evaluator",
+                    "sub_identifier": null,
+                    "config_path": "eval/scorers/llm/assumption_transparency_scorer.yaml"
+                  },
+                  "score_category": [
+                    "assumption_transparency"
+                  ],
+                  "threshold": 0.8,
+                  "passed": false,
+                  "weight": 0.05,
+                  "required": false
+                }
+              ],
+              "prompt_metadata": {
+                "latency_ms": 6819,
+                "latency_first_token_ms": 6818
+              },
+              "latency_ms": 6819,
+              "latency_first_token_ms": 6818,
+              "weighted_average": 0.3499999999999999
+            }
+          ]
+        }
+      ],
+      "aggregated_metrics": {
+        "total_turns": 1,
+        "final_score": 0.0,
+        "scores_by_turn": [
+          {
+            "turn_index": 1,
+            "score_details": [
+              {
+                "score": 0.0,
+                "raw_score": "0.0",
+                "score_type": "float_scale",
+                "rationale": "First, identify the likely parts of the original question. Based on the assistant's opening line and routing reason, the user asked about customer satisfaction by store, which can imply either: (a) a breakdown of customer satisfaction metrics for each store, or (b) a specific comparison such as which store has the highest customer satisfaction. These constitute requests for descriptive metrics and potentially a ranking or identification of the top-performing store. Next, check whether the response addresses these parts. The response states that the functionality is not available and does not provide any customer satisfaction metrics, store-level breakdowns, rankings, or identification of the store with the highest satisfaction. It also does not offer proxy measures, alternative relevant data, or partial answers. Therefore, the key components of the user's request are left unanswered. As a result, significant parts of the question are missing, and the answer is incomplete.",
+                "scorer_role": "auxiliary",
+                "expected_output": "{\n  \"response\": \"Store Amsterdam-Centraal had the highest satisfaction score of 4.8/5.0\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Query for maximum value across store dimension\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/completeness_scorer.yaml"
+                },
+                "score_category": [
+                  "completeness"
+                ],
+                "threshold": 0.8,
+                "passed": false,
+                "weight": 0.1,
+                "required": false
+              },
+              {
+                "score": 0.0,
+                "raw_score": "0.0",
+                "score_type": "float_scale",
+                "rationale": "Part 1 \u2013 SQL Logic: The assistant did not provide any SQL query, so there is no aggregation to verify (e.g., AVG for satisfaction), no filters to check (such as date ranges or store-level constraints), and no table selection to validate. As a result, the SQL logic cannot be assessed and effectively fails the requirement.\n\nPart 2 \u2013 Citations: The response does not mention any table names or data sources. There is no explicit attribution such as \"According to the X table\" or references to specific datasets used. Therefore, source citation requirements are not met.\n\nBecause there is neither SQL logic to evaluate nor proper source citation, the score is 0.0 (FALSE).",
+                "scorer_role": "auxiliary",
+                "expected_output": "{\n  \"response\": \"Store Amsterdam-Centraal had the highest satisfaction score of 4.8/5.0\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Query for maximum value across store dimension\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/data_methodology_scorer.yaml"
+                },
+                "score_category": [
+                  "data_methodology"
+                ],
+                "threshold": 0.8,
+                "passed": false,
+                "weight": 0.3,
+                "required": true
+              },
+              {
+                "score": 0.0,
+                "raw_score": "0.0",
+                "score_type": "float_scale",
+                "rationale": "\u2717 Wrong agent: expected merchandising_descriptives, got customer_insights",
+                "scorer_role": null,
+                "expected_output": null,
+                "scorer_identifier": {
+                  "name": "AgentRoutingScorer",
+                  "config_path": "eval/scorers/programmatic/agent_routing_scorer.py"
+                },
+                "score_category": [
+                  "agent_routing"
+                ],
+                "threshold": 0.8,
+                "passed": false,
+                "weight": 0.2,
+                "required": true
+              },
+              {
+                "score": 1.0,
+                "raw_score": "1.0",
+                "score_type": "float_scale",
+                "rationale": "Step 1: Identify and extract all numbers from the expected outcome and the agent's answer. The expected outcome is not provided, so the set of expected numbers is empty. The agent's answer text contains no numeric values (no digits, percentages, currencies, or units).\nStep 2: Normalize formatting. There are no numbers to normalize in either set.\nStep 3: Compare each number for an exact match, considering symbols and units. Since both the expected set and the agent's set are empty, there are no discrepancies or missing values.\nConclusion: All numbers match exactly (trivially), so the correct score is 1.0 (TRUE).",
+                "scorer_role": "objective",
+                "expected_output": "{\n  \"response\": \"Store Amsterdam-Centraal had the highest satisfaction score of 4.8/5.0\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Query for maximum value across store dimension\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/numerical_accuracy_scorer.yaml"
+                },
+                "score_category": [
+                  "numerical_accuracy"
+                ],
+                "threshold": 0.8,
+                "passed": true,
+                "weight": 0.3,
+                "required": true
+              },
+              {
+                "score": 1.0,
+                "raw_score": "1.0",
+                "score_type": "float_scale",
+                "rationale": "First, identify whether the assistant faced any errors or limitations. The response explicitly states that customer satisfaction functionality is not yet available and clarifies a broader limitation: the system currently supports only descriptive questions and does not support diagnostic, predictive, or prescriptive analyses. Next, assess how these limitations are communicated. The explanation is clear, concise, and user-friendly\u2014no technical jargon is used\u2014and it directly addresses why the original request cannot be fulfilled. Then, check if alternatives are offered. The assistant provides concrete areas where it can help (sales and revenue, product performance, promotions, channels, brand/assortment) and invites the user to ask a descriptive question in those domains, which is a helpful path forward. Finally, consider tone. The tone is polite and constructive, expressing that they are working to add the requested capability in the future. Given the presence of a limitation and the clear, helpful communication with suggested alternatives, this meets the criteria for a top score.",
+                "scorer_role": "auxiliary",
+                "expected_output": "{\n  \"response\": \"Store Amsterdam-Centraal had the highest satisfaction score of 4.8/5.0\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Query for maximum value across store dimension\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/error_handling_scorer.yaml"
+                },
+                "score_category": [
+                  "error_handling"
+                ],
+                "threshold": 0.8,
+                "passed": true,
+                "weight": 0.05,
+                "required": false
+              },
+              {
+                "score": 0.0,
+                "raw_score": "0.0",
+                "score_type": "float_scale",
+                "rationale": "First, identify potential ambiguities in the user's question about customer satisfaction by store: the metric for 'customer satisfaction' could mean CSAT, NPS, reviews, or complaint rates; the time period is unspecified (e.g., last month, quarter, year, all-time); the scope of 'stores' is unclear (all stores, a region, a specific chain); and whether the comparison is absolute or normalized by store size/traffic is not stated. Next, check whether the assistant addressed these ambiguities. The assistant declined the request citing capability limitations and redirected to supported descriptive topics, but did not state any assumptions about the metric, time frame, scope, or comparison method, nor did it note that multiple interpretations exist or ask clarifying questions. While it communicated system constraints (descriptive-only and not customer satisfaction), it did not engage with the ambiguities in the user's question. Therefore, key assumptions remain unaddressed despite the ambiguity, resulting in a score of 0.0.",
+                "scorer_role": "auxiliary",
+                "expected_output": "{\n  \"response\": \"Store Amsterdam-Centraal had the highest satisfaction score of 4.8/5.0\",\n  \"agent\": \"merchandising_descriptives\",\n  \"reason\": \"Query for maximum value across store dimension\"\n}",
+                "scorer_identifier": {
+                  "__type__": "Evaluator",
+                  "__module__": "pyrit.score.evaluator",
+                  "sub_identifier": null,
+                  "config_path": "eval/scorers/llm/assumption_transparency_scorer.yaml"
+                },
+                "score_category": [
+                  "assumption_transparency"
+                ],
+                "threshold": 0.8,
+                "passed": false,
+                "weight": 0.05,
+                "required": false
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
